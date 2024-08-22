@@ -7,22 +7,22 @@ const Header = () => {
   return (
     <header className='py-2'>
         <div className='flex justify-between items-center'>
-            <div>
-                    <Link 
-                    href={"/"}
-                    className='max-w-max'
-                    >
-                        <h1 
-                        className='font-extrabold text-6xl'
-                        >
-                            Ma
-                        <span className='text-accentBg'>X</span>
-                            ter
-                        </h1>
-                    </Link>
-            </div>
             <nav className=''>
                 <ul className='flex gap-8 items-center text-xl font-medium mt-4'>
+                    <li className='-mt-4'>
+                        <Link 
+                        href={"/"}
+                        className='max-w-max'
+                        >
+                            <h1 
+                            className='font-extrabold text-6xl'
+                            >
+                                Ma
+                            <span className='text-accentBg'>X</span>
+                                ter
+                            </h1>
+                        </Link>
+                    </li>
                     <li>
                         <Link 
                         href={"/"}
