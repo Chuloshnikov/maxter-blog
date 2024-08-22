@@ -6,32 +6,58 @@ import Link from 'next/link';
 const Header = () => {
   return (
     <header className=''>
-        <div className='flex justify-center'>
-            <nav>
-                <ul className='flex gap-8 items-center text-xl font-medium'>
+        <div className='flex justify-between items-center'>
+            <div>
+                    <Link 
+                    href={"/"}
+                    className='max-w-max'
+                    >
+                        <h1 
+                        className='font-extrabold text-6xl'
+                        >
+                            Ma
+                        <span className='text-accentBg'>X</span>
+                            ter
+                        </h1>
+                    </Link>
+            </div>
+            <nav className='py-4'>
+                <ul className='flex gap-8 items-center text-xl font-medium mt-2'>
                     <li>
-                        home
-                    </li>
-                    <li >
                         <Link 
                         href={"/"}
-                        className='nax-w-max'
+                        className='linkHover'
                         >
-                            <h1 
-                            className='font-extrabold text-6xl'
-                            >
-                                Ma
-                            <span className='text-accentBg'>X</span>
-                                ter
-                            </h1>
+                            home
                         </Link>
                     </li>
+                    <span className='w-4 h-4 bg-accentBg'></span>
                     <li>
-                        about
+                        <Link 
+                        href={"/about"}
+                        className='linkHover'
+                        >
+                            
+                            about
+                        </Link>
+                    </li>
+                    <span className='w-4 h-4 bg-accentBg'></span>
+                    <li>
+                        <Link 
+                        href={"/contacts"}
+                        className='linkHover'
+                        >
+                            
+                            contacts
+                        </Link>
                     </li>
                 </ul>
             </nav>
-           
+            <div>
+                <button className=''>
+                    Login
+                </button>
+            </div>
         </div>
        
     </header>

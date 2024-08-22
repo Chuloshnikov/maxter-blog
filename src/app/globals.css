@@ -3,3 +3,7 @@
 @tailwind utilities;
 
 
+
+.linkHover {
+    @apply hover:text-accentBg duration-200;
+}
