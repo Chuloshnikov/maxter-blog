@@ -5,8 +5,8 @@ import Link from 'next/link';
 
 const Header = () => {
   return (
-    <header className='py-2'>
-        <div className='flex justify-between items-center'>
+    <header className='py-2 sticky top-0 bg-white z-50'>
+        <div className='flex justify-between items-center sticky w-full mx-auto'>
             <nav className=''>
                 <ul className='flex gap-8 items-center text-xl font-medium mt-4'>
                     <li className='-mt-4'>
@@ -66,7 +66,7 @@ const Header = () => {
                 <button 
                 className='text-xl font-semibold bg-accentBg py-2 px-4 text-white border-2 border-accentBg hover:bg-white hover:text-accentBg duration-200'
                 >
-                    Login
+                    Get started
                 </button>
             </div>
         </div>
