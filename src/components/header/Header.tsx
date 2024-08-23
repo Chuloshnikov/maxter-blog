@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
-import { logo } from "../../assets/images/images";
-import Link from 'next/link';
 import NavbarLinks from './NavbarLinks';
-import { CgMenuGridR } from "react-icons/cg";
+import NavbarMenuButton from './NavbarMenuButton';
 
 const Header = () => {
   return (
@@ -16,7 +14,8 @@ const Header = () => {
                 >
                     Get started
                 </button>
-                <CgMenuGridR className='lg:hidden w-14 h-14 text-accentBg'/>
+                <NavbarMenuButton/>
+                
             </div>
         </div>
        
