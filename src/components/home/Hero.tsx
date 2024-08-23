@@ -6,10 +6,10 @@ import { LuArrowRightSquare } from "react-icons/lu";
 const Hero = () => {
   return (
     <section className="relative max-h-[800px]">
-        <Image src={serverOnTheWood} className="w-screen h-[800px]" width={1900} height={800} alt="hero"/>
-        <div className="absolute top-[10%] left-[10%]">
-          <h2 className="text-accentBg text-8xl font-bold drop-shadow-lg">
-              <span className="text-6xl">
+        <Image src={serverOnTheWood} className="w-screen h-[400px]md:h-[800px]" width={1900} height={800} alt="hero"/>
+        <div className="absolute top-[10%] left-[7%] md:left-[10%]">
+          <h2 className="text-accentBg text-4xl md:text-8xl font-bold drop-shadow-lg">
+              <span className="text-2xl md:text-6xl">
                 Inspire your imagination <br/>with
               </span>
               {" "}
