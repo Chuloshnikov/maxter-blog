@@ -5,8 +5,8 @@ import { LuArrowRightSquare } from "react-icons/lu";
 
 const Hero = () => {
   return (
-    <section className="relative">
-        <Image src={serverOnTheWood} className="w-screen h-full" width={1900} height={800} alt="hero"/>
+    <section className="relative max-h-[800px]">
+        <Image src={serverOnTheWood} className="w-screen h-[800px]" width={1900} height={800} alt="hero"/>
         <div className="absolute top-[10%] left-[10%]">
           <h2 className="text-accentBg text-8xl font-bold drop-shadow-lg">
               <span className="text-6xl">
@@ -32,6 +32,12 @@ const Hero = () => {
                   <span className="text-2xl">To blogs</span>
                   <LuArrowRightSquare className="w-8 h-8"/>
               </button>
+              <div className="max-w-10 grid grid-cols-2 gap-2 group-hover:gap-4 duration-200">
+                  <span className="block w-4 h-4 bg-accentBg"></span>
+                  <span className="block w-4 h-4 bg-accentBg"></span>
+                  <span className="block w-4 h-4 bg-accentBg"></span>
+                  <span className="block w-4 h-4 bg-accentBg"></span>
+              </div>
             </div>
         </div>
     </section>
