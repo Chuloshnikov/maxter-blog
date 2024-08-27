@@ -55,7 +55,7 @@ const NavbarMenuButton = () => {
                     initial="closed"
                     animate={isOpen ? "open" : "closed"}
                     variants={menuVariants}
-                    className="absolute top-0 left-0 h-full w-full bg-white p-6 text-accentBg"
+                    className="z-10 absolute top-0 left-0 h-screen w-full bg-white p-6 text-accentBg"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     <div className='w-full flex justify-end items-end'>
