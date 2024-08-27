@@ -11,7 +11,7 @@ const NavbarLinks = () => {
     }, []);
   return (
     <nav className=''>
-        {windowWidth >= 960 && (
+        {windowWidth: >= 960 && (
              <ul className='flex gap-8 items-center text-xl font-medium mt-4'>
              <li className='-mt-4'>
                  <Link 
