@@ -10,7 +10,7 @@ const lato = Lato({
 
 export const metadata: Metadata = {
   title: "Maxter",
-  description: "Maxter blog. Blog about IT and more. Here you can abandon sanctimonious morality, all prohibitions, and simply let your thoughts flow",
+  description: "Maxter blog. Blog about IT and more. Here you can abandon sanctimonious morality, all prohibitions, and simply let your thoughts flow"
 };
 
 export default function RootLayout({
