@@ -13,7 +13,7 @@ const SocialLinks = () => {
   return (
     <div className="mx-auto">
         <ul className="flex gap-4">
-            <li className="p-1 flex items-center justify-center border border-white">
+            <li className="p-1 flex items-center justify-center border border-white hover:border-black hover:text-black duration-200">
                 <Link 
                 
                 href="/facebook.com"
@@ -21,7 +21,7 @@ const SocialLinks = () => {
                     <FaXTwitter />
                 </Link>
             </li>
-            <li className="p-1 flex items-center justify-center border border-white">
+            <li className="p-1 flex items-center justify-center border border-white hover:border-black hover:text-black duration-200">
                 <Link 
                 
                 href="/facebook.com"
@@ -29,7 +29,7 @@ const SocialLinks = () => {
                     <FaInstagram />
                 </Link>
             </li>
-            <li className="p-1 flex items-center justify-center border border-white">
+            <li className="p-1 flex items-center justify-center border border-white hover:border-black hover:text-black duration-200">
                 <Link 
                 
                 href="/facebook.com"
@@ -37,7 +37,7 @@ const SocialLinks = () => {
                     <FaFacebookF/>
                 </Link>
             </li>
-            <li className="p-1 flex items-center justify-center border border-white">
+            <li className="p-1 flex items-center justify-center border border-white hover:border-black hover:text-black duration-200">
                 <Link 
                 
                 href="/facebook.com"
@@ -45,7 +45,7 @@ const SocialLinks = () => {
                     <FaMediumM/>
                 </Link>
             </li>
-            <li className="p-1 flex items-center justify-center border border-white">
+            <li className="p-1 flex items-center justify-center border border-white hover:border-black hover:text-black duration-200">
                 <Link 
                 
                 href="/facebook.com"
@@ -53,7 +53,7 @@ const SocialLinks = () => {
                     <BiLogoTiktok/>
                 </Link>
             </li>
-            <li className="p-1 flex items-center justify-center border border-white">
+            <li className="p-1 flex items-center justify-center border border-white hover:border-black hover:text-black duration-200">
                 <Link 
                 
                 href="/facebook.com"
@@ -61,7 +61,7 @@ const SocialLinks = () => {
                     <FaGithub/>
                 </Link>
             </li>
-            <li className="p-1 flex items-center justify-center border border-white">
+            <li className="p-1 flex items-center justify-center border border-white hover:border-black hover:text-black duration-200">
                 <Link 
                 
                 href="/facebook.com"
