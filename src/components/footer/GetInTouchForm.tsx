@@ -10,12 +10,12 @@ const GetInTouchForm = (props: Props) => {
             <h4 className='text-2xl font-semibold'>Get in touch</h4>
             <form>
                 <input
-                className='px-4 py-2 bg-accentBg border border-white placeholder:text-white'
+                className='xs:px-2 sm:px-4 py-2 bg-accentBg border border-white placeholder:text-white'
                 type='email'
                 placeholder='email'
                 />
                 <button
-                className='px-4 py-2 bg-black texct-white hover:bg-white hover:text-accentBg duration-200'
+                className='px-4 py-2 bg-black text-white hover:bg-white hover:text-accentBg duration-200'
                 type='submit'
                 >
                     Submit
