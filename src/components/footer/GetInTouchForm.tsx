@@ -1,4 +1,5 @@
 import React from 'react'
+import SocialLinks from './SocialLinks'
 
 type Props = {}
 
@@ -22,6 +23,7 @@ const GetInTouchForm = (props: Props) => {
                 
             </form>
         </div>
+        <SocialLinks/>
        
     </div>
   )
