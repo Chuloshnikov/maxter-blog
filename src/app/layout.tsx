@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
 
 const lato = Lato({ 
   subsets: ["latin"],
@@ -20,9 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lato.className} max-w-contentContainer mx-auto`}>
+      <body className={`${lato.className}`}>
         <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

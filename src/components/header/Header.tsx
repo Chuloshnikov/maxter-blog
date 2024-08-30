@@ -4,7 +4,7 @@ import NavbarMenuButton from './NavbarMenuButton';
 
 const Header = () => {
   return (
-    <header className='py-2 sticky top-0 bg-white z-50 px-2  md:px-4 xl:px-0'>
+    <header className='py-2 max-w-contentContainer mx-auto sticky top-0 bg-white z-50 px-2  md:px-4 xl:px-0'>
         <div className='flex justify-between items-center sticky w-full mx-auto'>
            <NavbarLinks/>
             <div className='flex gap-2'>
