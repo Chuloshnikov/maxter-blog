@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='max-w-contentContainer mx-auto pt-12 pb-20 px-8'>
             <div className='flex flex-col items-center justify-center lg:flex-row gap-8 lg:justify-between'>
                 <GetInTouchForm/>
-                <div className='flex flex-col gap-2 text-center items-center justify-between flex-grow hidden lg:flex'>
+                <div className='flex-col gap-2 text-center items-center justify-between flex-grow hidden lg:flex'>
                     <div className='flex gap-1 text-center'>
                         <h2 className='font-extrabold text-black text-4xl'>
                             Ma
