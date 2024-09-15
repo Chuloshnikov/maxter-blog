@@ -4,17 +4,21 @@ import AnimationCube from '../animations/AnimationCube';
 const About = () => {
   return (
     <section className='mt-8 flex gap-16 mb-12'>
-      <AnimationCube/>
-      <div className='p-2'>
-          <p className='text-2xl text-accentBg font-bold max-w-[500px] flex-1'>
+        <AnimationCube/>
+      <div className='p-6 flex flex-col gap-4 max-w-[500px] flex-1'>
+          <p className='text-xl text-accentBg font-bold'>
             This is a <span className='text-4xl font-extrabold text-black'>MCH</span> blog, 
             where everyone can share their thoughts or opinions about anything, 
             without censorship. Everything that is published in the blog is the personal 
             opinion of the authors who published the post, responsibility for statements 
             in the address of someone and something is borne directly by the author who 
-            published the post. Posts can be on any topic, both IT and other topics that 
-            you would like to discuss or raise on the agenda. And remember: Control your thoughts, they can come true.
+            published the post. 
           </p>
+          <p className='text-xl text-accentBg font-bold'>
+            Posts can be on any topic, both IT and other topics that 
+            you would like to discuss or raise on the agenda.
+          </p>
+          <blockquote className='text-2xl font-bold mt-8'>And remember: Control your thoughts, they can come true.</blockquote>
       </div>
     </section>
   )
