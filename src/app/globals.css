@@ -11,6 +11,18 @@
 
 /* CUBE */
 
+.container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 20px;
+    background-image: url('../assets/images/X.png');
+    background-size: cover;
+    background-position: center;
+  }
+
 
 .cube {
     width: 200px;
