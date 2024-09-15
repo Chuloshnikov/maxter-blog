@@ -34,6 +34,17 @@
     transform-origin: center;
 }
 
+@media (max-width: 768px) {
+    .cube {
+        width: 140px;
+        height: 140px;
+    }
+
+    .container {
+        gap: 4px;
+    }
+}
+
 @keyframes moveAndRotate1 {
     0% {
       transform: translate(0, 0) rotate(0deg);
