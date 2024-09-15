@@ -3,7 +3,7 @@ import AnimationCube from '../animations/AnimationCube';
 
 const About = () => {
   return (
-    <section className='mt-8 flex flex-col-reverse lg:flex-row gap-12 xl:gap-16 mb-12'>
+    <section id='about' className='mt-8 flex flex-col-reverse lg:flex-row gap-12 xl:gap-16 pt-12'>
         <AnimationCube/>
       <div className='p-6 flex flex-col gap-4 max-w-[500px] flex-1'>
           <p className='text-lg md:text-xl text-accentBg font-bold'>

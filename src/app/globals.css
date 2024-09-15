@@ -8,6 +8,14 @@
     @apply hover:text-accentBg duration-200;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+input {
+  @apply focus:outline-none focus:ring-black focus:ring-1 focus:border-transparent;
+}
+
 
 /* CUBE */
 
@@ -132,4 +140,12 @@
   
   .cube-4 {
     animation-name: moveAndRotate4;
+  }
+
+
+
+  .advertContainer {
+    background-image: url('../assets/images/advertisementimg.png');
+    background-size: cover;
+    background-position: center;
   }

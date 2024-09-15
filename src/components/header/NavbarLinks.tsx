@@ -43,8 +43,8 @@ const NavbarLinks: React.FC = () => {
           </li>
           <span className='w-4 h-4 bg-accentBg'></span>
           <li>
-            <Link 
-              href={"/about"}
+            <Link
+              href={"/#about"}
               className='linkHover'
             >
               about

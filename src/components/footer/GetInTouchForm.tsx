@@ -15,7 +15,7 @@ const GetInTouchForm = (props: Props) => {
                 placeholder='email'
                 />
                 <button
-                className='px-4 py-2 bg-black text-white hover:bg-white hover:text-accentBg duration-200'
+                className='px-4 py-2 bg-black text-white hover:bg-white hover:text-black duration-200 border-2 border-black'
                 type='submit'
                 >
                     Submit
