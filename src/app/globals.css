@@ -7,3 +7,106 @@
 .linkHover {
     @apply hover:text-accentBg duration-200;
 }
+
+
+/* CUBE */
+
+
+.cube {
+    width: 200px;
+    height: 200px;
+    background-color: #3DB4FF;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    transform-origin: center;
+}
+
+@keyframes moveAndRotate1 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(-100px, -100px) rotate(90deg); /* Вверх-влево */
+    }
+    50% {
+      transform: translate(-200px, -200px) rotate(180deg);
+    }
+    75% {
+      transform: translate(-100px, -100px) rotate(270deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
+  
+  @keyframes moveAndRotate2 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(100px, -100px) rotate(90deg); /* Вверх-вправо */
+    }
+    50% {
+      transform: translate(200px, -200px) rotate(180deg);
+    }
+    75% {
+      transform: translate(100px, -100px) rotate(270deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
+  
+  @keyframes moveAndRotate3 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(-100px, 100px) rotate(90deg); /* Вниз-влево */
+    }
+    50% {
+      transform: translate(-200px, 200px) rotate(180deg);
+    }
+    75% {
+      transform: translate(-100px, 100px) rotate(270deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
+  
+  @keyframes moveAndRotate4 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(100px, 100px) rotate(90deg); /* Вниз-вправо */
+    }
+    50% {
+      transform: translate(200px, 200px) rotate(180deg);
+    }
+    75% {
+      transform: translate(100px, 100px) rotate(270deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
+  
+  /* Применение разных анимаций для каждого куба */
+  .cube-1 {
+    animation-name: moveAndRotate1;
+  }
+  
+  .cube-2 {
+    animation-name: moveAndRotate2;
+  }
+  
+  .cube-3 {
+    animation-name: moveAndRotate3;
+  }
+  
+  .cube-4 {
+    animation-name: moveAndRotate4;
+  }

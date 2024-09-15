@@ -1,10 +1,12 @@
 import React from 'react';
+import AnimationCube from '../animations/AnimationCube';
 
 const About = () => {
   return (
-    <section className='mt-8'>
+    <section className='mt-8 flex gap-16 mb-12'>
+      <AnimationCube/>
       <div className='p-2'>
-          <p className='text-2xl text-accentBg font-bold max-w-[500px]'>
+          <p className='text-2xl text-accentBg font-bold max-w-[500px] flex-1'>
             This is a <span className='text-4xl font-extrabold text-black'>MCH</span> blog, 
             where everyone can share their thoughts or opinions about anything, 
             without censorship. Everything that is published in the blog is the personal 
