@@ -23,7 +23,12 @@ return (
                     <ContactForm/>
                 </div>
             </div>
-            <div className="mdl:mt-[290px]">
+            <div className="mdl:mt-16">
+                <div className='w-full mdl:max-w-[400px]'>
+                    <video autoPlay muted loop>
+                        <source src="/content/community.mp4" type="video/mp4" />
+                    </video>
+                </div>
                 <div className="bg-accentBg text-white p-12 flex flex-col gap-4">
                 <div>
                     <h3 className='text-lg font-semibold'>Chat to us</h3>
@@ -43,7 +48,6 @@ return (
                 </div>
             </div>
         </div>
-        
     </main>
 )
 }
