@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { CgMenuGridR } from 'react-icons/cg';
 import { GrClose } from "react-icons/gr";
+import { signIn } from 'next-auth/react';
 
-const NavbarMenuButton = () => {
+const NavbarMenuButton = ({status}: {status: any}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const menuVariants = {
@@ -76,6 +77,7 @@ const NavbarMenuButton = () => {
                             </motion.a>
                         ))}
                          <button 
+                            onClick={() => signIn("google")}
                             className='text-xl max-w-max font-semibold bg-accentBg py-2 px-4 text-white border-2 border-accentBg hover:bg-white hover:text-accentBg duration-200'
                             >
                                 Get started
