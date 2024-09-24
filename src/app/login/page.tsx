@@ -4,18 +4,13 @@ import {redirect} from "next/navigation";
 import { useRouter } from 'next/router';
 
 
-export default function LoginPage({status}: {status: string | string[] | undefined}) {
-    const sessionStatus = status;
-    console.log(sessionStatus);
+export default function LoginPage({ params: { status }}: ParamProps) {
+    console.log(status);
 
-    
-        if (sessionStatus !== null) {
-        return redirect('/');
-        } else if (sessionStatus !== undefined) {
+
+        if (status) {
         return redirect('/');
         }
-
-   
 
 
   return (
