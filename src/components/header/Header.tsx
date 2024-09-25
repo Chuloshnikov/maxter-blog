@@ -22,7 +22,7 @@ const Header = ({session}:{session:Session | null}) => {
                   <div>
                     <Link 
                     href={'/profile'}
-                    className='flex gap-1 items-center justify-center text-white bg-accentBg p-2'
+                    className='flex gap-1 items-center justify-center text-white lg:bg-accentBg lg:p-2'
                     >
                       <span className='hidden lg:block text-xl font-semibold mt-4'>{firstName || name}</span>
                       {session?.user?.image ? (
