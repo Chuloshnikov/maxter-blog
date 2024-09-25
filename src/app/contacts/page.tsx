@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function Contacts() {
 return (
-    <main className="flex min-h-screen flex-col items-center justify-between mb-12">
-        <div className='p-4 flex flex-col mdl:flex-row justify-between gap-16'>
+    <main className="flex min-h-[calc(100vh-21.1rem)] flex-col items-center justify-between">
+        <div className='p-4 flex flex-col mdl:flex-row justify-between gap-16 mb-12'>
             <div className="flex flex-col gap-8 mt-12">
                 <div className="flex flex-col gap-4 max-w-[500px]">
                     <h2 className="text-4xl font-extrabold text-accentBg">
