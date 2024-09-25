@@ -14,7 +14,7 @@ export default function LoginPage() {
 
       if (status === 'unauthenticated') {
         return (
-            <section className='w-screen h-[calc(100vh-21.1rem)]'>
+            <section className='w-screen min-h-[calc(100vh-21.1rem)]'>
                 <div className='w-full h-full flex flex-col justify-center items-center'>
                     <div className='flex flex-col gap-2'>
                     <button

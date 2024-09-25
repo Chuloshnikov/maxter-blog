@@ -7,6 +7,7 @@ import Footer from "@/components/footer/Footer";
 import {authOptions} from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
 import { AppProvider } from "@/components/AppProvider";
+import { Toaster } from "react-hot-toast";
 
 const lato = Lato({ 
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${lato.className}`}>
+      <Toaster/>
         <Header session={session}/>
         <AppProvider>
           <main className="max-w-contentContainer mx-auto">
