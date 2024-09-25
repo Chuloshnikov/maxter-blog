@@ -14,6 +14,10 @@ const nextConfig = {
           {
             protocol: 'https',
             hostname: 'maxter.s3.amazonaws.com'
+          },
+          {
+            protocol: 'https',
+            hostname: 'maxter.s3.eu-north-1.amazonaws.com'
           }
         ]
       }
