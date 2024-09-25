@@ -153,3 +153,32 @@ input {
     background-size: cover;
     background-position: center;
   }
+
+
+
+/* PRELOADER */
+
+@keyframes fade {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.animate-fade {
+  animation: fade 3s infinite;
+}
+
+.delay-100 {
+  animation-delay: 0.2s;
+}
+
+.delay-200 {
+  animation-delay: 0.4s;
+}
+
+.delay-300 {
+  animation-delay: 0.6s;
+}
