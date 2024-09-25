@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { CgMenuGridR } from 'react-icons/cg';
 import { GrClose } from "react-icons/gr";
 import { signIn } from 'next-auth/react';
+import Link from 'next/link';
 
 const NavbarMenuButton = ({status}: {status: any}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -76,12 +77,21 @@ const NavbarMenuButton = ({status}: {status: any}) => {
                             {link.name}
                             </motion.a>
                         ))}
-                         <button 
+                        {!status ? (
+                            <button 
                             onClick={() => signIn("google")}
                             className='text-xl max-w-max font-semibold bg-accentBg py-2 px-4 text-white border-2 border-accentBg hover:bg-white hover:text-accentBg duration-200'
                             >
                                 Get started
-                        </button>
+                            </button>
+                        ) : (
+                            <Link
+                            href={'/profile'}
+                            className='text-xl max-w-max font-semibold bg-accentBg py-2 px-4 text-white border-2 border-accentBg hover:bg-white hover:text-accentBg duration-200'
+                            >
+                                Profile
+                            </Link>
+                        )}
                     </nav>
                 </motion.div>
               </div>    

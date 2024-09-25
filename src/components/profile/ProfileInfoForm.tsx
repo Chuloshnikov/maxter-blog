@@ -1,10 +1,13 @@
 'use client'
 import { ProfileInfo } from '@/models/ProfileInfo';
 import {saveProfile} from "@/actions/profileInfoActions";
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import { uploadToS3 } from '@/actions/uploadActions';
-import { ImFolderUpload } from "react-icons/im";
+import UploadButton from '../ui/UploadButton';
+
+import { FaUserAlt } from "react-icons/fa";
+import Image from 'next/image';
+
 
 type Props = {
     profileInfo: ProfileInfo | null;
@@ -16,46 +19,73 @@ export default function ProfileInfoForm({profileInfo}:Props) {
   const [avatarUrl, setAvatarUrl] = useState(profileInfo?.avatarUrl);
 
   async function handleFormAction(formData: FormData) {
-    const result = await saveProfile(formData);
-    if (result) {
-      toast.success('Profile saved!');
-    } else {
-      toast.error('an error has occurred');
-    }
+    await saveProfile(formData);
+    toast.success('Profile saved!');
   }
 
-  async function upload(ev: ChangeEvent<HTMLInputElement>) {
-    const target = ev.target as HTMLInputElement;
-    if (target.files?.length) {
-      const file = target.files[0];
-      const formData = new FormData;
-      formData.set('file', file);
-      await uploadToS3(formData);
-    }
-  }
 
   return (
     <form action={handleFormAction}>
-        <div className="border p-4">
-        <div className="border size-24 p-4">avatar</div>
-        cover image
-        <label className='bg-accentBg text-white font-semibold p-2 flex max-w-max'>
-          <span><ImFolderUpload className='w-4 h-4'/></span>
-          <input className='hidden' type="file" onChange={ev => upload(ev)}/>
-        </label>
-        
+        <div className="relative border h-48 mb-4 border-2 border-accentBg">
+          {coverUrl && (
+            <Image 
+            src={coverUrl || ''} 
+            alt="cover image"
+            width={1024}
+            height={1024}
+            className="w-full h-48 object-cover"
+            />
+          )}
+          <div className=" absolute left-4 -bottom-4 z-10 border-2 border-accentBg bg-gray-100 size-24">
+            {avatarUrl ? (
+              <Image src={avatarUrl || ''} 
+              width={120} 
+              height={120} 
+              className='w-full h-full object-cover'
+              alt="avatar"/>
+              ) : (
+              <FaUserAlt 
+              className='w-full h-full text-accentBg'
+              />
+            )}
+            <div className='absolute bottom-0 right-0'>
+              <UploadButton onUploadComplete={setAvatarUrl}/>
+            </div>
+            <input type='hidden' name="avatarUrl" value={avatarUrl}/>
+          </div>
+          <div className="absolute right-2 bottom-2">
+              <UploadButton onUploadComplete={setCoverUrl} />
+              <input type="hidden" name="coverUrl" value={coverUrl}/>
+          </div>
       </div>
-        <div>cover image</div>
+      <div className="flex flex-col mdl:grid grid-cols-2 gap-2">
         <div>
-          <label className="mt-4" htmlFor="usernameInput">username:</label>
-          <input name='username' id="usernameInput" type="text" placeholder="username"/>
-        </div>
-        <div>
-          <label className="mt-4" htmlFor="displayNameInput">displayname</label>
-          <input name="displayname" id="displaynameInput" type="text" placeholder="display name"/>
-        </div>
-        <label className="mt-4" htmlFor="bioInput">bio</label>
-        <textarea name="bio" id="bioInput" name="" placeholder="bio"></textarea>
+            <label className="input-label" htmlFor="usernameInput">username:</label>
+            <input 
+            defaultValue={profileInfo?.username} 
+            name='username' 
+            id="usernameInput" 
+            type="text" 
+            placeholder="username"
+            />
+          </div>
+          <div>
+            <label className="input-label" htmlFor="displayNameInput">displayname</label>
+            <input 
+            defaultValue={profileInfo?.displayName} 
+            name="displayName" 
+            id="displaynameInput" 
+            type="text" 
+            placeholder="display name"
+            />
+          </div>
+      </div>
+        <label className="input-label" htmlFor="bioInput">bio</label>
+        <textarea 
+        defaultValue={profileInfo?.bio} 
+        name="bio" 
+        id="bioInput" 
+        placeholder="bio"/>
         <div>
           <button type='submit' className="submitButton mt-4">Save profile</button>
         </div>

@@ -17,9 +17,12 @@ input {
 }
 
 input[type="text"], textarea {
-  @apply block w-full border p-2
+  @apply block w-full border p-2 
 }
 
+label.input-label{
+  @apply block mt-4 text-xs uppercase font-bold text-gray-400;
+}
 
 .submitButton {
   @apply text-xl font-semibold bg-accentBg py-2 px-4 text-white border-2 border-accentBg hover:bg-white hover:text-accentBg duration-200;
