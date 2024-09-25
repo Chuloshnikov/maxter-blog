@@ -30,7 +30,9 @@ export default async function RootLayout({
       <body className={`${lato.className}`}>
         <Header session={session}/>
         <AppProvider>
-              {children}
+          <main className="max-w-contentContainer mx-auto">
+            {children}
+          </main>    
         </AppProvider>
         <Footer/>
       </body>
