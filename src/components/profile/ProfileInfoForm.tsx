@@ -1,8 +1,10 @@
 'use client'
 import { ProfileInfo } from '@/models/ProfileInfo';
 import {saveProfile} from "@/actions/profileInfoActions";
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import toast from 'react-hot-toast';
+import { uploadToS3 } from '@/actions/uploadActions';
+import { ImFolderUpload } from "react-icons/im";
 
 type Props = {
     profileInfo: ProfileInfo | null;
@@ -15,20 +17,33 @@ export default function ProfileInfoForm({profileInfo}:Props) {
 
   async function handleFormAction(formData: FormData) {
     const result = await saveProfile(formData);
-
     if (result) {
       toast.success('Profile saved!');
     } else {
       toast.error('an error has occurred');
     }
-    
+  }
+
+  async function upload(ev: ChangeEvent<HTMLInputElement>) {
+    const target = ev.target as HTMLInputElement;
+    if (target.files?.length) {
+      const file = target.files[0];
+      const formData = new FormData;
+      formData.set('file', file);
+      await uploadToS3(formData);
+    }
   }
 
   return (
     <form action={handleFormAction}>
-        <div className="bg-gray-200 p-4">
-        <div className="bg-gray-300 size-24 p-4">avatar</div>
+        <div className="border p-4">
+        <div className="border size-24 p-4">avatar</div>
         cover image
+        <label className='bg-accentBg text-white font-semibold p-2 flex max-w-max'>
+          <span><ImFolderUpload className='w-4 h-4'/></span>
+          <input className='hidden' type="file" onChange={ev => upload(ev)}/>
+        </label>
+        
       </div>
         <div>cover image</div>
         <div>
