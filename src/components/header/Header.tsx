@@ -11,7 +11,7 @@ import Image from 'next/image';
 const Header = ({session}:{session:Session | null}) => {
   const name = session?.user?.name || '';
   const {first:firstName} = parseFullName(name);
-  console.log(session);
+  console.log(name);
 
   return (
     <header className='py-2 max-w-contentContainer mx-auto sticky top-0 bg-white z-50 px-2  md:px-4 xl:px-0'>
@@ -24,7 +24,7 @@ const Header = ({session}:{session:Session | null}) => {
                     href={'/profile'}
                     className='flex gap-1 items-center justify-center text-accentBg'
                     >
-                      <span className='hidden lg:block text-xl font-semibold'>{firstName}</span>
+                      <span className='hidden lg:block text-xl font-semibold'>{firstName || name}</span>
                       {session?.user?.image ? (
                         <Image src={session?.user?.image} width={50} height={50} className='w-[42px] h-[42px] lg:w-[30px] lg:h-[30px] mt-[6px]' alt="user"/>
                         ) : (
