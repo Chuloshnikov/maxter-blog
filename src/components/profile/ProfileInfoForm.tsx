@@ -60,7 +60,7 @@ export default function ProfileInfoForm({profileInfo}:Props) {
       </div>
       <div className="flex flex-col mdl:grid grid-cols-2 gap-2">
         <div>
-            <label className="input-label" htmlFor="usernameInput">username:</label>
+            <label className="input-label" htmlFor="usernameInput">username</label>
             <input 
             defaultValue={profileInfo?.username} 
             name='username' 
