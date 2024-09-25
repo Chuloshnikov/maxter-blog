@@ -30,9 +30,11 @@ export default function LoginPage() {
                         Sign In with GitHub
                     </button>
                     </div>
-               )
-              }
-  }
-         
-                  }
+                </div>
+            </main>
+            )
+        }
+}
+
+
 
