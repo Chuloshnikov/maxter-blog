@@ -22,11 +22,11 @@ const Header = ({session}:{session:Session | null}) => {
                   <div>
                     <Link 
                     href={'/profile'}
-                    className='flex gap-1 items-center text-accentBg'
+                    className='flex gap-1 items-center justify-center text-accentBg'
                     >
-                      <span className='text-xl font-semibold'>{firstName}</span>
+                      <span className='hidden lg:block text-xl font-semibold'>{firstName}</span>
                       {session?.user?.image ? (
-                        <Image src={session?.user?.image} width={22} height={22} alt="user"/>
+                        <Image src={session?.user?.image} width={50} height={50} className='w-[42px] h-[42px] lg:w-[30px] lg:h-[30px] mt-[6px]' alt="user"/>
                         ) : (
                         <PiUserSquareFill className='w-7 h-7'/>
                         )}
@@ -40,12 +40,10 @@ const Header = ({session}:{session:Session | null}) => {
                           Get started
                       </Link>
                     )}
-               
                 <NavbarMenuButton status={name}/>
                 
             </div>
         </div>
-       
     </header>
   )
 }

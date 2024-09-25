@@ -4,7 +4,9 @@ import AnimationCube from '../animations/AnimationCube';
 const About = () => {
   return (
     <section id='about' className='mt-8 flex flex-col-reverse lg:flex-row gap-12 xl:gap-16 pt-12'>
-        <AnimationCube/>
+        <div className='mx-auto'>
+          <AnimationCube/>
+        </div>
       <div className='p-6 flex flex-col gap-4 max-w-[500px] flex-1'>
           <p className='text-lg md:text-xl text-accentBg font-bold'>
             This is a <span className='text-2xl md:text-4xl font-extrabold text-black'>MCH</span> blog, 
