@@ -6,6 +6,7 @@ import Footer from "@/components/footer/Footer";
 
 import {authOptions} from "@/lib/authOptions";
 import { getServerSession } from "next-auth";
+import { AppProvider } from "@/components/AppProvider";
 
 const lato = Lato({ 
   subsets: ["latin"],
@@ -28,7 +29,9 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${lato.className}`}>
         <Header session={session}/>
-        {children}
+        <AppProvider>
+              {children}
+        </AppProvider>
         <Footer/>
       </body>
     </html>
