@@ -66,7 +66,7 @@ export default function ProfileInfoForm({profileInfo}:Props) {
             name='username' 
             id="usernameInput" 
             type="text" 
-            placeholder="username"
+            placeholder="username..."
             />
           </div>
           <div>
@@ -76,7 +76,7 @@ export default function ProfileInfoForm({profileInfo}:Props) {
             name="displayName" 
             id="displaynameInput" 
             type="text" 
-            placeholder="display name"
+            placeholder="display name..."
             />
           </div>
       </div>
@@ -85,7 +85,7 @@ export default function ProfileInfoForm({profileInfo}:Props) {
         defaultValue={profileInfo?.bio} 
         name="bio" 
         id="bioInput" 
-        placeholder="bio"/>
+        placeholder="bio..."/>
         <div>
           <button type='submit' className="submitButton mt-4">Save profile</button>
         </div>

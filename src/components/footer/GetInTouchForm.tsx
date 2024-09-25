@@ -8,7 +8,7 @@ const GetInTouchForm = (props: Props) => {
     <div className='flex flex-col gap-4 justify-between flex-1/3'>
         <div className='flex flex-col gap-4'>
             <h4 className='text-2xl font-semibold'>Get in touch</h4>
-            <form>
+            <form className='flex'>
                 <input
                 className='xs:px-2 sm:px-4 py-2 bg-accentBg border border-white placeholder:text-white'
                 type='email'

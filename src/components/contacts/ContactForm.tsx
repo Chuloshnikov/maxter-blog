@@ -6,19 +6,19 @@ const ContactForm = () => {
         <form>
             <div className='flex flex-col'>
                 <label className='input-label'>What&apos;s your name or company?</label>
-                <input className='px-4 py-2 border-2 ' type='text'/>
+                <input placeholder='your name or company tag...' type='text'/>
             </div>
             <div className='flex flex-col'>
                 <label className='input-label'>What&apos;s your email address?</label>
-                <input className='px-4 py-2 border-2 ' type='email'/>
+                <input placeholder='your email address...' type='email'/>
             </div>
             <div className='flex flex-col'>
                 <label className='input-label'>What&apos;s your phone number</label>
-                <input className='px-4 py-2 border-2 ' type='tel'/>
+                <input placeholder='your phone number...' type='tel'/>
             </div>
             <div className='flex flex-col'>
                 <label className='input-label'>What&apos;s your question/proposal?</label>
-                <textarea className='px-4 py-2 border-2 '/>
+                <textarea placeholder='your question of proposal...'/>
             </div>
             <button 
             className='submitButton mt-4'
