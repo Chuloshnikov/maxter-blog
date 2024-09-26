@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
+import PostItem from '@/components/blog/PostItem';
 
 export default function PostPage() {
   const { slug } = useParams();
-  const [posts, setPosts] = useState(null);
+  const [posts, setPosts] = useState<string[]>([]);
   
 
   useEffect(() => {
@@ -19,16 +20,14 @@ export default function PostPage() {
 
   
   return (
-    <div>
-        {posts && posts.map((post => (
+    <section className="flex min-h-screen flex-col items-center px-4 xl:px-0">
+        <div className='border border-2 border-accentBg w-full'>
+            <h2 className="first-letter:text-2xl font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
             <div>
-                <h1>{post.title}</h1>
-                <p>{post.desc}</p>
-                <img src={post.img} alt={post.title} />
-                <h3>Views: {post.views}</h3>
+                {posts && posts?.map(((post, index) => <PostItem key={index} post={post}/>))}
             </div>
-        )))}
-      
-    </div>
+        </div>
+        
+    </section>
   );
 }
