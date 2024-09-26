@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { serverOnTheWood } from "@/assets/images/images";
 import { LuArrowRightSquare } from "react-icons/lu";
+import Link from "next/link";
 
 
 const Hero = () => {
@@ -27,12 +28,13 @@ const Hero = () => {
                   <span className="block w-4 h-4 bg-accentBg"></span>
                   <span className="block w-4 h-4 bg-accentBg"></span>
               </div>
-                <button 
+                <Link
+                href={'/blog'}
                   className='text-xl flex items-center gap-2 font-semibold bg-accentBg py-2 px-4 text-white border-2 border-accentBg hover:bg-white hover:text-accentBg duration-200'
               >
                   <span className="text-2xl">To blogs</span>
                   <LuArrowRightSquare className="w-8 h-8"/>
-              </button>
+              </Link>
               <div className="max-w-10 grid grid-cols-2 gap-2 group-hover:gap-4 duration-200">
                   <span className="block w-4 h-4 bg-accentBg"></span>
                   <span className="block w-4 h-4 bg-accentBg"></span>
