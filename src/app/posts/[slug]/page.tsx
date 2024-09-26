@@ -27,7 +27,6 @@ export default function PostPage() {
                 {posts && posts?.map(((post, index) => <PostItem key={index} post={post}/>))}
             </div>
         </div>
-        
     </section>
   );
 }
