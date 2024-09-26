@@ -1,6 +1,7 @@
 'use client';
 
 import CategoryItem from '@/components/blog/CategoryItem';
+import Preloader from '@/components/ui/Preloader';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -13,10 +14,16 @@ export default function Categories() {
     fetch('/api/categories')
       .then((res) => res.json())
       .then((data) => setCategories(data));
-  }, []);
+  }, [categories]);
+
+  if (!categories) {
+    <section className="flex min-w-screen min-h-[calc(100vh-21.1rem)] items-center justify-center">
+      <Preloader/>
+    </section>
+  }
 
   return (
-    <div className='max-w-contentContainer mx-auto flex flex-col items-center justify-center'>
+    <section className='max-w-contentContainer mx-auto flex flex-col items-center justify-center'>
       <div>
         <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
           {categories?.map((category: any) => <CategoryItem key={category._id} category={category}/>)}
@@ -25,6 +32,6 @@ export default function Categories() {
       <div className='mt-8'>
         latest posts
       </div>
-    </div>
+    </section>
   )
 }
