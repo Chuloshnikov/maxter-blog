@@ -6,6 +6,8 @@ const postSchema = new Schema({
   desc: { type: String, required: true },
   img: { type: String },
   views: { type: Number, default: 0 },
+  likes: {type: Number, default: 0},
+  dislikes: {type: Number, default: 0},
   catSlug: { type: String, required: true },
   userEmail: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },

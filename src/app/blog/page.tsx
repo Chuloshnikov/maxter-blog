@@ -14,7 +14,7 @@ export default function BlogCategories() {
       .then((data) => setCategories(data));
   }, [categories]);
 
-  if (!categories) {
+  if (!categories.length) {
     <section className="flex min-w-screen min-h-[calc(100vh-21.1rem)] items-center justify-center">
       <Preloader/>
     </section>
