@@ -11,10 +11,12 @@ const PostItem = ({post}: {post: PostItemProps}) => {
 
   return (
     <div className='flex justify-between items-center text-md font-medium p-2'>
-        <h2 className='text-accentBg font-bold text-xl'>{post.title}</h2>
-        <div className='ml-2 flex items-end gap-2 flex-grow'>
-            <span>author:</span>
-            <span>John Doe</span>
+        <div className='flex flex-col'>
+            <h2 className='text-accentBg font-bold text-xl'>{post.title}</h2>
+            <div className='flex gap-2 text-gray-600 font-semibold flex-grow -mt-2'>
+                <span>author:</span>
+                <span>John Doe</span>
+            </div>
         </div>
         <span>{post.createdAt}</span>
     </div>
