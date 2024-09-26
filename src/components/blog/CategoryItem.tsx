@@ -15,7 +15,7 @@ const CategoryItem = ({category}: {category: CategoryItemProps}) => {
     className='w-[300px] h-[300px] relative hover:opacity-80 duration-200'
     key={category._id}
   >
-    <Link href={`/categories/${category.slug}`}>
+    <Link href={`posts/${category.slug}`}>
       <div className='w-full h-full relative'>
         <Image 
           src={category.img} 

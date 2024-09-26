@@ -2,11 +2,9 @@
 
 import CategoryItem from '@/components/blog/CategoryItem';
 import Preloader from '@/components/ui/Preloader';
-import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-export default function Categories() {
+export default function BlogCategories() {
 
   const [categories, setCategories] = useState([]);
 
