@@ -1,6 +1,7 @@
 'use client';
 
 import CategoryItem from '@/components/blog/CategoryItem';
+import LatestPosts from '@/components/blog/LatestPosts';
 import Preloader from '@/components/ui/Preloader';
 import { useEffect, useState } from 'react';
 
@@ -27,8 +28,8 @@ export default function BlogCategories() {
           {categories?.map((category: any) => <CategoryItem key={category._id} category={category}/>)}
         </ul>
       </div>
-      <div className='mt-8'>
-        latest posts
+      <div className='min-w-full mt-8 px-4 xl:px-0'>
+        <LatestPosts title="Latest posts"/>
       </div>
     </section>
   )

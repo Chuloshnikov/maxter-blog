@@ -8,7 +8,7 @@ interface PostItemProps {
     img: string;
 }
 
-const PostItem = ({post}: {post: PostItemProps}) => {
+const PostItem = ({post, title }: {post: PostItemProps, title: string}) => {
 
   return (
     <Link href={'/'} className='flex justify-between items-center text-md font-medium p-2 hover:bg-accentBg/25'>
@@ -18,7 +18,13 @@ const PostItem = ({post}: {post: PostItemProps}) => {
                 <span>author:</span>
                 <span>John Doe</span>
             </div>
+            {title && (
+            <div className='text-gray-600 font-semibold -mt-2'>
+                Category: {post.slug}
+            </div>
+        )}
         </div>
+       
         <span className='font-medium text-sm'>{DateConverter(post.createdAt)}</span>
     </Link>
   )
