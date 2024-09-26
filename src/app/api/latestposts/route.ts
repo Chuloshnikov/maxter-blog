@@ -10,12 +10,4 @@ export async function GET() {
     } catch (error) {
         return Response.json(error);
     }
- 
-  
- 
-  return NextResponse.json(posts);
-}
-
-export async function POST() {
-    
 }
