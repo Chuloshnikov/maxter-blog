@@ -5,7 +5,6 @@ import Category from '@/models/Category';
 export async function GET() {
 await mongoose.connect(process.env.MONGODB_URI as string);
 const categories = await Category.find({});
-console.log(categories);
 return NextResponse.json(categories);
 }
 

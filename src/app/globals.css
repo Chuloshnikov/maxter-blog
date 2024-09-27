@@ -8,6 +8,10 @@
     @apply hover:text-accentBg duration-200;
 }
 
+.activeLink {
+  @apply text-accentBg
+}
+
 html {
   scroll-behavior: smooth;
 }

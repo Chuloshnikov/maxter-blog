@@ -25,3 +25,22 @@ export async function saveProfile(formData: FormData) {
 
   return true;
 }
+
+export async function createProfile(formData: FormData) {
+  await mongoose.connect(process.env.MONGODB_URI as string);
+  const session = await getServerSession(authOptions);
+  if (!session) throw 'you need to be logged in';
+  const email = session.user?.email;
+
+  const {
+    username, avatarUrl,
+  } = Object.fromEntries(formData);
+
+  const profileInfoDoc = await ProfileInfoModel.findOne({email});
+
+  if (profileInfoDoc) {
+    return;
+  } else {
+    await ProfileInfoModel.create({username, email, avatarUrl});
+  }
+}
