@@ -13,7 +13,7 @@ export default function BlogCategories() {
     fetch('/api/categories')
       .then((res) => res.json())
       .then((data) => setCategories(data));
-  }, [categories]);
+  }, []);
 
   if (!categories.length) {
     <section className="flex min-w-screen min-h-[calc(100vh-21.1rem)] items-center justify-center">

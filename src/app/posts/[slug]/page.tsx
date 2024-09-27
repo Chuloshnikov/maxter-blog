@@ -10,9 +10,12 @@ export default function PostPage() {
   
 
   useEffect(() => {
-    fetch(`/api/posts/${slug}`)
+    if (slug) {
+      fetch(`/api/posts/${slug}`)
       .then((res) => res.json())
       .then((data) => setPosts(data));
+    }
+    
   }, [slug]);
 
 
