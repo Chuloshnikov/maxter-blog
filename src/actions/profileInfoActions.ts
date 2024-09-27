@@ -1,5 +1,6 @@
 'use server';
 import {authOptions} from "@/lib/authOptions";
+import { parseStringify } from "@/lib/utils";
 import {ProfileInfoModel} from "@/models/ProfileInfo";
 import mongoose from "mongoose";
 import {getServerSession} from "next-auth";
@@ -42,5 +43,22 @@ export async function createProfile(formData: FormData) {
     return;
   } else {
     await ProfileInfoModel.create({username, email, avatarUrl});
+  }
+}
+
+export async function getProfile() {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI as string);
+    const session = await getServerSession(authOptions);
+    if (!session) throw 'you need to be logged in';
+    const email = session.user?.email;
+  
+    const profileInfoDoc = await ProfileInfoModel.findOne({email});
+    return parseStringify(profileInfoDoc);
+  } catch (error) {
+    console.error(
+      "An error occurred while retrieving the patient details:",
+      error
+    );
   }
 }

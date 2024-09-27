@@ -40,11 +40,14 @@ export default function PostsPage() {
 
   
   return (
-    <section className="flex min-h-screen flex-col items-center px-4 xl:px-0">
+    <section className="flex min-h-screen flex-col items-center px-4 xl:px-0 pb-8">
         {status === 'authenticated' && (
-          <PostManager/>
+          <PostManager 
+          action={"create"}
+          category={slug}
+          />
         )}
-        <div className='border border-2 border-accentBg w-full'>
+        <div className='border border-2 border-accentBg w-full mt-8'>
             <h2 className="first-letter:text-2xl font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
             <div>
                 {posts && posts?.map(((post, index) => <PostItem key={index} post={post}/>))}
