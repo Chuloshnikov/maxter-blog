@@ -1,20 +1,39 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from 'react';
 
 
 const NavbarLinks: React.FC = () => {
+  const path = usePathname();
   const [windowWidth, setWindowWidth] = useState<number | undefined | null>(undefined);
-
+  const [activeHash, setActiveHash] = useState<string>("");
+  console.log(activeHash);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && 'null') {
       setWindowWidth(window.innerWidth);
       const handleResize = () => setWindowWidth(window.innerWidth);
       window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
+
+      const handleHashChange = () => setActiveHash(window.location.hash);
+      window.addEventListener('hashchange', handleHashChange);
+
+      // Set initial hash when component mounts for /#about hash listing
+      setActiveHash(window.location.hash);
+
+      return () => {
+        window.removeEventListener('resize', handleResize);
+        window.removeEventListener('hashchange', handleHashChange);
+      };
     }
   }, []);
+
+  useEffect(() => {
+    if (!activeHash.includes('#about')) {
+      setActiveHash("");
+    }
+  }, [activeHash]);
 
   return (
     <nav className=''>
@@ -36,7 +55,7 @@ const NavbarLinks: React.FC = () => {
           <li>
             <Link 
               href={"/"}
-              className='linkHover'
+              className={path === '/' && activeHash === '' ? 'activeLink' : 'linkHover'}
             >
               home
             </Link>
@@ -45,7 +64,7 @@ const NavbarLinks: React.FC = () => {
           <li>
             <Link
               href={"/#about"}
-              className='linkHover'
+              className={activeHash.includes('#about') ? 'activeLink' : 'linkHover'}
             >
               about
             </Link>
@@ -54,7 +73,7 @@ const NavbarLinks: React.FC = () => {
           <li>
             <Link 
               href={"/blog"}
-              className='linkHover'
+              className={path.includes('/blog') ? 'activeLink' : 'linkHover'}
             >
               blog
             </Link>
@@ -63,7 +82,7 @@ const NavbarLinks: React.FC = () => {
           <li>
             <Link 
               href={"/contacts"}
-              className='linkHover'
+              className={path.includes('/contacts') ? 'activeLink' : 'linkHover'}
             >
               contacts
             </Link>

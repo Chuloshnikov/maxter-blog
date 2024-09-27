@@ -11,10 +11,11 @@ interface PostItemProps {
     likes?: number;
     dislikes?: number;
     userEmail?: string;
+    createdAt?: Date;
 
 }
 
-const PostItem = ({post, title }: {post: PostItemProps, title: string}) => {
+const PostItem = ({post, title }: {post: PostItemProps, title?: string}) => {
 
   return (
     <Link href={'/'} className='flex justify-between items-center text-md font-medium p-2 hover:bg-accentBg/25'>
@@ -31,7 +32,7 @@ const PostItem = ({post, title }: {post: PostItemProps, title: string}) => {
         )}
         </div>
        
-        <span className='font-medium text-sm'>{DateConverter(post.createdAt)}</span>
+        <span className='font-medium text-sm'>{DateConverter({ mongoDate: post.createdAt })}</span>
     </Link>
   )
 }
