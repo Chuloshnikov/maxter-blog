@@ -2,10 +2,16 @@ import DateConverter from '../ui/DateConverter';
 import Link from 'next/link';
 
 interface PostItemProps {
-    _id: string;
+    _id: any;
     title: string;
+    desc: string;
     slug: string;
     img: string;
+    views?: string;
+    likes?: number;
+    dislikes?: number;
+    userEmail?: string;
+
 }
 
 const PostItem = ({post, title }: {post: PostItemProps, title: string}) => {
