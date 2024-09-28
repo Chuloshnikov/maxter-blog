@@ -18,7 +18,7 @@ interface PostItemProps {
 const PostItem = ({post, title }: {post: PostItemProps, title?: string}) => {
 
   return (
-    <Link href={'/'} className='flex justify-between items-center text-md font-medium p-2 hover:bg-accentBg/25'>
+    <Link href={`/post/${post._id}`} className='flex justify-between items-center text-md font-medium p-2 hover:bg-accentBg/25'>
         <div className='flex flex-col'>
             <h2 className='text-accentBg font-bold text-xl'>{post.title}</h2>
             <div className='flex gap-2 text-gray-600 font-semibold flex-grow -mt-2'>
