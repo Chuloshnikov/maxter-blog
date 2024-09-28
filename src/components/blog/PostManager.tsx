@@ -1,7 +1,8 @@
-import { getProfile } from '@/actions/profileInfoActions';
-import React, { FormEventHandler, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import UploadButton from '../ui/UploadButton';
 import Image from 'next/image';
+import { createPost } from '@/actions/postsActions';
+import toast from 'react-hot-toast';
 
 interface PostManager {
     action: string;
@@ -12,46 +13,53 @@ interface PostManager {
 interface PostSender {
     action: string;
     category: string;
-    user: string[];
 }
 
 
 
 const PostManager = ({action, category}: PostManager) => {
-    const [user, setUser] = useState<any>(null);
     const [postImg, setPostImg] = useState<string>('')
 
-    useEffect(() => {
-        getProfile().then(profile => setUser(profile));
-    }, []);
+    const reloadPage = () => {
+        setTimeout(() => {
+        window.location.reload();
+        }, 2000);
+      }
 
-    async function post({action, category, user}: PostSender): FormEventHandler<HTMLFormElement> {
-
+   
+    async function handleFormAction(formData: FormData) {
+        if (action === "create") {
+            await createPost(formData);
+            toast.success('Post created!');
+            reloadPage();
+        }
     }
+
     
 
-   console.log(user);
+   
   return (
     <div className='w-full'>
         <div>
             <h2 className='capitalize text-xl font-bold text-accentBg'>{action} a post</h2>
         </div>
-        <form onSubmit={post} className='w-full flex flex-col'>
+        <form action={handleFormAction} className='w-full flex flex-col'>
         <div className='w-full flex flex-col lg:flex-row gap-4'>
             <div className='w-full'>
                 <div>
-                    <label className='input-label'>title:</label>
-                    <input type='text'/>
+                    <label htmlFor="titleInput" className='input-label'>title:</label>
+                    <input name="title" id='titleInput' type='text'/>
                 </div>
                 <div>
-                    <label className='input-label'>Description:</label>
-                    <textarea  rows={10}/>
+                    <label htmlFor="descriptionInput" className='input-label'>Description:</label>
+                    <textarea name="desc" id="descriptionInput"  rows={10}/>
                 </div>
+                    <input type="hidden" name="slug" value={category}/>
                 <button 
-                type='submit'
-                className='submitButton mt-4 w-full hidden lg:block'
+                type="submit"
+                className='submitButton capitalize mt-4 w-full hidden lg:block'
                 >
-                    click
+                    {action}
                 </button>
             </div>
             <div className='w-full'>
@@ -64,7 +72,7 @@ const PostManager = ({action, category}: PostManager) => {
                     alt="cover image"
                     width={1024}
                     height={1024}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-full object-cover"
                     />
                 )}
                     <div className="absolute right-2 bottom-2">
@@ -76,9 +84,9 @@ const PostManager = ({action, category}: PostManager) => {
         </div>
         <button 
         type='submit'
-        className='submitButton mt-4 w-full lg:hidden'
+        className='submitButton capitalize mt-4 w-full lg:hidden'
             >
-                click
+                {action}
         </button>
     </form>
     </div>

@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import UploadButton from '../ui/UploadButton';
 
+
 import { FaUserAlt } from "react-icons/fa";
 import Image from 'next/image';
 
@@ -14,9 +15,9 @@ type Props = {
   };
 
 export default function ProfileInfoForm({profileInfo}:Props) {
-
-    const [coverUrl, setCoverUrl] = useState(profileInfo?.coverUrl);
+  const [coverUrl, setCoverUrl] = useState(profileInfo?.coverUrl);
   const [avatarUrl, setAvatarUrl] = useState(profileInfo?.avatarUrl);
+
 
   async function handleFormAction(formData: FormData) {
     await saveProfile(formData);
