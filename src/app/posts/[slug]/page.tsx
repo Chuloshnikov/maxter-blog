@@ -29,7 +29,6 @@ export default function PostsPage() {
       const formData = new FormData();
       formData.append('username', session?.data?.user?.name || '');
       formData.append('avatarUrl', session?.data?.user?.image || '');
-      
       createProfile(formData);
     }
   
@@ -50,7 +49,7 @@ export default function PostsPage() {
         <div className='border border-2 border-accentBg w-full mt-8'>
             <h2 className="first-letter:text-2xl font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
             <div>
-                {posts && posts?.map(((post, index) => <PostItem key={index} post={post}/>))}
+                {posts && [...posts].reverse().map(((post, index) => <PostItem key={index} post={post}/>))}
             </div>
         </div>
     </section>
