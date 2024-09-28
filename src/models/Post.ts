@@ -10,22 +10,22 @@ export type PostInfo = {
   dislikes: number,
   catSlug: string,
   username: string;
-  userAvatar: string;
+  avatarUrl: string;
   displayName: string;
   userEmail: string,
 };
 
 const postInfoSchema = new Schema<PostInfo>({
   slug: { type: String, required: true },
-  title: { type: String, required: true },
-  desc: { type: String, required: true },
+  title: { type: String, required: true, unique: true},
+  desc: { type: String, required: true, unique: true},
   img: { type: String },
   views: { type: Number, default: 0 },
   likes: {type: Number, default: 0},
   dislikes: {type: Number, default: 0},
   catSlug: { type: String, required: true },
   username: {type: String, required: true },
-  userAvatar: {type: String},
+  avatarUrl: {type: String},
   displayName: {type: String, required: true },
   userEmail: { type: String, required: true },
 });

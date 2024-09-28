@@ -26,7 +26,7 @@ const PostManager = ({action, category}: PostManager) => {
         }, 2000);
       }
 
-   
+    console.log(postImg)
     async function handleFormAction(formData: FormData) {
         if (action === "create") {
             await createPost(formData);
@@ -77,7 +77,7 @@ const PostManager = ({action, category}: PostManager) => {
                 )}
                     <div className="absolute right-2 bottom-2">
                         <UploadButton onUploadComplete={setPostImg} />
-                    <input type="hidden" name="coverUrl" value={postImg}/>
+                    <input type="hidden" name="postImg" value={postImg}/>
                     </div>
                 </div>
             </div>
