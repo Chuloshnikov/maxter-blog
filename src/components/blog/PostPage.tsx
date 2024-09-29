@@ -3,13 +3,13 @@ import React from 'react'
 import CommentsContainer from './CommentsContainer';
 import AsideAdvertisement from '../asside/AsideAdvertisement';
 import DateConverter from '../ui/DateConverter';
+import CommentCreatorForm from './CommentCreatorForm';
 
 const PostPage = ({post}: any) => {
   return (
-    <div className='px-4 lg:px-0 flex flex-col xl:flex-row justify-evenly'>
-      <div className='flex flex-col gap-4 max-w-5xl'>
+    <div className=' flex flex-col xl:flex-row justify-evenly mx-2'>
+      <div className='flex flex-col gap-4 mx-auto xl:max-w-5xl mb-4 xl:mb-0'>
         <div className='flex flex-col gap-1'>
-          
           <Image src={post.img} width={1024} height={1024} alt='post image' className='max-h-[550px]'/>
           <h2 className='text-2xl text-accentBg font-bold'>
             {post.title}
@@ -26,10 +26,11 @@ const PostPage = ({post}: any) => {
           </p>
         </div>
         <div>
+          <CommentCreatorForm/>
           <CommentsContainer/>
         </div>
       </div>
-      <div>
+      <div className=''>
           <AsideAdvertisement/>
       </div>
     </div>

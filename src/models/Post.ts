@@ -28,6 +28,6 @@ const postInfoSchema = new Schema<PostInfo>({
   avatarUrl: {type: String},
   displayName: {type: String, required: true },
   userEmail: { type: String, required: true },
-});
+}, {timestamps: true});
 
 export const PostInfoModel = models?.Post || model<PostInfo>('Post',postInfoSchema);
