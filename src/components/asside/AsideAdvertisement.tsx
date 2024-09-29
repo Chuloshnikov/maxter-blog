@@ -5,8 +5,8 @@ const AsideAdvertisement = () => {
     const [advert, setAdvert] = useState(null);
 
   return (
-    <article className='flex flex-col gap-2'>
-        <div className='flex flex-col gap-2 p-1 max-w-[295px] text-center'>
+    <article className='flex gap-5 flex-wrap xl:flex-col'>
+        <div className='flex flex-col gap-2 p-1 max-w-[300px] text-center items-center justify-center'>
             <div className='advertContainer w-[295px] h-[295px]'>
 
             </div>
