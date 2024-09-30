@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from "react";
 import CommentItem from "./CommentItem";
 import { CommentTypes } from "@/models/Comment";
+import CommentSkeleton from "../ui/CommentSkeleton";
 
 const CommentsContainer = ({ id }: any) => {
-  const [comments, setComments] = useState<CommentTypes[]>([]); // Инициализируем как пустой массив
+  const [comments, setComments] = useState<CommentTypes[]>([]); 
 
   useEffect(() => {
     fetch(`/api/comments/${id}`)
@@ -28,7 +29,14 @@ const CommentsContainer = ({ id }: any) => {
         All <span className="lowercase">comments</span>
       </h2>
       <div>
-        {!comments.length && (
+      {!comments.length && (
+        <>
+          <CommentSkeleton/>
+          <CommentSkeleton/>
+          <CommentSkeleton/>
+        </>
+      )}
+        {!comments && (
           <div className="w-full h-[400px] flex items-center justify-center">
             <div className="text-lg font-medium">No comments found</div>
           </div>
