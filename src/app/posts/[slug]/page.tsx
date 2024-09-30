@@ -6,6 +6,7 @@ import PostItem from '@/components/blog/PostItem';
 import { useSession } from "next-auth/react";
 import {createProfile} from "@/actions/profileInfoActions";
 import PostManager from '@/components/blog/PostManager';
+import PostsContainer from '@/components/blog/PostsContainer';
 
 export default function PostsPage() {
   const { slug } = useParams();
@@ -46,12 +47,7 @@ export default function PostsPage() {
           category={slug}
           />
         )}
-        <div className='border border-2 border-accentBg w-full mt-8'>
-            <h2 className="first-letter:text-2xl font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
-            <div>
-                {posts && [...posts].reverse().map(((post, index) => <PostItem key={index} post={post}/>))}
-            </div>
-        </div>
+      <PostsContainer posts={posts} slug={slug}/>
     </section>
   );
 }

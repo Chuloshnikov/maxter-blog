@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 const CommentCreatorForm = ({id}: any) => {
     const [commentText, setCommentText] = useState<string>('');
 
-    async function handleFormSubmit(ev: ChangeEvent<HTMLInputElement>) {
+    async function handleFormSubmit(ev: ChangeEvent<HTMLFormElement>) {
         ev.preventDefault();
     
             const data = {

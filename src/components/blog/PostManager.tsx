@@ -64,7 +64,7 @@ const PostManager = ({action, category}: PostManager) => {
             </div>
             <div className='w-full'>
                 <label className='input-label mt-4'>Image:</label>
-                <div className="relative border h-[400px] border-2 border-accentBg">
+                <div className="relative border h-[200px] md:h-[400px] border-2 border-accentBg">
                     
                 {postImg && (
                     <Image 
