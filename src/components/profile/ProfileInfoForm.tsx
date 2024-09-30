@@ -9,6 +9,9 @@ import UploadButton from '../ui/UploadButton';
 import { FaUserAlt } from "react-icons/fa";
 import Image from 'next/image';
 
+import { signOut, useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
+
 
 type Props = {
     profileInfo: ProfileInfo | null;
@@ -57,6 +60,13 @@ export default function ProfileInfoForm({profileInfo}:Props) {
           <div className="absolute right-2 bottom-2">
               <UploadButton onUploadComplete={setCoverUrl} />
               <input type="hidden" name="coverUrl" value={coverUrl}/>
+          </div>
+          <div>
+              <span 
+              onClick={() => signOut()}
+              className="absolute right-2 top-2 bg-accentBg px-2 py-1 text-white font-semibold hover:bg-white hover:text-accentBg border border-2 border-accentBg duration-200">
+                  Log out
+              </span>
           </div>
       </div>
       <div className="flex flex-col mdl:grid grid-cols-2 gap-2">

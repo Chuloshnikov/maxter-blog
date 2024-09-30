@@ -4,7 +4,6 @@ import NavbarMenuButton from './NavbarMenuButton';
 import {Session} from "next-auth";
 import {parseFullName} from "parse-full-name";
 import Link from 'next/link';
-import { signOut } from 'next-auth/react';
 import { PiUserSquareFill } from "react-icons/pi";
 import Image from 'next/image';
 
