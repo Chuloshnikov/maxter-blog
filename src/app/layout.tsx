@@ -32,7 +32,7 @@ export default async function RootLayout({
       <Toaster/>
         <Header session={session}/>
         <AppProvider>
-          <main className="max-w-contentContainer mx-auto">
+          <main className="max-w-contentContainer min-h-[calc(100vh-21.1rem)] mx-auto">
             {children}
           </main>    
         </AppProvider>
