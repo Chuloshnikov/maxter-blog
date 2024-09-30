@@ -15,7 +15,7 @@ export async function GET(request: Request, { params }: { params: CommentParams}
     postId
    } = params;
   await mongoose.connect(process.env.MONGODB_URI as string);
-  const posts = await CommentsModel.find({ });
+  const posts = await CommentsModel.find({postId});
   return NextResponse.json(posts);
 }
 
@@ -24,6 +24,7 @@ export async function POST(request: NextRequest) {
 
     try {
         const data = await request.json();
+        console.log(data);
 
         const session = await getServerSession(authOptions);
         if (!session) throw 'you need to be logged in';
@@ -32,11 +33,12 @@ export async function POST(request: NextRequest) {
         const profileInfoDoc = await ProfileInfoModel.findOne({email});
         const { displayName, avatarUrl} = profileInfoDoc;
 
-        const commentDoc = data.push(email, {authorName: displayName}, {authorAvatarUrl: avatarUrl});
+        const commentDoc = ({authorEmail: email, authorName: displayName, authorAvatarUrl: avatarUrl, ...data});
+        console.log(commentDoc);
 
-        await CommentsModel.create(commentDoc);
+        const createComment = await CommentsModel.create(commentDoc);
 
-        return true;
+        return new NextResponse(createComment);
     } catch (error) {
         NextResponse.json(error);
     }
