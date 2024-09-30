@@ -1,5 +1,6 @@
 import DateConverter from '../ui/DateConverter';
 import Link from 'next/link';
+import PostSkeleton from '../ui/PostSkeleton';
 
 interface PostItemProps {
     _id: any;
@@ -19,6 +20,13 @@ interface PostItemProps {
 }
 
 const PostItem = ({post, title }: {post: PostItemProps, title?: string}) => { 
+
+
+
+    if (!post) {
+        return <PostSkeleton/>
+    
+      }
 
   return (
     <Link href={`/post/${post._id}`} className='flex justify-between mdl:items-center text-md font-medium p-2 hover:bg-accentBg/25'>
