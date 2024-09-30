@@ -6,15 +6,19 @@ import CommentSkeleton from "../ui/CommentSkeleton";
 
 const CommentsContainer = ({ id }: any) => {
   const [comments, setComments] = useState<CommentTypes[]>([]); 
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setLoading(true);
     fetch(`/api/comments/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
           setComments(data);
+          setLoading(false);
         } else {
           setComments([]); 
+          setLoading(false);
         }
       })
       .catch((error) => {
@@ -29,14 +33,14 @@ const CommentsContainer = ({ id }: any) => {
         All <span className="lowercase">comments</span>
       </h2>
       <div>
-      {!comments.length && (
+      {loading && (
         <>
-          <CommentSkeleton/>
-          <CommentSkeleton/>
-          <CommentSkeleton/>
+          {Array.from({ length: 10 }).map((_, index) => (
+            <CommentSkeleton key={index} />
+          ))}
         </>
       )}
-        {!comments && (
+        {!comments.length && (
           <div className="w-full h-[400px] flex items-center justify-center">
             <div className="text-lg font-medium">No comments found</div>
           </div>
