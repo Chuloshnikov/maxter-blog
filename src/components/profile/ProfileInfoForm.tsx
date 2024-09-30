@@ -64,7 +64,7 @@ export default function ProfileInfoForm({profileInfo}:Props) {
           <div>
               <span 
               onClick={() => signOut()}
-              className="absolute right-2 top-2 bg-accentBg px-2 py-1 text-white font-semibold hover:bg-white hover:text-accentBg border border-2 border-accentBg duration-200">
+              className="absolute cursor-pointer right-2 top-2 bg-accentBg px-2 py-1 text-white font-semibold hover:bg-white hover:text-accentBg border border-2 border-accentBg duration-200">
                   Log out
               </span>
           </div>
