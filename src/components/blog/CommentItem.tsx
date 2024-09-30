@@ -17,13 +17,13 @@ const CommentItem = ({comment}: {comment: CommentTypes}) => {
   }
 
   return (
-    <div className='m-2 border-2 border-gray-300 p-4'>
-      <div className='h-8 max-w-max flex gap-1'>
-        <Image src={authorAvatarUrl} width={30} height={30} alt='avatar'/>
-        <span>{authorName}</span>
+    <div className='m-2 border-2 border-gray-300 p-4 flex flex-col gap-4'>
+      <div className='max-w-max flex gap-1 items-start'>
+        <Image src={authorAvatarUrl} width={20} height={20} className='w-[20px] h-[20px]' alt='avatar'/>
+        <span className='font-semibold text-gray-600'>{authorName}</span>
       </div>
       <div>
-        <p>
+        <p className='italic text-gray-500'>
           {desc}
         </p>
       </div>
