@@ -27,7 +27,7 @@ const PostPage = ({post}: any) => {
         </div>
         <div>
           <CommentCreatorForm id={post._id}/>
-          <CommentsContainer/>
+          <CommentsContainer id={post._id}/>
         </div>
       </div>
       <div className=''>

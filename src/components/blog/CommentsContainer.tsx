@@ -1,18 +1,15 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import CommentItem from './CommentItem';
 
-const comments = [
-    {
-        title: "olala",
-        desc: 'wow'
-    },
-    {
-        title: "olala",
-        desc: 'wow'
-    }
-];
 
-const CommentsContainer = ({comments}: any) => {
+const CommentsContainer = ({id}: any) => {
+    const [comments, setComments] = useState('');
+
+    useEffect(() => {
+        fetch('/api/comments')
+    }, []);
+
   return (
     <div className='border border-2 border-accentBg w-full mt-4'>
     <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">All <span className='lowercase'>comments</span></h2>

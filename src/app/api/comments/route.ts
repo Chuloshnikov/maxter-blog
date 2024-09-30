@@ -6,19 +6,6 @@ import {authOptions} from "@/lib/authOptions";
 import {getServerSession} from "next-auth";
 
 
-export async function GET(request: Request, { params }: { params: CommentParams}) {
-  const { 
-    authorName, 
-    authorAvatarUrl, 
-    authorEmail, 
-    desc, 
-    postId
-   } = params;
-  await mongoose.connect(process.env.MONGODB_URI as string);
-  const posts = await CommentsModel.find({postId});
-  return NextResponse.json(posts);
-}
-
 export async function POST(request: NextRequest) {
     await mongoose.connect(process.env.MONGODB_URI as string);
 

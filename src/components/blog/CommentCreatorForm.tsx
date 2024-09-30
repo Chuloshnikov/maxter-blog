@@ -18,7 +18,8 @@ const CommentCreatorForm = ({id}: any) => {
                 body: JSON.stringify(data),
             });
             if (response.ok) {
-                toast.success('Comment added, wait for moderation!')
+                toast.success('Comment added, wait for moderation!');
+                setCommentText('');
             } else {
                 toast.error('Error');
             }
