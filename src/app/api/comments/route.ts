@@ -29,7 +29,6 @@ export async function POST(request: NextRequest) {
         }
 
         const commentDoc = ({authorEmail: email, authorName, authorAvatarUrl: avatarUrl, ...data});
-        console.log(commentDoc);
 
         const createComment = await CommentsModel.create(commentDoc);
 
