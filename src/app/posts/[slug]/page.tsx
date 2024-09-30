@@ -6,10 +6,12 @@ import PostItem from '@/components/blog/PostItem';
 import { useSession } from "next-auth/react";
 import {createProfile} from "@/actions/profileInfoActions";
 import PostManager from '@/components/blog/PostManager';
+import PostsContainer from '@/components/blog/PostsContainer';
 
 export default function PostsPage() {
   const { slug } = useParams();
   const [posts, setPosts] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const session = useSession();
   const {status} = session;
@@ -17,9 +19,11 @@ export default function PostsPage() {
 
   useEffect(() => {
     if (slug) {
+      setLoading(true);
       fetch(`/api/posts/${slug}`)
       .then((res) => res.json())
       .then((data) => setPosts(data));
+      setLoading(false);
     }
     
   }, [slug]);
@@ -29,7 +33,6 @@ export default function PostsPage() {
       const formData = new FormData();
       formData.append('username', session?.data?.user?.name || '');
       formData.append('avatarUrl', session?.data?.user?.image || '');
-      
       createProfile(formData);
     }
   
@@ -40,16 +43,14 @@ export default function PostsPage() {
 
   
   return (
-    <section className="flex min-h-screen flex-col items-center px-4 xl:px-0">
+    <section className="flex min-h-screen flex-col items-center px-4 xl:px-0 pb-8">
         {status === 'authenticated' && (
-          <PostManager/>
+          <PostManager 
+          action={"create"}
+          category={slug}
+          />
         )}
-        <div className='border border-2 border-accentBg w-full'>
-            <h2 className="first-letter:text-2xl font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
-            <div>
-                {posts && posts?.map(((post, index) => <PostItem key={index} post={post}/>))}
-            </div>
-        </div>
+      <PostsContainer loading={loading} posts={posts} slug={slug}/>
     </section>
   );
 }
