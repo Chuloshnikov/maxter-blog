@@ -21,7 +21,7 @@ const CommentCreatorForm = ({id}: any) => {
                 toast.success('Comment added, wait for moderation!');
                 setCommentText('');
             } else {
-                toast.error('Error');
+                toast.error('An error has occurred');
             }
         }
 
