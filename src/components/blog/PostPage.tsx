@@ -8,9 +8,9 @@ import CommentCreatorForm from './CommentCreatorForm';
 const PostPage = ({post}: any) => {
   return (
     <div className=' flex flex-col xl:flex-row justify-evenly mx-2'>
-      <div className='flex flex-col gap-4 mx-auto xl:max-w-5xl mb-4 xl:mb-0'>
+      <div className='flex flex-col gap-4 mx-auto w-full xl:max-w-5xl mb-4 xl:mb-0'>
         <div className='flex flex-col gap-1'>
-          <Image src={post.img} width={1024} height={1024} alt='post image' className='max-h-[550px]'/>
+          {post.img && (<Image src={post.img} width={1024} height={1024} alt='post image' className='max-h-[550px]'/>)}
           <h2 className='text-2xl text-accentBg font-bold'>
             {post.title}
           </h2>
