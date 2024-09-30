@@ -1,11 +1,28 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
+import toast from 'react-hot-toast';
 
-const CommentCreatorForm = () => {
+const CommentCreatorForm = ({id}: any) => {
     const [commentText, setCommentText] = useState<string>('');
 
-    function handleFormSubmit() {
-
-    }
+    async function handleFormSubmit(ev: ChangeEvent<HTMLInputElement>) {
+        ev.preventDefault();
+    
+            const data = {
+                desc: commentText,
+                postId: id, 
+                
+            };
+            const response = await fetch('/api/comments', {
+                method: 'POST',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify(data),
+            });
+            if (response.ok) {
+                toast.success('Comment added, wait for moderation!')
+            } else {
+                toast.error('Error');
+            }
+        }
 
     function clearComment() {
         setCommentText('')
