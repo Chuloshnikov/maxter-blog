@@ -45,10 +45,10 @@ const LatestPosts = ({title}: {title: string}) => {
     <div className='border border-2 border-accentBg w-full'>
         <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">{title}</h2>
         <div>
-          {!posts && (
+          {!posts.length && (
               <PostSkeleton/>
             )}
-            {!posts.length && (
+            {!posts && (
               <div className='w-full h-[400px] flex items-center  justify-center'>
                   <div className='text-lg font-medium'>
                       No posts found
@@ -62,4 +62,4 @@ const LatestPosts = ({title}: {title: string}) => {
   )
 }
 
-export default LatestPosts
+export default LatestPosts;
