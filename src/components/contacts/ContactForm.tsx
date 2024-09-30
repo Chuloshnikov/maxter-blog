@@ -18,7 +18,7 @@ const ContactForm = () => {
             </div>
             <div className='flex flex-col'>
                 <label className='input-label'>What&apos;s your question/proposal?</label>
-                <textarea placeholder='your question of proposal...'/>
+                <textarea placeholder='your question or proposal...'/>
             </div>
             <button 
             className='submitButton mt-4'
