@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
         const commentDoc = data.push(email, {authorName: displayName}, {authorAvatarUrl: avatarUrl});
 
-        const createComment = await CommentsModel.create(commentDoc);
+        await CommentsModel.create(commentDoc);
 
         return true;
     } catch (error) {
