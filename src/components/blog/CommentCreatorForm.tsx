@@ -1,7 +1,10 @@
+
+import { useSession } from 'next-auth/react';
 import { ChangeEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 
 const CommentCreatorForm = ({id}: any) => {
+    const session = useSession();
     const [commentText, setCommentText] = useState<string>('');
 
     async function handleFormSubmit(ev: ChangeEvent<HTMLFormElement>) {
@@ -29,22 +32,26 @@ const CommentCreatorForm = ({id}: any) => {
         setCommentText('')
     }
 
-  return (
-    <div className=''>
-        <form onSubmit={handleFormSubmit}>
-        <label className='input-label'>Create a comment</label>
-            <textarea onChange={ev => setCommentText(ev.target.value)} value={commentText} placeholder='Write your comment about this post...'/>
-            <div className='flex gap-2 mt-4'>
-                <button type="submit" className='submitButton'>
-                    Create
-                </button>
-                <button onClick={clearComment} type='button' className='submitButton'>
-                    Clear
-                </button>
-            </div>       
-        </form>
-    </div>
-  )
+    if (session.status === "unauthenticated") {
+        return
+    } else {
+        return (
+            <div className=''>
+                <form onSubmit={handleFormSubmit}>
+                <label className='input-label'>Create a comment</label>
+                    <textarea onChange={ev => setCommentText(ev.target.value)} value={commentText} placeholder='Write your comment about this post...'/>
+                    <div className='flex gap-2 mt-4'>
+                        <button type="submit" className='submitButton'>
+                            Create
+                        </button>
+                        <button onClick={clearComment} type='button' className='submitButton'>
+                            Clear
+                        </button>
+                    </div>       
+                </form>
+            </div>
+        )
+    }
 }
 
 export default CommentCreatorForm;
