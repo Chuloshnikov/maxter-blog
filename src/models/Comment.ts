@@ -1,7 +1,7 @@
 import { Schema, model, models } from 'mongoose';
 
 
-interface CommentTypes {
+export interface CommentTypes {
     authorName: string;
     authorAvatarUrl: string;
     authorEmail: string;
