@@ -16,11 +16,19 @@ export async function POST(request: NextRequest) {
         const session = await getServerSession(authOptions);
         if (!session) throw 'you need to be logged in';
         const email = session.user?.email;
+        const name = session.user?.name;
 
         const profileInfoDoc = await ProfileInfoModel.findOne({email});
         const { displayName, avatarUrl} = profileInfoDoc;
+        
+        let authorName:any = '';
+        if (displayName) {
+            authorName = displayName;
+        } else {
+            authorName = name;
+        }
 
-        const commentDoc = ({authorEmail: email, authorName: displayName, authorAvatarUrl: avatarUrl, ...data});
+        const commentDoc = ({authorEmail: email, authorName, authorAvatarUrl: avatarUrl, ...data});
         console.log(commentDoc);
 
         const createComment = await CommentsModel.create(commentDoc);
