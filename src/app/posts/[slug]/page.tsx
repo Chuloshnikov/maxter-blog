@@ -11,6 +11,7 @@ import PostsContainer from '@/components/blog/PostsContainer';
 export default function PostsPage() {
   const { slug } = useParams();
   const [posts, setPosts] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const session = useSession();
   const {status} = session;
@@ -18,9 +19,11 @@ export default function PostsPage() {
 
   useEffect(() => {
     if (slug) {
+      setLoading(true);
       fetch(`/api/posts/${slug}`)
       .then((res) => res.json())
       .then((data) => setPosts(data));
+      setLoading(false);
     }
     
   }, [slug]);
@@ -47,7 +50,7 @@ export default function PostsPage() {
           category={slug}
           />
         )}
-      <PostsContainer posts={posts} slug={slug}/>
+      <PostsContainer loading={loading} posts={posts} slug={slug}/>
     </section>
   );
 }
