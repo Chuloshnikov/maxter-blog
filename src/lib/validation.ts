@@ -15,7 +15,7 @@ export const validateContactForm = (data: any) => {
         return [];
     } catch (ev) {
         if (ev instanceof z.ZodError) {
-            return ev.errors.map((error, index) => `${index}: ${error.message}`);
+            return ev.errors.map((error, index) => `${index + 1}: ${error.message}`);
         }
         return ["Unknown validation error"];
     }
@@ -35,6 +35,25 @@ export const validateCommentForm = (data: any) => {
     } catch (ev) {
         if (ev instanceof z.ZodError) {
             return ev.errors.map(error => `${error.message}`);
+        }
+        return ["Unknown validation error"];
+    }
+};
+
+//POST VALIDATION
+
+export const PostFormSchema = z.object({
+    title: z.string().min(10, {message: 'Comment must be at least 10 characters long'}).max(100, "Comment must be at most 100 characters"),
+    desc: z.string().min(500, {message: 'Comment must be at least 500 characters long'}).max(2000, "Comment must be at most 2000 characters"),
+});
+
+export const validatePostForm = (data: any) => {
+    try {
+        PostFormSchema.parse(data);
+        return [];
+    } catch (ev) {
+        if (ev instanceof z.ZodError) {
+            return ev.errors.map((error, index) => `${index + 1}: ${error.message}`);
         }
         return ["Unknown validation error"];
     }

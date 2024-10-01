@@ -3,12 +3,7 @@ import UploadButton from '../ui/UploadButton';
 import Image from 'next/image';
 import { createPost } from '@/actions/postsActions';
 import toast from 'react-hot-toast';
-
-interface PostManager {
-    action: string;
-    category: string;
-
-}
+import { validatePostForm } from '@/lib/validation';
 
 interface PostSender {
     action: string;
@@ -16,9 +11,10 @@ interface PostSender {
 }
 
 
-
-const PostManager = ({action, category}: PostManager) => {
-    const [postImg, setPostImg] = useState<string>('')
+const PostManager = ({action, category}: PostSender) => {
+    const [postImg, setPostImg] = useState<string>('');
+    const [error, setError] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
 
     const reloadPage = () => {
         setTimeout(() => {
@@ -28,9 +24,48 @@ const PostManager = ({action, category}: PostManager) => {
 
     console.log(postImg)
     async function handleFormAction(formData: FormData) {
+        setLoading(true);
+        const dataObject: any = {};
+
+        formData.forEach((value, key) => {
+            dataObject[key] = value;
+          });
+
+        const validationErrors = validatePostForm(dataObject);
+    
+            if (validationErrors.length > 0) {
+                setError(validationErrors.join(', '));  
+                toast.error(validationErrors.join(', '), {
+                    style: {
+                        borderRadius: '0px',
+                        border: '1px solid #EF4444',
+                        padding: '16px',
+                        color: '#EF4444',
+                    },
+                    iconTheme: {
+                        primary: '#EF4444',
+                        secondary: '#FFFAEE',
+                    },
+                });
+                setLoading(false);
+                return;  
+            }
+
         if (action === "create") {
             await createPost(formData);
-            toast.success('Post created!');
+            toast.success(`Post ${action}d, wait for moderation!`, {
+                    style: {
+                        borderRadius: '0px',
+                        border: '1px solid #3DB4FF',
+                        padding: '16px',
+                        color: '#3DB4FF',
+                    },
+                    iconTheme: {
+                        primary: '#3DB4FF',
+                        secondary: '#FFFAEE',
+                    },
+                });
+            setLoading(false);
             reloadPage();
         }
     }
@@ -86,7 +121,7 @@ const PostManager = ({action, category}: PostManager) => {
         type='submit'
         className='submitButton capitalize mt-4 w-full lg:hidden'
             >
-                {action}
+                {loading ? "loading..." : action}
         </button>
     </form>
     </div>
