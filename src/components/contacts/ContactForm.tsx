@@ -3,6 +3,7 @@ import { createContacts } from '@/actions/contactsActions';
 import { validateContactForm } from '@/lib/validation';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import ButtonLoading from '../ui/ButtonLoading';
 
 
 const ContactForm = () => {
@@ -148,7 +149,7 @@ const ContactForm = () => {
                 className='submitButton mt-4'
                 type='submit'
                 >
-                    {loading ? "Loading..." : "Send message"}
+                    {loading ? (<ButtonLoading margin={'px-[10px]'} loading={loading}/>): "Send message"}
                 </button>
                 
             </div>

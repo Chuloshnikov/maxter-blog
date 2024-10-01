@@ -12,6 +12,7 @@ import Image from 'next/image';
 import { signOut, useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import { validateProfileForm } from '@/lib/validation';
+import ButtonLoading from '../ui/ButtonLoading';
 
 
 type Props = {
@@ -138,8 +139,9 @@ export default function ProfileInfoForm({profileInfo}:Props) {
         id="bioInput" 
         placeholder="bio..."/>
         <div>
+        
           <button type='submit' className="submitButton mt-4">
-            {loading ? "Loading..." : "Save profile"}
+            {loading ? (<ButtonLoading margin={""} loading={loading}/>) : "Save profile"}
           </button>
         </div>
     </form>
