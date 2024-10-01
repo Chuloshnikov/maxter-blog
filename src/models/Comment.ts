@@ -7,6 +7,8 @@ export interface CommentTypes {
     authorEmail: string;
     desc: string;
     postId: string;
+    approved: boolean;
+    createdAt?: Date;
 }
 
 
@@ -16,6 +18,7 @@ const commentsSchema = new Schema<CommentTypes>({
     authorAvatarUrl: { type: String },
     desc: { type: String, required: true, unique: true},
     postId: {type: String},
+    approved: {type: Boolean, default: false},
   }, {timestamps: true});
   
   export const CommentsModel = models?.Comment || model<CommentTypes>('Comment', commentsSchema);

@@ -46,7 +46,7 @@ const CommentsContainer = ({ id }: any) => {
           </div>
         )}
         {comments.length > 0 &&
-          comments.map((comment: CommentTypes, index: number) => (
+          comments.slice().reverse().map((comment: CommentTypes, index: number) => (
             <CommentItem comment={comment} key={index} />
           ))}
       </div>

@@ -13,6 +13,7 @@ export type PostInfo = {
   avatarUrl: string;
   displayName: string;
   userEmail: string,
+  approved: boolean;
 };
 
 const postInfoSchema = new Schema<PostInfo>({
@@ -28,6 +29,7 @@ const postInfoSchema = new Schema<PostInfo>({
   avatarUrl: {type: String},
   displayName: {type: String, required: true },
   userEmail: { type: String, required: true },
+  approved: {type: Boolean, default: false},
 }, {timestamps: true});
 
 export const PostInfoModel = models?.Post || model<PostInfo>('Post',postInfoSchema);
