@@ -13,6 +13,7 @@ import { signOut, useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import { validateProfileForm } from '@/lib/validation';
 import ButtonLoading from '../ui/ButtonLoading';
+import Link from 'next/link';
 
 
 type Props = {
@@ -102,10 +103,17 @@ export default function ProfileInfoForm({profileInfo}:Props) {
               <UploadButton onUploadComplete={setCoverUrl} />
               <input type="hidden" name="coverUrl" value={coverUrl}/>
           </div>
-          <div>
+          <div className='flex gap-1 absolute right-2 top-2'>
+              {profileInfo?.admin && (
+                <Link 
+                className='cursor-pointer bg-accentBg px-2 py-1 text-white font-semibold hover:bg-white hover:text-accentBg border border-2 border-accentBg duration-200'
+                href={'/admin'}>
+                  Admin panel
+                </Link>
+              )}
               <span 
               onClick={() => signOut()}
-              className="absolute cursor-pointer right-2 top-2 bg-accentBg px-2 py-1 text-white font-semibold hover:bg-white hover:text-accentBg border border-2 border-accentBg duration-200">
+              className="cursor-pointer bg-accentBg px-2 py-1 text-white font-semibold hover:bg-white hover:text-accentBg border border-2 border-accentBg duration-200">
                   Log out
               </span>
           </div>
