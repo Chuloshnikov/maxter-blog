@@ -7,7 +7,6 @@ import toast from 'react-hot-toast';
 const CommentCreatorForm = ({id}: any) => {
     const session = useSession();
     const [commentText, setCommentText] = useState<string>('');
-    const [error, setError] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
 
     async function handleFormSubmit(ev: ChangeEvent<HTMLFormElement>) {
@@ -22,7 +21,6 @@ const CommentCreatorForm = ({id}: any) => {
             const validationErrors = validateCommentForm(data);
     
             if (validationErrors.length > 0) {
-                setError(validationErrors.join(', '));  
                 toast.error(validationErrors.join(', '), {
                     style: {
                         borderRadius: '0px',

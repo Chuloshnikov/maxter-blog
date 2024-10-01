@@ -6,7 +6,6 @@ import toast from 'react-hot-toast';
 
 
 const ContactForm = () => {
-    const [error, setError] = useState<string>('');
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
@@ -30,7 +29,6 @@ const ContactForm = () => {
         const validationErrors = validateContactForm(data);
     
         if (validationErrors.length > 0) {
-            setError(validationErrors.join(', '));  
             toast.error(validationErrors.join(', '), {
                 style: {
                     borderRadius: '0px',

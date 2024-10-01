@@ -11,6 +11,7 @@ import Image from 'next/image';
 
 import { signOut, useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
+import { validateProfileForm } from '@/lib/validation';
 
 
 type Props = {
@@ -20,11 +21,50 @@ type Props = {
 export default function ProfileInfoForm({profileInfo}:Props) {
   const [coverUrl, setCoverUrl] = useState(profileInfo?.coverUrl);
   const [avatarUrl, setAvatarUrl] = useState(profileInfo?.avatarUrl);
+  const [loading, setLoading] = useState<boolean>(false);
 
 
   async function handleFormAction(formData: FormData) {
+    setLoading(true);
+        const dataObject: any = {};
+
+        formData.forEach((value, key) => {
+            dataObject[key] = value;
+          });
+
+        const validationErrors = validateProfileForm(dataObject);
+    
+            if (validationErrors.length > 0) {
+                toast.error(validationErrors.join(', '), {
+                    style: {
+                        borderRadius: '0px',
+                        border: '1px solid #EF4444',
+                        padding: '16px',
+                        color: '#EF4444',
+                    },
+                    iconTheme: {
+                        primary: '#EF4444',
+                        secondary: '#FFFAEE',
+                    },
+                });
+                setLoading(false);
+                return;  
+            }
+
     await saveProfile(formData);
-    toast.success('Profile saved!');
+    toast.success('Profile saved!', {
+      style: {
+          borderRadius: '0px',
+          border: '1px solid #3DB4FF',
+          padding: '16px',
+          color: '#3DB4FF',
+      },
+      iconTheme: {
+          primary: '#3DB4FF',
+          secondary: '#FFFAEE',
+      },
+  });
+    setLoading(false);
   }
 
 
@@ -98,7 +138,9 @@ export default function ProfileInfoForm({profileInfo}:Props) {
         id="bioInput" 
         placeholder="bio..."/>
         <div>
-          <button type='submit' className="submitButton mt-4">Save profile</button>
+          <button type='submit' className="submitButton mt-4">
+            {loading ? "Loading..." : "Save profile"}
+          </button>
         </div>
     </form>
   )

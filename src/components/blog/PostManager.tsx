@@ -13,7 +13,6 @@ interface PostSender {
 
 const PostManager = ({action, category}: PostSender) => {
     const [postImg, setPostImg] = useState<string>('');
-    const [error, setError] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
 
     const reloadPage = () => {
@@ -22,7 +21,6 @@ const PostManager = ({action, category}: PostSender) => {
         }, 2000);
       }
 
-    console.log(postImg)
     async function handleFormAction(formData: FormData) {
         setLoading(true);
         const dataObject: any = {};
@@ -34,7 +32,6 @@ const PostManager = ({action, category}: PostSender) => {
         const validationErrors = validatePostForm(dataObject);
     
             if (validationErrors.length > 0) {
-                setError(validationErrors.join(', '));  
                 toast.error(validationErrors.join(', '), {
                     style: {
                         borderRadius: '0px',
