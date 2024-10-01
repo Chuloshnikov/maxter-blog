@@ -3,6 +3,7 @@ import { validateCommentForm } from '@/lib/validation';
 import { useSession } from 'next-auth/react';
 import { ChangeEvent, useState } from 'react';
 import toast from 'react-hot-toast';
+import ButtonLoading from '../ui/ButtonLoading';
 
 const CommentCreatorForm = ({id}: any) => {
     const session = useSession();
@@ -86,7 +87,7 @@ const CommentCreatorForm = ({id}: any) => {
                     <textarea onChange={ev => setCommentText(ev.target.value)} value={commentText} placeholder='Write your comment about this post...'/>
                     <div className='flex gap-2 mt-4'>
                         <button type="submit" className='submitButton'>
-                            Create
+                        {loading ? (<ButtonLoading margin={''} loading={loading}/>) : "Create"}
                         </button>
                         <button onClick={clearComment} type='button' className='submitButton'>
                             Clear

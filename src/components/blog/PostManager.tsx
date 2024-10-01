@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { createPost } from '@/actions/postsActions';
 import toast from 'react-hot-toast';
 import { validatePostForm } from '@/lib/validation';
+import ButtonLoading from '../ui/ButtonLoading';
 
 interface PostSender {
     action: string;
@@ -13,7 +14,7 @@ interface PostSender {
 
 const PostManager = ({action, category}: PostSender) => {
     const [postImg, setPostImg] = useState<string>('');
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
 
     const reloadPage = () => {
         setTimeout(() => {
@@ -30,7 +31,6 @@ const PostManager = ({action, category}: PostSender) => {
           });
 
         const validationErrors = validatePostForm(dataObject);
-    
             if (validationErrors.length > 0) {
                 toast.error(validationErrors.join(', '), {
                     style: {
@@ -91,7 +91,7 @@ const PostManager = ({action, category}: PostSender) => {
                 type="submit"
                 className='submitButton capitalize mt-4 w-full hidden lg:block'
                 >
-                    {action}
+                     {loading ? (<ButtonLoading margin='' loading={loading}/>) : action}
                 </button>
             </div>
             <div className='w-full'>
@@ -118,7 +118,7 @@ const PostManager = ({action, category}: PostSender) => {
         type='submit'
         className='submitButton capitalize mt-4 w-full lg:hidden'
             >
-                {loading ? "loading..." : action}
+                {loading ? (<ButtonLoading margin='' loading={loading}/>) : action}
         </button>
     </form>
     </div>
