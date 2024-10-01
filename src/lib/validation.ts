@@ -58,3 +58,23 @@ export const validatePostForm = (data: any) => {
         return ["Unknown validation error"];
     }
 };
+
+//PROFILE VALIDATION
+
+export const ProfileFormSchema = z.object({
+    username: z.string().min(3, {message: 'Comment must be at least 3 characters long'}).max(20, "Comment must be at most 20 characters"),
+    displayName: z.string().min(3, {message: 'Comment must be at least 500 characters long'}).max(20, "Comment must be at most 2000 characters"),
+    bio: z.string().min(10, {message: 'Comment must be at least 500 characters long'}).max(1000, "Comment must be at most 2000 characters"),
+});
+
+export const validateProfileForm = (data: any) => {
+    try {
+        ProfileFormSchema.parse(data);
+        return [];
+    } catch (ev) {
+        if (ev instanceof z.ZodError) {
+            return ev.errors.map((error, index) => `${index + 1}: ${error.message}`);
+        }
+        return ["Unknown validation error"];
+    }
+};
