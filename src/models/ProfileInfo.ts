@@ -7,6 +7,7 @@ export type ProfileInfo = {
   bio: string;
   avatarUrl: string;
   coverUrl: string;
+  admin: boolean;
 };
 
 const profileInfoSchema = new Schema<ProfileInfo>({
@@ -16,6 +17,7 @@ const profileInfoSchema = new Schema<ProfileInfo>({
   bio: {type: String},
   avatarUrl: {type: String},
   coverUrl: {type: String},
+  admin: {type: Boolean, default: false}
 }, {timestamps: true});
 
 export const ProfileInfoModel = models?.ProfileInfo || model<ProfileInfo>('ProfileInfo', profileInfoSchema);
