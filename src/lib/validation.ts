@@ -10,8 +10,11 @@ export const ContactsFormSchema = z.object({
 export const validateContactForm = (data: any) => {
     try {
         ContactsFormSchema.parse(data);
-      return "Validation successful";
+        return [];
     } catch (ev) {
-      return (`Error: ${ev.errors}`);
+        if (ev instanceof z.ZodError) {
+            return ev.errors.map(error => `${error.path[0]}: ${error.message}`);
+        }
+        return ["Unknown validation error"];
     }
 };

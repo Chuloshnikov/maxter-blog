@@ -1,4 +1,5 @@
 "use client"
+import { createContacts } from '@/actions/contactsActions';
 import { validateContactForm } from '@/lib/validation';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -6,29 +7,63 @@ import toast from 'react-hot-toast';
 
 const ContactForm = () => {
     const [error, setError] = useState<string>('');
+    const [name, setName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [phone, setPhone] = useState<string>('');
+    const [message, setMessage] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
 
-    async function handleFormAction(formData: FormData) {
-        const validate = validateContactForm(formData);
 
-        if (validate === "Validation successful") {
-            await saveContacts(formData);
-            toast.success('Profile saved!');
-        } else {
-            setError(validate);
+
+
+    async function handleFormAction(event: React.FormEvent) {
+        event.preventDefault();
+        setLoading(true);
+    
+        const data = {
+            name,
+            email,
+            phone,
+            message
+        };
+    
+        const validationErrors = validateContactForm(data);
+    
+        if (validationErrors.length > 0) {
+            setError(validationErrors.join(', '));  
+            toast.error(validationErrors.join(', '));
+            setLoading(false);
+            return;  
         }
+    
+        let formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('message', message);
+    
+        try {
+            await createContacts(formData);
+            toast.success('Thanks for your comment or suggestion. We will definitely send you feedback');
+        } catch (error) {
+            toast.error('Error while submitting form. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    }
+    
 
-      }
-      
   return (
     <div>
-        <form action={handleFormAction}>
+        <form onSubmit={handleFormAction}>
             <div className='flex flex-col'>
                 <label className='input-label' 
                 htmlFor='nameInput'>
                     What&apos;s your name or company?
                 </label>
                 <input 
-                name='name' 
+                onChange={e => setName(e.target.value)}
+                value={name}
                 id="nameInput" 
                 type="text" 
                 placeholder='your name or company tag...'
@@ -40,7 +75,8 @@ const ContactForm = () => {
                     What&apos;s your email address?
                 </label>
                 <input 
-                name='email' 
+                onChange={e => setEmail(e.target.value)}
+                value={email}
                 id="emailInput" 
                 type='email'
                 placeholder='your email address...' />
@@ -53,7 +89,8 @@ const ContactForm = () => {
                     What&apos;s your phone number
                 </label>
                 <input 
-                name='phone'
+                onChange={e => setPhone(e.target.value)}
+                value={phone}
                 id="phoneInput" 
                 type='tel'
                 placeholder='your phone number...' />
@@ -65,7 +102,8 @@ const ContactForm = () => {
                 >What&apos;s your question/proposal?
                 </label>
                 <textarea 
-                name="message" 
+                onChange={e => setMessage(e.target.value)}
+                value={message}
                 id="messageInput" 
                 placeholder='your question or proposal...'
                 />
@@ -75,9 +113,9 @@ const ContactForm = () => {
                 className='submitButton mt-4'
                 type='submit'
                 >
-                    Send message
+                    {loading ? "Loading..." : "Send message"}
                 </button>
-                {error && <span>{error}</span>}
+                
             </div>
         </form>
     </div>
