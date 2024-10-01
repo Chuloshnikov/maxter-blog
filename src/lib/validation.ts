@@ -7,11 +7,11 @@ export const ContactsFormSchema = z.object({
     message: z.string().min(10, { message: "Message must be at least 10 characters long" }).max(1000, { message: "Message must be less than 1000 characters" }),
 });
 
-const validateContactForm = (data: any) => {
+export const validateContactForm = (data: any) => {
     try {
         ContactsFormSchema.parse(data);
-      console.log("Validation successful");
-    } catch (e) {
-      console.log(e.errors);
+      return "Validation successful";
+    } catch (ev) {
+      return (`Error: ${ev.errors}`);
     }
 };
