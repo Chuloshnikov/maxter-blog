@@ -11,7 +11,6 @@ export async function POST(request: NextRequest) {
 
     try {
         const data = await request.json();
-        console.log(data);
 
         const session = await getServerSession(authOptions);
         if (!session) throw 'you need to be logged in';

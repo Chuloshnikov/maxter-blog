@@ -31,7 +31,18 @@ const ContactForm = () => {
     
         if (validationErrors.length > 0) {
             setError(validationErrors.join(', '));  
-            toast.error(validationErrors.join(', '));
+            toast.error(validationErrors.join(', '), {
+                style: {
+                    borderRadius: '0px',
+                    border: '1px solid #EF4444',
+                    padding: '16px',
+                    color: '#EF4444',
+                },
+                iconTheme: {
+                    primary: '#EF4444',
+                    secondary: '#FFFAEE',
+                },
+            });
             setLoading(false);
             return;  
         }
@@ -44,9 +55,35 @@ const ContactForm = () => {
     
         try {
             await createContacts(formData);
-            toast.success('Thanks for your comment or suggestion. We will definitely send you feedback');
+            setName("");
+            setEmail("");
+            setPhone("");
+            setMessage("");
+            toast.success('Thanks for your comment or suggestion. We will definitely send you feedback', {
+                style: {
+                    borderRadius: '0px',
+                    border: '1px solid #3DB4FF',
+                    padding: '16px',
+                    color: '#3DB4FF',
+                },
+                iconTheme: {
+                    primary: '#3DB4FF',
+                    secondary: '#FFFAEE',
+                },
+            });
         } catch (error) {
-            toast.error('Error while submitting form. Please try again.');
+            toast.error('Error while submitting form. Please try again.', {
+                style: {
+                    borderRadius: '0px',
+                    border: '1px solid #EF4444',
+                    padding: '16px',
+                    color: '#EF4444',
+                },
+                iconTheme: {
+                    primary: '#EF4444',
+                    secondary: '#FFFAEE',
+                },
+            });
         } finally {
             setLoading(false);
         }
