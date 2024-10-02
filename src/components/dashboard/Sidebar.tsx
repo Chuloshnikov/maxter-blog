@@ -6,8 +6,9 @@ import { usePathname } from 'next/navigation';
 
 import { MdDashboard } from "react-icons/md";
 import { PiUsersFourLight } from "react-icons/pi";
-import { FaCommentAlt } from "react-icons/fa";
+import { FaCommentAlt, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { RiFilePaperFill } from "react-icons/ri";
+
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -16,17 +17,35 @@ const Sidebar = () => {
   const path = usePathname();
 
   return (
-    <div className={`fixed top-0 left-0 h-full bg-accentBg text-white transition-width duration-300 ${isCollapsed ? 'w-16' : 'w-44'}`}>
-      <button
-        className="text-white text-2xl p-2 text-right"
-        onClick={() => dispatch(toggleCollapse())}
-      >
-        <div className='flex items-end justify-end'>
-            {isCollapsed ? '→' : '←'}
-        </div>
-      </button>
+    <div className={`flex flex-col justify-between fixed top-0 left-0 h-full bg-accentBg text-white transition-width duration-300 ${isCollapsed ? 'w-14' : 'w-44'}`}>
+            
       <nav className="mt-4 font-semibold text-sm">
-        <ul className='sidebar-tabs'>
+      {!isCollapsed ? (
+            <div className='p-4 flex items-end'>
+            <Link 
+              href={"/"}
+              className='max-w-max text-black'
+            >
+              <h1 className='font-extrabold text-2xl'>
+                Ma
+                <span className='text-white'>X</span>
+                ter
+              </h1>
+            </Link>
+            <span className='text-xs font-semibold mb-[4px]'>Admin</span>
+        </div>
+      ) : (
+        <Link href={'/'} className='relative p-4 flex items-end'>
+            <div className='font-extrabold text-2xl text-black'>
+                M
+            </div>
+            <div className='absolute bottom-2 left-[18px] font-extrabold text-2xl text-white'>
+                X
+            </div>
+        </Link>
+      )}
+        
+        <ul className='sidebar-tabs mt-8'>
           <li className={` hover:bg-white hover:text-black hover:opacity-80 ${path === '/admin' ? 'active' : ''}`}>
             
             <Link href="/admin" className="flex gap-1 items-center p-4">
@@ -54,6 +73,14 @@ const Sidebar = () => {
           </li>
         </ul>
       </nav>
+      <button
+        className="text-white text-2xl p-2 text-right"
+        onClick={() => dispatch(toggleCollapse())}
+      >
+        <div className='flex items-end justify-end'>
+            {isCollapsed ? <span className='border-2 border-white'><FaArrowRight/></span> : <span className='border-2 border-white'><FaArrowLeft/></span>}
+        </div>
+      </button>
     </div>
   );
 };
