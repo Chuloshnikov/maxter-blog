@@ -14,7 +14,7 @@ interface PostSender {
 
 const PostManager = ({action, category}: PostSender) => {
     const [postImg, setPostImg] = useState<string>('');
-    const [loading, setLoading] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const reloadPage = () => {
         setTimeout(() => {
