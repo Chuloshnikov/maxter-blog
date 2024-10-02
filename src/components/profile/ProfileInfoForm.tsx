@@ -107,7 +107,7 @@ export default function ProfileInfoForm({profileInfo}:Props) {
               {profileInfo?.admin && (
                 <Link 
                 className='cursor-pointer bg-accentBg px-2 py-1 text-white font-semibold hover:bg-white hover:text-accentBg border border-2 border-accentBg duration-200'
-                href={'/dashboard'}>
+                href={'/admin'}>
                   Admin panel
                 </Link>
               )}
