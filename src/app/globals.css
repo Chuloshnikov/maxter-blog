@@ -228,3 +228,15 @@ label.input-label{
 .blinking {
   animation: blink 2s infinite;
 }
+
+
+/* ----------------------------------DASHBOARD------------------------------------ */
+
+li.sidebar-tabs > * {
+  @apply hover:bg-white hover:text-black hover:opacity-80;
+}
+
+
+ul.sidebar-tabs > *.active{
+  @apply bg-white text-black;
+}
