@@ -1,7 +1,8 @@
 import PostSkeleton from '../ui/PostSkeleton';
 import PostItem from './PostItem'
 
-const PostsContainer = ({posts, slug, loading}: any) => {
+const PostsContainer = ({posts, slug, loading }: any) => {
+    console.log(posts);
   return (
     <div className='border border-2 border-accentBg w-full mt-8'>
         <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
@@ -13,7 +14,7 @@ const PostsContainer = ({posts, slug, loading}: any) => {
                 ))}
                 </>
             )}
-            {!posts.length && (
+            {!posts?.length && (
                 <div className='w-full h-[400px] flex items-center  justify-center'>
                 <div className='text-lg font-medium'>
                     No posts found
