@@ -12,7 +12,7 @@ const ProfileInfo = () => {
     if (email) {
       const fetchProfile = async () => {
         try {
-          const response = await fetch(`/api/profile`, {email});
+          const response = await fetch(`/api/profile?email=${email}`);
           const data = await response.json();
           setProfile(data);
         } catch (error) {
