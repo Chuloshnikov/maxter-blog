@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
         const name = session.user?.name;
 
         const profileInfoDoc = await ProfileInfoModel.findOne({email});
-        const { displayName, avatarUrl} = profileInfoDoc;
+        const { displayName, avatarUrl, _id} = profileInfoDoc;
         
         let authorName:any = '';
         if (displayName) {
@@ -27,11 +27,11 @@ export async function POST(request: NextRequest) {
             authorName = name;
         }
 
-        const commentDoc = ({authorEmail: email, authorName, authorAvatarUrl: avatarUrl, ...data});
+        const commentDoc = ({authorEmail: email, authorId: _id, authorName, authorAvatarUrl: avatarUrl, ...data});
 
         const createComment = await CommentsModel.create(commentDoc);
 
-        return new NextResponse(createComment);
+        return NextResponse.json(createComment);
     } catch (error) {
         NextResponse.json(error);
     }
