@@ -103,7 +103,7 @@ const ProfileInfo = ({ params: { authorId } }: { params: { authorId: string } })
         <div>
           <label className="input-label" htmlFor="bioInput">bio</label>
           <textarea
-            defaultValue={generateRandomWords(100)}
+            defaultValue={profile?.bio}
             rows={10}
             name="bio"
             disabled
