@@ -56,7 +56,8 @@ const CommentCreatorForm = ({id}: any) => {
                         secondary: '#FFFAEE',
                     },
                 });
-                setCommentText('');
+                clearComment();
+                setLoading(false);
             } else {
                 toast.error('An error has occurred', {
                     style: {
