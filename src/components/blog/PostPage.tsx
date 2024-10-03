@@ -16,13 +16,19 @@ const PostPage = ({post}: any) => {
           <h2 className='text-2xl text-accentBg font-bold'>
             {post.title}
           </h2>
-          <Link href={'/profileinfo'} className='flex justify-between'>
-            <div className='flex gap-1 items-end'>
+          <div  className='flex justify-between'>
+            <Link 
+            href={{
+              pathname: '/profileinfo',
+              query: { email: post.email },
+            }} 
+            className='flex gap-1 items-end'
+            >
               <Image src={post.avatarUrl} width={100} height={100} className='w-[30px] h-[30px]' alt='avatar'/>
               <h3 className='text-lg font-semibold text-gray-600'>{post.displayName}</h3>
-            </div>
+            </Link>
             <span className='font-medium text-sm'>{DateConverter({ mongoDate: post.createdAt })}</span>
-          </Link>
+          </div>
           <p className='text-lg'>
               {post.desc}
           </p>
