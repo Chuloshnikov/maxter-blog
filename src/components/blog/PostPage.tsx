@@ -18,10 +18,7 @@ const PostPage = ({post}: any) => {
           </h2>
           <div  className='flex justify-between'>
             <Link 
-            href={{
-              pathname: '/profileinfo',
-              query: { email: post.email },
-            }} 
+            href={`/profileinfo/${post.authorId}`}
             className='flex gap-1 items-end'
             >
               <Image src={post.avatarUrl} width={100} height={100} className='w-[30px] h-[30px]' alt='avatar'/>
