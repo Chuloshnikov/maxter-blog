@@ -7,6 +7,7 @@ export interface CommentTypes {
     authorEmail: string;
     desc: string;
     postId: string;
+    authorId: string;
     approved: boolean;
     createdAt?: Date;
 }
@@ -17,7 +18,8 @@ const commentsSchema = new Schema<CommentTypes>({
     authorEmail: { type: String, required: true },
     authorAvatarUrl: { type: String },
     desc: { type: String, required: true, unique: true},
-    postId: {type: String},
+    postId: {type: String, required: true},
+    authorId: {type: String, required: true,},
     approved: {type: Boolean, default: false},
   }, {timestamps: true});
   
