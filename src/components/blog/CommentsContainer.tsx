@@ -53,7 +53,7 @@ const CommentsContainer = ({ id }: any) => {
         <button
           key="first"
           onClick={() => changePage(1)}
-          className="w-8 h-8 bg-[#3DB4FF] text-white rounded"
+          className="w-8 h-8 bg-[#3DB4FF] text-white"
         >
           &laquo;
         </button>
@@ -66,7 +66,7 @@ const CommentsContainer = ({ id }: any) => {
         <button
           key={1}
           onClick={() => changePage(1)}
-          className={`w-8 h-8 ${currentPage === 1 ? 'bg-blue-500' : 'bg-[#3DB4FF]'} text-white rounded`}
+          className={`w-8 h-8 ${currentPage === 1 ? 'bg-black' : 'bg-[#3DB4FF]'} text-white`}
         >
           1
         </button>
@@ -82,7 +82,7 @@ const CommentsContainer = ({ id }: any) => {
           <button
             key={currentPage}
             onClick={() => changePage(currentPage)}
-            className={`w-8 h-8 bg-[#3DB4FF] text-white rounded`}
+            className={`w-8 h-8 bg-[#3DB4FF] text-white`}
           >
             {currentPage}
           </button>
@@ -97,7 +97,7 @@ const CommentsContainer = ({ id }: any) => {
         <button
           key={totalPages}
           onClick={() => changePage(totalPages)}
-          className={`w-8 h-8 ${currentPage === totalPages ? 'bg-blue-500' : 'bg-[#3DB4FF]'} text-white rounded`}
+          className={`w-8 h-8 ${currentPage === totalPages ? 'bg-black' : 'bg-[#3DB4FF]'} text-white`}
         >
           {totalPages}
         </button>
@@ -109,7 +109,7 @@ const CommentsContainer = ({ id }: any) => {
           <button
             key={i}
             onClick={() => changePage(i)}
-            className={`w-8 h-8 ${currentPage === i ? 'bg-blue-500' : 'bg-[#3DB4FF]'} text-white rounded`}
+            className={`w-8 h-8 ${currentPage === i ? 'bg-black' : 'bg-[#3DB4FF]'} text-white`}
           >
             {i}
           </button>
@@ -123,7 +123,7 @@ const CommentsContainer = ({ id }: any) => {
         <button
           key="next"
           onClick={() => changePage(currentPage + 1)}
-          className="w-8 h-8 bg-[#3DB4FF] text-white rounded"
+          className="w-8 h-8 bg-[#3DB4FF] text-white"
         >
           &gt;
         </button>
@@ -136,7 +136,7 @@ const CommentsContainer = ({ id }: any) => {
         <button
           key="last"
           onClick={() => changePage(totalPages)}
-          className="w-8 h-8 bg-[#3DB4FF] text-white rounded"
+          className="w-8 h-8 bg-[#3DB4FF] text-white"
         >
           &raquo;
         </button>
@@ -147,7 +147,7 @@ const CommentsContainer = ({ id }: any) => {
   };
 
   return (
-    <div className="border border-2 border-accentBg w-full mt-4">
+    <div className="border border-2 border-accentBg w-full mt-4 pb-2">
       <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">
         All <span className="lowercase">comments</span>
       </h2>

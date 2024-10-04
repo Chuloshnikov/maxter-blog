@@ -30,7 +30,7 @@ const PostsContainer = ({ posts, slug, loading }: any) => {
         <button
           key="first"
           onClick={() => changePage(1)}
-          className="w-8 h-8 bg-[#3DB4FF] text-white rounded"
+          className="w-8 h-8 bg-[#3DB4FF] text-white"
         >
           &laquo;
         </button>
@@ -43,7 +43,7 @@ const PostsContainer = ({ posts, slug, loading }: any) => {
         <button
           key={1}
           onClick={() => changePage(1)}
-          className={`w-8 h-8 ${currentPage === 1 ? 'bg-blue-500' : 'bg-[#3DB4FF]'} text-white rounded`}
+          className={`w-8 h-8 ${currentPage === 1 ? 'bg-black' : 'bg-[#3DB4FF]'} text-white`}
         >
           1
         </button>
@@ -59,7 +59,7 @@ const PostsContainer = ({ posts, slug, loading }: any) => {
           <button
             key={currentPage}
             onClick={() => changePage(currentPage)}
-            className={`w-8 h-8 bg-[#3DB4FF] text-white rounded`}
+            className={`w-8 h-8 bg-[#3DB4FF] text-white`}
           >
             {currentPage}
           </button>
