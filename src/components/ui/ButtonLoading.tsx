@@ -16,7 +16,7 @@ const ButtonLoading = ({margin, loading }: {margin: string, loading: boolean}) =
   return (
     <div className={`flex gap-1 ${margin} items-center justify-center`}>
         <SquareLoader
-        color={'#FFFFFF'}
+        color={'#000000'}
         loading={loading}
         cssOverride={override}
         size={20}
@@ -24,7 +24,7 @@ const ButtonLoading = ({margin, loading }: {margin: string, loading: boolean}) =
         data-testid="loader"
         />
         <SquareLoader
-        color={'#FFFFFF'}
+        color={'#000000'}
         loading={loading}
         cssOverride={override}
         size={20}
@@ -32,7 +32,7 @@ const ButtonLoading = ({margin, loading }: {margin: string, loading: boolean}) =
         data-testid="loader"
         />
         <SquareLoader
-        color={'#FFFFFF'}
+        color={'#000000'}
         loading={loading}
         cssOverride={override}
         size={20}
@@ -40,7 +40,7 @@ const ButtonLoading = ({margin, loading }: {margin: string, loading: boolean}) =
         data-testid="loader"
         />
         <SquareLoader
-        color={'#FFFFFF'}
+        color={'#000000'}
         loading={loading}
         cssOverride={override}
         size={20}
