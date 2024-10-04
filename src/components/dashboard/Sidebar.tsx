@@ -4,7 +4,7 @@ import { toggleCollapse } from '../../redux/navbarSlice';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { MdDashboard } from "react-icons/md";
+import { MdDashboard, MdLocalPostOffice, MdAlternateEmail } from "react-icons/md";
 import { PiUsersFourLight } from "react-icons/pi";
 import { FaCommentAlt, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { RiFilePaperFill } from "react-icons/ri";
@@ -67,8 +67,20 @@ const Sidebar = () => {
           </li>
           <li className={`sidebar-tabs hover:bg-white hover:text-black hover:opacity-80 ${path === '/admin/comments' ? 'active' : ''}`}>
             <Link href="/admin/comments" className="flex gap-1 items-center p-4">
-            <FaCommentAlt className='text-black w-5 h-5'/>
+            <FaCommentAlt className='text-black w-5 h-5 ml-[2px]'/>
             {!isCollapsed ? <span>Comments</span> : ''}
+            </Link>
+          </li>
+          <li className={`sidebar-tabs hover:bg-white hover:text-black hover:opacity-80 ${path === '/admin/comments' ? 'active' : ''}`}>
+            <Link href="/admin/proposals" className="flex gap-1 items-center p-4">
+            <MdLocalPostOffice className='text-black w-6 h-6'/>
+            {!isCollapsed ? <span>Proposals</span> : ''}
+            </Link>
+          </li>
+          <li className={`sidebar-tabs hover:bg-white hover:text-black hover:opacity-80 ${path === '/admin/comments' ? 'active' : ''}`}>
+            <Link href="/admin/submitters" className="flex gap-1 items-center p-4">
+            <MdAlternateEmail className='text-black w-6 h-6'/>
+            {!isCollapsed ? <span>Submitters</span> : ''}
             </Link>
           </li>
         </ul>
