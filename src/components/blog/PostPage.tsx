@@ -33,7 +33,7 @@ const PostPage = ({post}: any) => {
           </p>
         </div>
         <div className='flex items-end justify-end'>
-            <Statistics/>
+            <Statistics postId={post._id} views={post.views} initialLikes={post.likes} initialDislikes={post.dislikes} catSlug={post.catSlug}/>
           </div>
         <div>
           <CommentCreatorForm id={post._id}/>

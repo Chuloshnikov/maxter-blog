@@ -1,20 +1,22 @@
 import { Schema, model, models } from 'mongoose';
 
 export type PostInfo = {
-  slug: string;
-  title: string;
-  desc: string;
-  img: string;
+  slug: string,
+  title: string,
+  desc: string,
+  img: string,
   views: number,
   likes: number,
   dislikes: number,
   catSlug: string,
-  username: string;
-  avatarUrl: string;
-  displayName: string;
+  username: string,
+  avatarUrl: string,
+  displayName: string,
   userEmail: string,
   authorId: string,
-  approved: boolean;
+  approved: boolean,
+  usersLiked: string[],
+  usersDisliked: string[],
 };
 
 const postInfoSchema = new Schema<PostInfo>({
@@ -32,6 +34,8 @@ const postInfoSchema = new Schema<PostInfo>({
   userEmail: { type: String, required: true },
   authorId: {type: String, required: true },
   approved: {type: Boolean, default: false },
+  usersLiked: { type: [String], default: [] },
+  usersDisliked: { type: [String], default: [] },
 }, {timestamps: true});
 
 export const PostInfoModel = models?.Post || model<PostInfo>('Post',postInfoSchema);
