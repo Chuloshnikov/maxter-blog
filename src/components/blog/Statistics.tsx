@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { v4 as uuidv4 } from 'uuid';
+
 import { FaEye } from "react-icons/fa";
 import { BiSolidLike } from "react-icons/bi";
 import { BiSolidDislike } from "react-icons/bi";
@@ -9,14 +11,26 @@ interface StatisticsTypes {
     postId: string;
     catSlug: string;
     views:string;
-    initialLikes: string[] | string;
-    initialDislikes: string[] | string;
+    initialLikes: number;
+    initialDislikes: number;
 }
 
 const Statistics = ({ catSlug, postId, views, initialLikes, initialDislikes }: StatisticsTypes ) => {
-    const [likes, setLikes] = useState(initialLikes);
-    const [dislikes, setDislikes] = useState(initialDislikes);
+    const [likes, setLikes] = useState<number>(initialLikes);
+    const [dislikes, setDislikes] = useState<number>(initialDislikes);
     const [userReaction, setUserReaction] = useState<null | string>(null);
+    const [userId, setUserId] = useState<string | null>(null);
+
+    useEffect(() => {
+        // Check existing userId in localStorage
+        let existingUserId = localStorage.getItem('userId');
+        if (!existingUserId) {
+          // Creating new userId, еif its not created
+          existingUserId = uuidv4();
+          localStorage.setItem('userId', existingUserId);
+        }
+        setUserId(existingUserId);
+      }, []);
 
     useEffect(() => {
         const storedReaction = localStorage.getItem(`post-${postId}-reaction`);
@@ -26,7 +40,7 @@ const Statistics = ({ catSlug, postId, views, initialLikes, initialDislikes }: S
     const handleLike = async () => {
         if (userReaction === 'like') return;
         try {
-          const response = await axios.post(`/api/posts/${catSlug}/${postId}/like`, { userId: 'USER_ID' });
+          const response = await axios.put(`/api/posts/${catSlug}/${postId}/like`, { userId });
           setLikes(response.data.likes);
           setDislikes(response.data.dislikes);
           setUserReaction('like');
@@ -39,7 +53,7 @@ const Statistics = ({ catSlug, postId, views, initialLikes, initialDislikes }: S
     const handleDislike = async () => {
         if (userReaction === 'dislike') return;
         try {
-          const response = await axios.post(`/api/posts/${catSlug}/${postId}/dislike`, { userId: 'USER_ID' });
+          const response = await axios.put(`/api/posts/${catSlug}/${postId}/dislike`, { userId });
           setLikes(response.data.likes);
           setDislikes(response.data.dislikes);
           setUserReaction('dislike');

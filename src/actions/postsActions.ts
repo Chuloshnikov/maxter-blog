@@ -50,7 +50,7 @@ export async function createPost(formData: FormData) {
   }
 
   if (profileInfoDoc) {
-    await PostInfoModel.create({title, desc, slug, catSlug: slug, username, displayName: author, userEmail: email, authorId: _id, img:postImg, avatarUrl});
+    await PostInfoModel.create({title, desc, slug, catSlug: slug, username, displayName: author, userEmail: email, authorId: _id, img:postImg, avatarUrl });
   } else {
     throw new Error('Some error occurred');
   }
