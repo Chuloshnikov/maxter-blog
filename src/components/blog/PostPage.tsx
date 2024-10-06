@@ -5,6 +5,7 @@ import AsideAdvertisement from '../asside/AsideAdvertisement';
 import DateConverter from '../ui/DateConverter';
 import CommentCreatorForm from './CommentCreatorForm';
 import Link from 'next/link';
+import Statistics from './Statistics';
 
 const PostPage = ({post}: any) => {
   console.log(post);
@@ -16,7 +17,7 @@ const PostPage = ({post}: any) => {
           <h2 className='text-2xl text-accentBg font-bold'>
             {post.title}
           </h2>
-          <div  className='flex justify-between'>
+          <div  className='flex justify-between items-center'>
             <Link 
             href={`/profileinfo/${post.authorId}`}
             className='flex gap-1 items-end'
@@ -26,10 +27,14 @@ const PostPage = ({post}: any) => {
             </Link>
             <span className='font-medium text-sm'>{DateConverter({ mongoDate: post.createdAt })}</span>
           </div>
+         
           <p className='text-lg'>
               {post.desc}
           </p>
         </div>
+        <div className='flex items-end justify-end'>
+            <Statistics/>
+          </div>
         <div>
           <CommentCreatorForm id={post._id}/>
           <CommentsContainer id={post._id}/>
