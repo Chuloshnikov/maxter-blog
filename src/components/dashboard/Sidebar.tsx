@@ -46,7 +46,7 @@ const Sidebar = () => {
       )}
         
         <ul className='sidebar-tabs mt-8'>
-          <li className={` hover:bg-white hover:text-black hover:opacity-80 ${path === '/admin' ? 'active' : ''}`}>
+          <li className={` hover:bg-white hover:text-black hover:opacity-80 ${path === '/admin' || path.includes("/advertisements") ? 'active' : ''}`}>
             
             <Link href="/admin" className="flex gap-1 items-center p-4">
             <MdDashboard className='text-black w-6 h-6'/> 
