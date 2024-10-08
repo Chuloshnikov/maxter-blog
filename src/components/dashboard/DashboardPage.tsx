@@ -54,10 +54,10 @@ const DashboardPage = () => {
                 <TableColumn title={"posts"} data={[...posts]}/>
                 <TableColumn title={"comments"} data={[...comments]}/>
             </div>
-            <BlogGraph/>
+            <BlogGraph posts={posts} comments={comments}/>
         </div>
         <div className="">
-            <PopularCategory/>
+            <PopularCategory posts={[...posts]}/>
         </div>
         <div>
             <Link 

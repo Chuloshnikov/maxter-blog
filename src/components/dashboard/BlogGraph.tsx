@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -24,37 +24,84 @@ ChartJS.register(
 );
 
 // Определяем интерфейс для компонента
-interface BlogGraphProps {}
+interface BlogGraphProps {
+  posts: { createdAt: Date }[];  // Ожидаем массив постов с датами
+  comments: { createdAt: Date }[];  // Ожидаем массив комментариев с датами
+}
 
-const BlogGraph: React.FC<BlogGraphProps> = () => {
+interface GraphData {
+    labels: string[];
+    datasets: {
+      label: string;
+      data: number[];
+      fill: boolean;
+      backgroundColor: string;
+      borderColor: string;
+    }[];
+  }
+
+const BlogGraph: React.FC<BlogGraphProps> = ({ posts, comments }) => {
   const [month, setMonth] = useState<number>(new Date().getMonth() + 1);
   const [year, setYear] = useState<number>(new Date().getFullYear());
-
-  // Заглушки для данных графика, можно заменить реальными данными
-  const data = {
-    labels: Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`),
+  
+  // Данные для графика
+  const [graphData, setGraphData] = useState<GraphData>({
+    labels: [],
     datasets: [
       {
         label: 'Posts',
-        data: Array.from({ length: 30 }, () => Math.floor(Math.random() * 10)),
+        data: [],
         fill: false,
         backgroundColor: '#3DB4FF',
         borderColor: '#5bbaf5',
       },
       {
         label: 'Comments',
-        data: Array.from({ length: 30 }, () => Math.floor(Math.random() * 20)),
+        data: [],
         fill: false,
         backgroundColor: 'rgb(0, 0, 0)',
         borderColor: 'rgba(68, 67, 67, 0.2)',
       },
     ],
-  };
+  });
+
+  useEffect(() => {
+    const postCounts = Array(30).fill(0);
+    const commentCounts = Array(30).fill(0);
+    
+    // Обрабатываем данные posts
+    posts.forEach(post => {
+      const postDate = new Date(post.createdAt);
+      const day = postDate.getDate() - 1; // Индексация с 0
+      if (postDate.getMonth() + 1 === month && postDate.getFullYear() === year) {
+        postCounts[day] += 1;
+      }
+    });
+
+    // Обрабатываем данные comments
+    comments.forEach(comment => {
+      const commentDate = new Date(comment.createdAt);
+      const day = commentDate.getDate() - 1; // Индексация с 0
+      if (commentDate.getMonth() + 1 === month && commentDate.getFullYear() === year) {
+        commentCounts[day] += 1;
+      }
+    });
+
+    // Обновляем данные графика
+    setGraphData(prevData => ({
+      ...prevData,
+      labels: Array.from({ length: 30 }, (_, i) => `Day ${i + 1}`),
+      datasets: [
+        { ...prevData.datasets[0], data: postCounts },
+        { ...prevData.datasets[1], data: commentCounts },
+      ],
+    }));
+  }, [posts, comments, month, year]);
 
   // Настройки графика
   const options = {
     responsive: true,
-    maintainAspectRatio: false, // graph adaptive
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top' as const,
@@ -104,7 +151,7 @@ const BlogGraph: React.FC<BlogGraphProps> = () => {
         </div>
       </div>
       <div className="w-full h-96">
-        <Line data={data} options={options} />
+        <Line data={graphData} options={options} />
       </div>
     </div>
   );
