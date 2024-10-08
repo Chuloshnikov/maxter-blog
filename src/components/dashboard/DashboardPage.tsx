@@ -11,6 +11,7 @@ import { fetchUsers } from "@/redux/usersSlice";
 import { fetchComments } from "@/redux/commentsSlice";
 
 import { AppDispatch, RootState } from '../../redux/store';
+import Preloader from "../ui/Preloader";
 
 
 
@@ -37,14 +38,26 @@ const DashboardPage = () => {
         }
       }, [dispatch, usersStatus, postsStatus, commentsStatus]);
     
-      // Проверка статуса загрузки
+      //dashboard status loading
       if (usersStatus === 'loading' || postsStatus === 'loading' || commentsStatus === 'loading') {
-        return <div>Loading...</div>; // Загрузка
+        return <Preloader/>;
       }
     
-      // Обработка ошибок
+      //dashboard status error
       if (usersStatus === 'failed' || postsStatus === 'failed' || commentsStatus === 'failed') {
-        return <div>Error occurred while fetching data.</div>; // Ошибка
+        return (
+            <div className="flex w-screen h-screen">
+                 <div className="w-full h-full flex flex-col justify-center items-center">
+                    <h4 className="text-accentBg font-bold text-7xl -mt-10">Error occurred while fetching data.</h4>
+                 </div>
+                 <Link 
+                 className="submitButton mt-4"
+                 href={'/'}
+                 >
+                    Back to blog
+                 </Link>
+            </div>
+        );
       }
 
   return (
