@@ -1,8 +1,9 @@
+import { getAllProfiles } from '@/actions/profileInfoActions';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
-  const response = await fetch('/api/users'); // Укажите ваш API
-  return response.json();
+  const users = await getAllProfiles();
+  return users;
 });
 
 const usersSlice = createSlice({
