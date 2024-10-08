@@ -62,3 +62,17 @@ export async function getProfile() {
     );
   }
 }
+
+export async function getAllProfiles() {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI as string);
+  
+    const allProfilesInfoDoc = await ProfileInfoModel.find();
+    return parseStringify(allProfilesInfoDoc);
+  } catch (error) {
+    console.error(
+      "An error occurred while retrieving the patient details:",
+      error
+    );
+  }
+}

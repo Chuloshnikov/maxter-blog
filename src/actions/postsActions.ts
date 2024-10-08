@@ -6,7 +6,8 @@ import { ProfileInfoModel } from "@/models/ProfileInfo";
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
 
-export async function savePost(formData: FormData) {
+{/*
+  export async function savePost(formData: FormData) {
   await mongoose.connect(process.env.MONGODB_URI as string);
 
   const session = await getServerSession(authOptions);
@@ -17,16 +18,19 @@ export async function savePost(formData: FormData) {
     username, displayName, bio, coverUrl, avatarUrl,
   } = Object.fromEntries(formData);
 
-  const profileInfoDoc = await ProfileInfoModel.findOne({email});
+  const profileInfoDocc = await ProfileInfoModel.findOne({email});
   if (profileInfoDoc) {
-    profileInfoDoc.set({username, displayName, bio, coverUrl, avatarUrl});
-    await profileInfoDoc.save();
+    postDoc.set({username, displayName, bio, coverUrl, avatarUrl});
+    await postDoc.save();
   } else {
     await ProfileInfoModel.create({username, displayName, bio, email, coverUrl, avatarUrl});
   }
 
   return true;
 }
+  */}
+
+
 
 export async function createPost(formData: FormData) {
   await mongoose.connect(process.env.MONGODB_URI as string);
@@ -64,7 +68,24 @@ export async function getPosts() {
     const email = session.user?.email;
   
     const profileInfoDoc = await ProfileInfoModel.findOne({email});
-    return parseStringify(profileInfoDoc);
+
+    if (profileInfoDoc) {
+      const postsDoc = await PostInfoModel.findOne({email});
+    }
+    return parseStringify(postsDoc);
+  } catch (error) {
+    console.error(
+      "An error occurred while retrieving the patient details:",
+      error
+    );
+  }
+}
+
+export async function getAllPosts() {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI as string);
+    const postsDoc = await PostInfoModel.find();
+    return parseStringify(postsDoc);
   } catch (error) {
     console.error(
       "An error occurred while retrieving the patient details:",

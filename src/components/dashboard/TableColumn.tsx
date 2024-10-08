@@ -1,6 +1,7 @@
 
 
 const TableColumn = ({title, data}) => {
+  console.log(data);
   return (
     <div className='border-2 border-gray-500 p-10'>
         <div className='flex flex-col items-center justify-center gap-2 text-2xl text-accentBg font-semibold'>
