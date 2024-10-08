@@ -2,21 +2,18 @@ import Link from "next/link";
 import PopularCategory from "./PopularCategory";
 import TableColumn from "./TableColumn";
 import { FaArrowRight } from "react-icons/fa";
+import BlogGraph from "./BlogGraph";
 
 
-const DashboardPage = ({ AllPosts }) => {
+const DashboardPage = ({ posts, comments }) => {
   return (
     <div className='p-2 flex flex-col gap-4'>
-        <div className="flex gap-2">
-            <div className="flex flex-col gap-2">
+        <div className="flex flex-col mdl:flex-row gap-2">
+            <div className="flex flex-col gap-2 mdl:mt-20">
                 <TableColumn title={"posts"} data={[{}, {}]}/>
                 <TableColumn title={"comments"} data={[{}, {}]}/>
             </div>
-            <div>
-                graph
-
-                _______________________________________________________________________________________
-            </div>
+            <BlogGraph/>
         </div>
         <div className="">
             <PopularCategory/>
