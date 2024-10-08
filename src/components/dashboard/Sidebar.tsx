@@ -71,13 +71,13 @@ const Sidebar = () => {
             {!isCollapsed ? <span>Comments</span> : ''}
             </Link>
           </li>
-          <li className={`sidebar-tabs hover:bg-white hover:text-black hover:opacity-80 ${path === '/admin/comments' ? 'active' : ''}`}>
+          <li className={`sidebar-tabs hover:bg-white hover:text-black hover:opacity-80 ${path === '/admin/proposals' ? 'active' : ''}`}>
             <Link href="/admin/proposals" className="flex gap-1 items-center p-4">
             <MdLocalPostOffice className='text-black w-6 h-6'/>
             {!isCollapsed ? <span>Proposals</span> : ''}
             </Link>
           </li>
-          <li className={`sidebar-tabs hover:bg-white hover:text-black hover:opacity-80 ${path === '/admin/comments' ? 'active' : ''}`}>
+          <li className={`sidebar-tabs hover:bg-white hover:text-black hover:opacity-80 ${path === '/admin/submitters' ? 'active' : ''}`}>
             <Link href="/admin/submitters" className="flex gap-1 items-center p-4">
             <MdAlternateEmail className='text-black w-6 h-6'/>
             {!isCollapsed ? <span>Submitters</span> : ''}

@@ -28,7 +28,7 @@ export default function DashboardWrapper({ children }: { children: React.ReactNo
     return (
       <>
         <Sidebar />
-        <main className={`ml-${marginLeft} p-4 transition-all duration-300`}>
+        <main className={`ml-${marginLeft} pl-10 lg:pl-0 p-4 transition-all duration-300`}>
             {children}
         </main>
       </>

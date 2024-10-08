@@ -49,7 +49,7 @@ export default async function RootLayout({
                   <main className="max-w-contentContainer min-h-[calc(100vh-21.1rem)] mx-auto">
                     {children}
                   </main>    
-              </DashboardWrapper>
+                </DashboardWrapper>
               ) : (
                 <div className="flex w-screen h-screen">
                     <div className="w-full h-full flex flex-col justify-center items-center">
