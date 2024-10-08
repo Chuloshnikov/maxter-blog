@@ -1,7 +1,13 @@
+import AdvertisementManagerForm from '@/components/dashboard/AdvertisementManagerForm'
+import mongoose from 'mongoose';
 import React from 'react'
 
-export default function EditAdvertisement() {
+export default async function EditAdvertisement() {
+    await mongoose.connect(process.env.MONGODB_URI as string);
+  const advertisementsDoc = JSON.parse(JSON.stringify( await AdvertisementsModel.findOne({_id})));
   return (
-    <div>page</div>
+    <div>
+        <AdvertisementManagerForm/>
+    </div>
   )
 }

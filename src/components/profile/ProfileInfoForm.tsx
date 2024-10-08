@@ -9,8 +9,8 @@ import UploadButton from '../ui/UploadButton';
 import { FaUserAlt } from "react-icons/fa";
 import Image from 'next/image';
 
-import { signOut, useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
+import { signOut } from 'next-auth/react';
+
 import { validateProfileForm } from '@/lib/validation';
 import ButtonLoading from '../ui/ButtonLoading';
 import Link from 'next/link';
