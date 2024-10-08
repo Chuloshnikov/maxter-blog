@@ -15,6 +15,7 @@ export default function Advertisements() {
           </div>
         </Link>
         <div className='flex gap-16 flex-wrap max-w-screen'>
+          {/*all adverts*/}
           <div className='flex flex-col gap-2 p-1 max-w-[300px] text-center items-center justify-center'>
               <div className='advertContainer w-[295px] h-[295px]'>
 

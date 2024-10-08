@@ -78,3 +78,21 @@ export const validateProfileForm = (data: any) => {
         return ["Unknown validation error"];
     }
 };
+
+//ADVERTISEMENTS VALIDATION
+
+export const AdvertisementsFormSchema = z.object({
+    title: z.string().min(10, {message: 'Title must be at least 10 characters long'}).max(70, "Title must be at most 70 characters"),
+});
+
+export const validateAdvertisementForm = (data: any) => {
+    try {
+        AdvertisementsFormSchema.parse(data);
+        return [];
+    } catch (ev) {
+        if (ev instanceof z.ZodError) {
+            return ev.errors.map(error => `${error.message}`);
+        }
+        return ["Unknown validation error"];
+    }
+};
