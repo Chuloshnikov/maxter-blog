@@ -48,7 +48,10 @@ const DashboardPage = () => {
       }
 
   return (
-    <div className='p-2 flex flex-col gap-4'>
+    <div className='p-2 flex flex-col justify-between gap-4'>
+        <div className="text-accentBg text-4xl font-bold">
+            Welcome to Ma<span className="text-black">X</span>ter admin panel
+        </div>
         <div className="flex flex-col mdl:flex-row gap-2">
             <div className="flex flex-col gap-2 mdl:mt-20">
                 <TableColumn title={"posts"} data={[...posts]}/>
