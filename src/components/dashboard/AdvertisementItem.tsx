@@ -6,8 +6,8 @@ import React from 'react';
 const AdvertisementItem = ({ item }: AdvertisementItemProps) => {
   return (
     <Link href={`/admin/advertisements/edit/${item._id}`} 
-    className='flex flex-col gap-2 p-1 max-w-[300px] 
-    text-center items-center justify-center border border-gray-400'
+    className='relative flex flex-col gap-2 p-1 max-w-[300px] 
+    text-center items-center justify-center border border-gray-400 group'
     >
         {item.coverUrl ? (
            <Image src={item.coverUrl} 
@@ -20,6 +20,12 @@ const AdvertisementItem = ({ item }: AdvertisementItemProps) => {
             <div className='advertContainer w-[295px] h-[295px]'>
             </div>
         )}
+       <span 
+        className='absolute hidden group-hover:block top-2 right-2 px-2 py-1
+        text-white text-sm bg-accentBg transition-opacity delay-200 duration-300' 
+        >
+        Edit
+      </span>
         <p className='text-lg font-medium'>
             {item.title}
         </p>
