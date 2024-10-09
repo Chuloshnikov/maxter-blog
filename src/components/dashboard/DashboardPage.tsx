@@ -40,7 +40,11 @@ const DashboardPage = () => {
     
       //dashboard status loading
       if (usersStatus === 'loading' || postsStatus === 'loading' || commentsStatus === 'loading') {
-        return <Preloader/>;
+        return (
+            <div className="w-full h-full flex items-center justify-center">
+              <Preloader/>
+            </div> 
+        );
       }
     
       //dashboard status error
