@@ -91,7 +91,7 @@ const AdvertisementManagerForm = ({ advertisement, action }: any) => {
     <div>
         <div>
             <h1 className='text-accentBg text-4xl font-bold'>
-                <span className='capitelize'>{action}</span> advertisement
+                <span className='capitalize'>{action}</span> advertisement
             </h1>
         </div>
         <form action={handleFormAction} className='flex flex-col lg:flex-row gap-6'>
