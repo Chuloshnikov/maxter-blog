@@ -1,8 +1,15 @@
+import AdvertisementItem from '@/components/dashboard/AdvertisementItem'
+import { AdvertisementsModel } from '@/models/Advertisement';
+import mongoose from 'mongoose';
 import Link from 'next/link'
 import React from 'react'
-import { FaArrowRight } from 'react-icons/fa'
+import { FaArrowRight } from 'react-icons/fa';
 
-export default function Advertisements() {
+
+export default async function Advertisements() {
+
+    await mongoose.connect(process.env.MONGODB_URI as string);
+  const advertisements = JSON.parse(JSON.stringify( await AdvertisementsModel.find()));
   return (
     <div className='flex flex-col gap-4 justify-between'>
         <Link 
@@ -16,80 +23,15 @@ export default function Advertisements() {
         </Link>
         <div className='flex gap-16 flex-wrap max-w-screen'>
           {/*all adverts*/}
-          <div className='flex flex-col gap-2 p-1 max-w-[300px] text-center items-center justify-center'>
-              <div className='advertContainer w-[295px] h-[295px]'>
-
-              </div>
-              <p className='text-lg font-medium'>
-                  Contact the site administrator for more detailed information
-              </p>
-          </div>
-          <div className='flex flex-col gap-2 p-1 max-w-[295px] text-center'>
-              <div className='advertContainer w-[295px] h-[295px]'>
-
-              </div>
-              <p className='text-lg font-medium'>
-                  Contact the site administrator for more detailed information
-              </p>
-          </div>
-          <div className='flex flex-col gap-2 p-1 max-w-[295px] text-center'>
-              <div className='advertContainer w-[295px] h-[295px]'>
-
-              </div>
-              <p className='text-lg font-medium'>
-                  Contact the site administrator for more detailed information
-              </p>
-          </div>
-
-          <div className='flex flex-col gap-2 p-1 max-w-[300px] text-center items-center justify-center'>
-              <div className='advertContainer w-[295px] h-[295px]'>
-
-              </div>
-              <p className='text-lg font-medium'>
-                  Contact the site administrator for more detailed information
-              </p>
-          </div>
-          <div className='flex flex-col gap-2 p-1 max-w-[295px] text-center'>
-              <div className='advertContainer w-[295px] h-[295px]'>
-
-              </div>
-              <p className='text-lg font-medium'>
-                  Contact the site administrator for more detailed information
-              </p>
-          </div>
-          <div className='flex flex-col gap-2 p-1 max-w-[295px] text-center'>
-              <div className='advertContainer w-[295px] h-[295px]'>
-
-              </div>
-              <p className='text-lg font-medium'>
-                  Contact the site administrator for more detailed information
-              </p>
-          </div>
-
-          <div className='flex flex-col gap-2 p-1 max-w-[300px] text-center items-center justify-center'>
-              <div className='advertContainer w-[295px] h-[295px]'>
-
-              </div>
-              <p className='text-lg font-medium'>
-                  Contact the site administrator for more detailed information
-              </p>
-          </div>
-          <div className='flex flex-col gap-2 p-1 max-w-[295px] text-center'>
-              <div className='advertContainer w-[295px] h-[295px]'>
-
-              </div>
-              <p className='text-lg font-medium'>
-                  Contact the site administrator for more detailed information
-              </p>
-          </div>
-          <div className='flex flex-col gap-2 p-1 max-w-[295px] text-center'>
-              <div className='advertContainer w-[295px] h-[295px]'>
-
-              </div>
-              <p className='text-lg font-medium'>
-                  Contact the site administrator for more detailed information
-              </p>
-          </div>
+          {advertisements ? 
+            advertisements?.map((item: { _id: FormDataEntryValue; title: string; websiteUrl: string; coverUrl: string }, index: number) => (
+                <AdvertisementItem item={item} key={index}/>
+            )
+          ) : (
+            <div className='w-full h-full flex flex-col items-center justify-center'>
+                <div>Not found</div>
+            </div>
+          )}
         </div>
     </div>
   )

@@ -1,9 +1,9 @@
 import {model, models, Schema} from 'mongoose';
 
 export type AdvertisementProps = {
+  _id?: FormDataEntryValue;
   title: string;
   websiteUrl: string;
-  displayName: string;
   coverUrl: string;
 }
 

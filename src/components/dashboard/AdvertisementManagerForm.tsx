@@ -5,22 +5,28 @@ import { useState } from 'react';
 import UploadButton from '../ui/UploadButton';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
-import { createAdvertisement } from '@/actions/AdvertisementActions';
+import { createAdvertisement, updateAdvertisement } from '@/actions/advertisementActions';
+
+import { redirect } from 'next/navigation'
 
 
-type Props = {
-    profileInfo: ProfileInfo | null;
+type AdvertProps = {
+    _id?: FormDataEntryValue;
+    title: string;
+    websiteUrl: string;
+    coverUrl: string;
   };
 
-const AdvertisementManagerForm = ({ advertisement, action }: any) => {
-    const [coverUrl, setCoverUrl] = useState(advertisement?.coverUrl);
+const AdvertisementManagerForm = ({ advertisement, action }: {advertisement?: AdvertProps, action: string}) => {
+    const [coverUrl, setCoverUrl] = useState<string>(advertisement?.coverUrl || '');
     const [title, setTitle] = useState<string>(advertisement?.title || '');
     const [webUrl, setWebUrl] = useState<string>(advertisement?.websiteUrl || '');
     const [loading, setLoading] = useState<boolean>(false);
 
     const reloadPage = () => {
         setTimeout(() => {
-        window.location.reload();
+           return redirect('/admin/advertisements');
+           {/* внеси изменения на роутер пуш и страницу суссес*/}
         }, 2000);
       }
 
@@ -89,10 +95,16 @@ const AdvertisementManagerForm = ({ advertisement, action }: any) => {
     
   return (
     <div>
-        <div>
+        <div className='flex flex-col gap-4'>
             <h1 className='text-accentBg text-4xl font-bold'>
                 <span className='capitalize'>{action}</span> advertisement
             </h1>
+            <Link 
+            className='submitButton mt-8 max-w-max'
+            href={'/admin/advertisements'}
+            >
+                Back to advertisements
+            </Link>
         </div>
         <form action={handleFormAction} className='flex flex-col lg:flex-row gap-6'>
             <div className="flex flex-col gap-2 flex-grow">
@@ -118,6 +130,16 @@ const AdvertisementManagerForm = ({ advertisement, action }: any) => {
                     placeholder="website url..."
                     />
                 </div>
+                {action === "update" && (
+                <div className='hidden'>
+                     <input 
+                    defaultValue={advertisement?._id} 
+                    name="_id" 
+                    id="_id" 
+                    type="text" 
+                    />
+                </div>
+                )}
                 <button className='submitButton'>{action}</button>
             </div>
                 <div className="relative border w-56 h-56 mb-4 border-2 border-accentBg mx-auto">
