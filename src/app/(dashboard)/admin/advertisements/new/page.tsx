@@ -4,7 +4,7 @@ import React from 'react'
 export default function NewAdvertisement() {
   return (
     <div>
-        <AdvertisementManagerForm/>
+        <AdvertisementManagerForm action={"create"}/>
     </div>
   )
 }

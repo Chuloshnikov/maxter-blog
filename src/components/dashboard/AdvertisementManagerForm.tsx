@@ -5,6 +5,7 @@ import { useState } from 'react';
 import UploadButton from '../ui/UploadButton';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
+import { createAdvertisement } from '@/actions/AdvertisementActions';
 
 
 type Props = {
@@ -16,6 +17,12 @@ const AdvertisementManagerForm = ({ advertisement, action }: any) => {
     const [title, setTitle] = useState<string>(advertisement?.title || '');
     const [webUrl, setWebUrl] = useState<string>(advertisement?.websiteUrl || '');
     const [loading, setLoading] = useState<boolean>(false);
+
+    const reloadPage = () => {
+        setTimeout(() => {
+        window.location.reload();
+        }, 2000);
+      }
 
     async function handleFormAction(formData: FormData) {
         setLoading(true);
@@ -43,21 +50,40 @@ const AdvertisementManagerForm = ({ advertisement, action }: any) => {
                     setLoading(false);
                     return;  
                 }
-    
-        await saveProfile(formData);
-        toast.success(`Advertisement ${action}!`, {
-          style: {
-              borderRadius: '0px',
-              border: '1px solid #3DB4FF',
-              padding: '16px',
-              color: '#3DB4FF',
-          },
-          iconTheme: {
-              primary: '#3DB4FF',
-              secondary: '#FFFAEE',
-          },
-      });
+        if (action === "create") {
+            await createAdvertisement(formData);
+                toast.success(`Advertisement ${action}!`, {
+                style: {
+                    borderRadius: '0px',
+                    border: '1px solid #3DB4FF',
+                    padding: '16px',
+                    color: '#3DB4FF',
+                },
+                iconTheme: {
+                    primary: '#3DB4FF',
+                    secondary: '#FFFAEE',
+                },
+            });
+        }
+
+        if (action === "update") {
+            await updateAdvertisement(formData);
+                toast.success(`Advertisement ${action}!`, {
+                style: {
+                    borderRadius: '0px',
+                    border: '1px solid #3DB4FF',
+                    padding: '16px',
+                    color: '#3DB4FF',
+                },
+                iconTheme: {
+                    primary: '#3DB4FF',
+                    secondary: '#FFFAEE',
+                },
+            });
+        }
+        
         setLoading(false);
+        reloadPage();
       }
     
     
@@ -92,6 +118,7 @@ const AdvertisementManagerForm = ({ advertisement, action }: any) => {
                     placeholder="website url..."
                     />
                 </div>
+                <button className='submitButton'>{action}</button>
             </div>
                 <div className="relative border w-56 h-56 mb-4 border-2 border-accentBg mx-auto">
                 {coverUrl && (
