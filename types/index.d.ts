@@ -5,7 +5,7 @@ declare type SearchParamProps = {
 
 declare type AdvertisementItemProps = {
   item: {
-    _id: string;
+    _id?: FormDataEntryValue;
     title: string;
     websiteUrl: string;
     coverUrl: string;
