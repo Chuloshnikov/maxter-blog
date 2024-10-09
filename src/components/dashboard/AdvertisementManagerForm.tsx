@@ -160,7 +160,7 @@ const AdvertisementManagerForm = ({ advertisement, action }: {advertisement?: Ad
         </form>
         <div className='mx-auto'>
             <div className='w-[300px] mx-auto text-center'>
-                <div className='max-w-[295px]'>
+                <div className='max-w-[295px] border border-gray-400'>
                 {webUrl ? (
                     <Link 
                     href={webUrl} 
