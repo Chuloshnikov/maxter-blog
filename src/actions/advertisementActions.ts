@@ -41,7 +41,7 @@ export async function createAdvertisement(formData: FormData) {
   }
 
 
-  export async function saveProfile(formData: FormData) {
+  export async function updateAdvertisement(formData: FormData) {
     await mongoose.connect(process.env.MONGODB_URI as string);
   
     const session = await getServerSession(authOptions);
@@ -49,16 +49,19 @@ export async function createAdvertisement(formData: FormData) {
     const email = session.user?.email;
   
     const {
-        title, coverUrl, websiteUrl, id
+        title, coverUrl, websiteUrl, _id
     } = Object.fromEntries(formData);
+
+    const advertisementId = typeof _id === 'string' ? _id : _id.toString();
   
     const profileInfoDoc = await ProfileInfoModel.findOne({email});
-    const advertisementDoc = await AdvertisementsModel.findOne({_id: id})
+    const advertisementDoc = await AdvertisementsModel.findOne({ _id: advertisementId });
+
     if (profileInfoDoc.admin && advertisementDoc) {
         advertisementDoc.set({title, coverUrl, websiteUrl});
       await advertisementDoc.save();
     } else {
-        throw new Error("not an admin")
+        throw new Error("not an admin or advertisement not found")
     }
 
     return true;
