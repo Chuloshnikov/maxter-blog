@@ -142,7 +142,7 @@ const AdvertisementManagerForm = ({ advertisement, action }: {advertisement?: Ad
                 )}
                 <button className='submitButton'>{action}</button>
             </div>
-                <div className="relative border w-56 h-56 mb-4 border-2 border-accentBg mx-auto">
+                <div className="relative border w-54 h-54 mb-4 border-2 border-accentBg mx-auto">
                 {coverUrl && (
                     <Image 
                     src={coverUrl || ''} 
