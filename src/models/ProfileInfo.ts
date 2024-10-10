@@ -1,6 +1,7 @@
 import {model, models, Schema} from 'mongoose';
 
 export type ProfileInfo = {
+  _id?: FormDataEntryValue;
   email: string;
   username: string;
   displayName: string;
@@ -8,6 +9,7 @@ export type ProfileInfo = {
   avatarUrl: string;
   coverUrl: string;
   admin: boolean;
+  createdAt?: Date
 };
 
 const profileInfoSchema = new Schema<ProfileInfo>({

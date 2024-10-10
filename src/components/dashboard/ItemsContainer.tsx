@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react';
 import UserItem from './users/UserItem';
+import { ProfileInfo } from '@/models/ProfileInfo';
 
 const UsersContainer = ({ items, slug }: any) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -141,7 +142,7 @@ const UsersContainer = ({ items, slug }: any) => {
             <div className='text-lg font-medium'>No {slug}s found</div>
           </div>
         )}
-        {items && currentItems.reverse().map((item, index) => <UserItem key={index} item={item} />)}
+        {items && currentItems.reverse().map((item: ProfileInfo, index: number) => <UserItem key={index} page={"users"} action={"profile"} status={item.admin} item={item} />)}
       </div>
       {/* PAGINATION */}
       {totalPages > 1 && (
