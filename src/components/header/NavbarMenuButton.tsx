@@ -32,7 +32,7 @@ const NavbarMenuButton = ({status}: {status: any}) => {
     
       const links = [
         { name: "Home", href: "/home" },
-        { name: "About", href: "#about" },
+        { name: "About", href: "/#about" },
         { name: "Blog", href: "/blog" },
         { name: "Contacts", href: "/contacts" },
       ];
