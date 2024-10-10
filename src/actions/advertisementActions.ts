@@ -20,6 +20,21 @@ export async function getAllAdvertisements() {
       }
 }
 
+export async function getRandomAdvertisements() {
+  try {
+      await mongoose.connect(process.env.MONGODB_URI as string);
+      const advertisementsDoc = await AdvertisementsModel.aggregate([
+          { $sample: { size: 3 } }
+      ]);
+      return parseStringify(advertisementsDoc);
+  } catch (error) {
+      console.error(
+          "An error occurred while retrieving the advertisements:",
+          error
+      );
+  }
+}
+
 
 export async function createAdvertisement(formData: FormData) {
     await mongoose.connect(process.env.MONGODB_URI as string);
