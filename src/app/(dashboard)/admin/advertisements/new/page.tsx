@@ -1,4 +1,4 @@
-import AdvertisementManagerForm from '@/components/dashboard/AdvertisementManagerForm'
+import AdvertisementManagerForm from '@/components/dashboard/advertisements/AdvertisementManagerForm'
 import React from 'react'
 
 export default function NewAdvertisement() {

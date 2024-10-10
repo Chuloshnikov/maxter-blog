@@ -1,4 +1,4 @@
-import AdvertisementItem from '@/components/dashboard/AdvertisementItem'
+import AdvertisementItem from '@/components/dashboard/advertisements/AdvertisementItem'
 import { AdvertisementsModel } from '@/models/Advertisement';
 import mongoose from 'mongoose';
 import Link from 'next/link'
