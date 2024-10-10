@@ -2,10 +2,12 @@
 import { validateAdvertisementForm } from '@/lib/validation';
 import Image from 'next/image';
 import { useState } from 'react';
-import UploadButton from '../ui/UploadButton';
+import UploadButton from '../../ui/UploadButton';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
 import { createAdvertisement, updateAdvertisement } from '@/actions/advertisementActions';
+
+import { FaArrowLeft } from 'react-icons/fa';
 
 import { redirect } from 'next/navigation'
 
@@ -100,10 +102,11 @@ const AdvertisementManagerForm = ({ advertisement, action }: {advertisement?: Ad
                 <span className='capitalize'>{action}</span> advertisement
             </h1>
             <Link 
-            className='submitButton mt-8 max-w-max'
+            className='submitButton mt-8 max-w-max flex gap-2 items-center'
             href={'/admin/advertisements'}
             >
-                Back to advertisements
+              <FaArrowLeft/>  
+              <span>Back to advertisements</span>
             </Link>
         </div>
         <form action={handleFormAction} className='flex flex-col lg:flex-row gap-6'>

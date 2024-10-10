@@ -1,4 +1,4 @@
-import AdvertisementManagerForm from '@/components/dashboard/AdvertisementManagerForm'
+import AdvertisementManagerForm from '@/components/dashboard/advertisements/AdvertisementManagerForm'
 import { AdvertisementsModel } from '@/models/Advertisement';
 import mongoose from 'mongoose';
 import React from 'react'

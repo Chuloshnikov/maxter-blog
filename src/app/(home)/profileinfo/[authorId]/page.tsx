@@ -4,7 +4,6 @@ import Preloader from '@/components/ui/Preloader';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
-import { generateRandomWords } from '../../../../../test/textContainer';
 import PostsContainer from '@/components/blog/PostsContainer';
 import { PostInfo } from '@/models/Post';
 

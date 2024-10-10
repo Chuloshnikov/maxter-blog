@@ -8,7 +8,7 @@ import ButtonLoading from '../ui/ButtonLoading';
 
 interface PostSender {
     action: string;
-    category: string;
+    category: string | string[];
 }
 
 
