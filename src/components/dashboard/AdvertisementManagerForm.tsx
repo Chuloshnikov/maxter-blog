@@ -174,7 +174,7 @@ const AdvertisementManagerForm = ({ advertisement, action }: {advertisement?: Ad
                             alt='advertisement image'
                             />
                             ) : (
-                            <div className='advertContainer w-[280px] h-[280px]'>
+                            <div className='advertContainer w-[280px] h-[280px] mx-auto'>
                             </div>
                             )}
                             <p className='text-lg font-medium w-[296px] break-words px-1'>
@@ -182,16 +182,16 @@ const AdvertisementManagerForm = ({ advertisement, action }: {advertisement?: Ad
                             </p>
                     </Link>
                     ) : (
-                        <div className='flex flex-col gap-2 p-1 h-98 w-98 text-center'>
+                        <div className='flex flex-col gap-2 p-1 h-auto w-[298px] text-center'>
                             {coverUrl ? (
                                 <Image src={coverUrl} 
                                 width={1024} 
                                 height={1024} 
-                                className='w-98 h-98 object-contain' 
+                                className='w-[296px] h-[296px] object-contain' 
                                 alt='advertisement image'
                             />
                             ) : (
-                                <div className='advertContainer w-[290px] h-[290px]'>
+                                <div className='advertContainer w-[280px] h-[280px] mx-auto'>
                                 </div>
                             )}
                             <p className='text-lg font-medium w-[295px] break-words px-1'>
