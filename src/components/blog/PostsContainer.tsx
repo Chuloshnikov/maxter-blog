@@ -1,10 +1,12 @@
+"use client"
 import { useState } from 'react';
 import PostSkeleton from '../ui/PostSkeleton';
 import PostItem from './PostItem';
 
-const PostsContainer = ({ posts, slug, loading }: any) => {
+const PostsContainer = ({ posts, slug, loading = false }: any) => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
+  console.log(posts);
 
   const totalPages = Math.ceil(posts.length / postsPerPage);
 
@@ -124,7 +126,7 @@ const PostsContainer = ({ posts, slug, loading }: any) => {
   };
 
   return (
-    <div className='border border-2 border-accentBg w-full mt-8 pb-2'>
+    <div className='border border-2 border-accentBg w-full my-8 pb-2'>
       <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
       <div>
         {loading && (
