@@ -140,9 +140,9 @@ const AdvertisementManagerForm = ({ advertisement, action }: {advertisement?: Ad
                     />
                 </div>
                 )}
-                <button className='submitButton'>{action}</button>
+                <button className='submitButton capitalize'>{action}</button>
             </div>
-                <div className="relative border w-54 h-54 mb-4 border-2 border-accentBg mx-auto">
+                <div className="relative border w-56 h-56 mb-4 border-2 border-accentBg mx-auto">
                 {coverUrl && (
                     <Image 
                     src={coverUrl || ''} 
@@ -159,39 +159,39 @@ const AdvertisementManagerForm = ({ advertisement, action }: {advertisement?: Ad
                 </div>
         </form>
         <div className='mx-auto'>
-            <div className='w-[300px] mx-auto text-center'>
-                <div className='max-w-[295px] border border-gray-400'>
+            <div className='w-[302px] mx-auto text-center'>
+                <div className='w-[300px] border border-gray-400'>
                 {webUrl ? (
                     <Link 
                     href={webUrl} 
                     target="_blank" 
-                    className='flex flex-col gap-2 p-1 h-auto w-[295px] text-center'>
+                    className='flex flex-col gap-2 p-1 h-auto w-[298px] text-center'>
                         {coverUrl ? (
                             <Image src={coverUrl} 
                             width={1024} 
                             height={1024} 
-                            className='w-[295px] h-[295px] object-contain' 
+                            className='w-[296px] h-[296px] object-contain mx-auto' 
                             alt='advertisement image'
                             />
                             ) : (
-                            <div className='advertContainer w-[295px] h-[295px]'>
+                            <div className='advertContainer w-[280px] h-[280px]'>
                             </div>
                             )}
-                            <p className='text-lg font-medium w-[295px] break-words px-1'>
+                            <p className='text-lg font-medium w-[296px] break-words px-1'>
                                 {title}
                             </p>
                     </Link>
                     ) : (
-                        <div className='flex flex-col gap-2 p-1 h-auto w-[295px] text-center'>
+                        <div className='flex flex-col gap-2 p-1 h-98 w-98 text-center'>
                             {coverUrl ? (
                                 <Image src={coverUrl} 
                                 width={1024} 
                                 height={1024} 
-                                className='w-[295px] h-[295px] object-contain' 
+                                className='w-98 h-98 object-contain' 
                                 alt='advertisement image'
                             />
                             ) : (
-                                <div className='advertContainer w-[295px] h-[295px]'>
+                                <div className='advertContainer w-[290px] h-[290px]'>
                                 </div>
                             )}
                             <p className='text-lg font-medium w-[295px] break-words px-1'>
