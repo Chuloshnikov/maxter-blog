@@ -22,3 +22,4 @@ export async function GET(request: Request, { params }: { params: { authorId: st
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }
+

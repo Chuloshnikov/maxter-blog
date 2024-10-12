@@ -33,7 +33,7 @@ return (
             {item.email}
         </div>
         <div className='hidden lg:block font-medium text-sm flex-1'>
-            {!status ? (<span className='flex gap-1 items-center'>Admin <IoCheckboxSharp className='text-green-500 w-6 h-6'/></span>) : <span>not an admin</span>}
+            {status ? (<span className='flex gap-1 items-center'>Admin <IoCheckboxSharp className='text-green-500 w-6 h-6'/></span>) : <span>not an admin</span>}
         </div>
         <span className='font-medium text-sm whitespace-nowrap flex-shrink-0 lg:flex-1'>
             {DateConverter({ mongoDate: item.createdAt })}
