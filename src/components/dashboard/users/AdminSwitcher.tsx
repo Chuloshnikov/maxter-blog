@@ -1,9 +1,11 @@
 "use client";
 import { useState } from 'react';
+import { redirect } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 const AdminSwitcher = ({ userId, admin }: { userId: FormDataEntryValue, admin: boolean }) => {
   const [isAdmin, setIsAdmin] = useState<boolean>(admin || false);
+  const [reloadPage, setReloadPage] = useState<boolean>(false);
 
   async function adminSwitchHandler(newIsAdmin: boolean) {
     const data = { userId, isAdmin: newIsAdmin };
@@ -59,11 +61,18 @@ const AdminSwitcher = ({ userId, admin }: { userId: FormDataEntryValue, admin: b
     }
   }
 
-  const toggleSwitch = () => {
+const toggleSwitch = () => {
     const newIsAdmin = !isAdmin;
     setIsAdmin(newIsAdmin);
     adminSwitchHandler(newIsAdmin);
-  };
+    setReloadPage(true);
+};
+
+if (reloadPage) {
+    setTimeout(() => {
+        window.location.reload();
+    }, 2000); 
+}
 
   return (
     <div className="flex border-2 border-accentBg max-w-max p-2">
