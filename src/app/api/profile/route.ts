@@ -6,19 +6,18 @@ import { NextResponse } from "next/server";
 
 export async function PUT(request: Request) {
   const { userId, isAdmin } = await request.json();
+
   
-  // Проверка на валидность данных
+  // data 
   if (!userId || typeof isAdmin === 'undefined') {
     return NextResponse.json({ message: 'Invalid request data' }, { status: 400 });
   }
 
-  // Подключение к базе данных
-  if (mongoose.connection.readyState !== 1) {
     await mongoose.connect(process.env.MONGODB_URI as string);
-  }
+
 
   try {
-    const session = await getServerSession(authOptions);
+    const session = await JSON.parse(JSON.stringify(await getServerSession(authOptions)));
     
     if (!session) {
       return NextResponse.json({ message: 'Not authenticated' }, { status: 401 });
@@ -43,3 +42,18 @@ export async function PUT(request: Request) {
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }
+
+export async function DELETE(req) {
+    await mongoose.connect(process.env.MONGODB_URI as string);
+    const session = await JSON.parse(JSON.stringify(await getServerSession(authOptions)));;
+
+    const email = session.user.email;
+    const profile = await ProfileInfoModel.findOne({ email });
+    const url = new URL(req.url);
+    const _id = url.searchParams.get('_id');
+    if (profile && profile.admin) {
+      await ProfileInfoModel.deleteOne({_id});
+    } else {
+        return NextResponse.json({ message: 'Forbidden: You do not have rights for this action' }, { status: 403 });
+    }
+  }
