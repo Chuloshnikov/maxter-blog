@@ -29,7 +29,7 @@ const PostItem = ({post, title }: {post: PostItemProps, title?: string}) => {
       }
 
   return (
-    <Link href={`/post/${post._id}`} className='flex justify-between mdl:items-center text-md font-medium p-2 hover:bg-accentBg/25'>
+    <Link href={`/post/${post._id}`} className='flex gap-4 justify-between mdl:items-center text-md font-medium p-2 hover:bg-accentBg/25'>
         <div className='flex flex-col gap-1'>
             <h2 className='text-accentBg font-bold text-base leading-5 mdl:text-xl'>{post.title}</h2>
             <div className='flex gap-2 text-gray-600 font-semibold flex-grow -mt-2'>
@@ -43,7 +43,7 @@ const PostItem = ({post, title }: {post: PostItemProps, title?: string}) => {
         )}
         </div>
        
-        <span className='font-medium text-sm'>{DateConverter({ mongoDate: post.createdAt })}</span>
+        <span className='font-medium text-sm whitespace-nowrap flex-shrink-0'>{DateConverter({ mongoDate: post.createdAt })}</span>
     </Link>
   )
 }

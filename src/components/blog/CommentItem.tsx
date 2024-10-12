@@ -30,7 +30,7 @@ const CommentItem = ({comment}: {comment: CommentTypes}) => {
           <Image src={authorAvatarUrl} width={20} height={20} className='w-[20px] h-[20px]' alt='avatar'/>
           <span className='font-semibold text-gray-600'>{authorName}</span>
         </Link>
-        <div className='text-xs md:text-base'>
+        <div className='text-xs md:text-base whitespace-nowrap flex-shrink-0'>
           {DateConverter({ mongoDate: createdAt })}
         </div>
       </div>
