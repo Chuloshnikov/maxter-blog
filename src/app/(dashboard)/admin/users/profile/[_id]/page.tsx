@@ -1,5 +1,6 @@
 import CommentsContainer from '@/components/blog/CommentsContainer';
 import PostsContainer from '@/components/blog/PostsContainer';
+import AdminSwitcher from '@/components/dashboard/users/AdminSwitcher';
 import { CommentsModel } from '@/models/Comment';
 import { PostInfoModel } from '@/models/Post';
 import { ProfileInfoModel } from '@/models/ProfileInfo';
@@ -13,6 +14,7 @@ export default async function User({ params: { _id } }: { params: { _id: string 
   const user = JSON.parse(JSON.stringify( await ProfileInfoModel.findOne({_id})));
   const userPosts = JSON.parse(JSON.stringify( await PostInfoModel.find({authorId: _id})));
   const userComments = JSON.parse(JSON.stringify( await CommentsModel.find({authorId: _id})));
+
 
   return (
     <div className='flex flex-col gap-8 xl:flex-row justify-evenly mx-2'>
@@ -85,6 +87,7 @@ export default async function User({ params: { _id } }: { params: { _id: string 
           id="bioInput"
           placeholder="bio..."
         />
+        <AdminSwitcher userId={user?._id} admin={user?.admin}/>
       </div>
       <div className='mt-4'>
         <h3 className='text-4xl font-bold text-accentBg'>All user posts</h3>

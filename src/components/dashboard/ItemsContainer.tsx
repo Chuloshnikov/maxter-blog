@@ -3,7 +3,7 @@ import { useState } from 'react';
 import UserItem from './users/UserItem';
 import { ProfileInfo } from '@/models/ProfileInfo';
 
-const UsersContainer = ({ items, slug }: any) => {
+const ItemsContainer = ({ items, slug }: any) => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
 
@@ -154,4 +154,4 @@ const UsersContainer = ({ items, slug }: any) => {
   );
 };
 
-export default UsersContainer;
+export default ItemsContainer;
