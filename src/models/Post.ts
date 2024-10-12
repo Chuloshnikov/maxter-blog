@@ -1,6 +1,7 @@
 import { Schema, model, models } from 'mongoose';
 
 export type PostInfo = {
+  _id?: FormDataEntryValue;
   slug: string,
   title: string,
   desc: string,

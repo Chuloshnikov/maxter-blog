@@ -31,7 +31,6 @@ const ProfileInfo = ({ params: { authorId } }: { params: { authorId: string } })
   const [profile, setProfile] = useState<Profile | null>(null);
   const [posts, setPosts] = useState<PostInfo[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [authorPostsError, setAuthorPostsError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {

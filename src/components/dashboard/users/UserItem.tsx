@@ -10,7 +10,6 @@ const UserItem = ({ item, page, action, status }: {item: ProfileInfo, page: stri
 
 if (!item) {
         return <PostSkeleton/>
-    
     }
 
 return (
