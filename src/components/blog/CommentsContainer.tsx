@@ -3,16 +3,24 @@ import React, { useEffect, useState } from "react";
 import CommentItem from "./CommentItem";
 import { CommentTypes } from "@/models/Comment";
 import CommentSkeleton from "../ui/CommentSkeleton";
+import { getUserComments } from "@/actions/commentsActions";
 
-const CommentsContainer = ({ id }: any) => {
+const CommentsContainer = ({ id, userComments, slug }: any) => {
   const [comments, setComments] = useState<CommentTypes[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState(1);
   const commentsPerPage = 10;
 
+
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/comments/${id}`)
+    if (userComments) {
+      setComments(userComments);
+      setLoading(false);
+    } 
+    
+    if (id) {
+      fetch(`/api/comments/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -27,7 +35,10 @@ const CommentsContainer = ({ id }: any) => {
         console.error("Error fetching comments:", error);
         setComments([]);
       });
-  }, [id]);
+    }
+    
+    
+  }, [id, userComments]);
 
   const totalPages = Math.ceil(comments.length / commentsPerPage);
 
@@ -149,7 +160,7 @@ const CommentsContainer = ({ id }: any) => {
   return (
     <div className="border border-2 border-accentBg w-full mt-4 pb-2">
       <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">
-        All <span className="lowercase">comments</span>
+        All <span className="lowercase">{slug && `${slug} `}comments</span>
       </h2>
       <div>
         {loading && (

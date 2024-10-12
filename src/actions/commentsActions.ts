@@ -16,3 +16,16 @@ export async function getAllComments() {
         );
       }
 }
+
+export async function getUserComments({userId}: {userId: FormDataEntryValue}) {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI as string);
+    const commentsDoc = await CommentsModel.find({authorId: userId});
+    return parseStringify(commentsDoc);
+  } catch (error) {
+    console.error(
+      "An error occurred while retrieving the patient details:",
+      error
+    );
+  }
+}

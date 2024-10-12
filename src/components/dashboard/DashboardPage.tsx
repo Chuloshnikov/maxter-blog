@@ -18,28 +18,23 @@ import Preloader from "../ui/Preloader";
 const DashboardPage = () => {
     const dispatch = useDispatch<AppDispatch>();
 
-    const users = useSelector((state: RootState) => state.users.users);
     const posts = useSelector((state: RootState) => state.posts.posts);
     const comments = useSelector((state: RootState) => state.comments.comments);
   
-    const usersStatus = useSelector((state: RootState) => state.users.status);
     const postsStatus = useSelector((state: RootState) => state.posts.status);
     const commentsStatus = useSelector((state: RootState) => state.comments.status);
 
     useEffect(() => {
-        if (usersStatus === 'idle') {
-          dispatch(fetchUsers());
-        }
         if (postsStatus === 'idle') {
           dispatch(fetchPosts());
         }
         if (commentsStatus === 'idle') {
           dispatch(fetchComments());
         }
-      }, [dispatch, usersStatus, postsStatus, commentsStatus]);
+      }, [dispatch, postsStatus, commentsStatus]);
     
       //dashboard status loading
-      if (usersStatus === 'loading' || postsStatus === 'loading' || commentsStatus === 'loading') {
+      if (postsStatus === 'loading' || commentsStatus === 'loading') {
         return (
             <div className="w-full h-full flex items-center justify-center">
               <Preloader/>
@@ -48,7 +43,7 @@ const DashboardPage = () => {
       }
     
       //dashboard status error
-      if (usersStatus === 'failed' || postsStatus === 'failed' || commentsStatus === 'failed') {
+      if (postsStatus === 'failed' || commentsStatus === 'failed') {
         return (
             <div className="flex w-screen h-screen">
                  <div className="w-full h-full flex flex-col justify-center items-center">

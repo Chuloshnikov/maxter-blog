@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import PostSkeleton from '../ui/PostSkeleton';
 import PostItem from './PostItem';
+import { PostInfo } from '@/models/Post';
 
 const PostsContainer = ({ posts, slug, loading = false }: any) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -141,7 +142,7 @@ const PostsContainer = ({ posts, slug, loading = false }: any) => {
             <div className='text-lg font-medium'>No posts found</div>
           </div>
         )}
-        {posts && currentPosts.reverse().map((post, index) => <PostItem key={index} post={post} />)}
+        {posts && currentPosts.reverse().map((post: PostInfo, index: number) => <PostItem key={index} post={post} />)}
       </div>
       {/* PAGINATION */}
       {totalPages > 1 && (
