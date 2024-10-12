@@ -66,7 +66,7 @@ const AdminSwitcher = ({ userId, admin }: { userId: FormDataEntryValue, admin: b
   };
 
   return (
-    <div className="flex mt-4 border-2 border-accentBg max-w-max p-2">
+    <div className="flex border-2 border-accentBg max-w-max p-2">
       <div className="text-accent-bg text-lg font-bold max-w-[170px] min-h-[50px]">
         {!isAdmin ? (
           <span className="text-gray-500">

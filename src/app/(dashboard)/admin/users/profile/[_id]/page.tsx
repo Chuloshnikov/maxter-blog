@@ -1,6 +1,7 @@
 import CommentsContainer from '@/components/blog/CommentsContainer';
 import PostsContainer from '@/components/blog/PostsContainer';
 import AdminSwitcher from '@/components/dashboard/users/AdminSwitcher';
+import DeleteUser from '@/components/dashboard/users/DeleteUser';
 import { CommentsModel } from '@/models/Comment';
 import { PostInfoModel } from '@/models/Post';
 import { ProfileInfoModel } from '@/models/ProfileInfo';
@@ -87,7 +88,11 @@ export default async function User({ params: { _id } }: { params: { _id: string 
           id="bioInput"
           placeholder="bio..."
         />
-        <AdminSwitcher userId={user?._id} admin={user?.admin}/>
+        <div className='flex justify-between mt-4'>
+          <AdminSwitcher userId={user?._id} admin={user?.admin}/>
+          <DeleteUser id={user?._id}/>
+        </div>
+        
       </div>
       <div className='mt-4'>
         <h3 className='text-4xl font-bold text-accentBg'>All user posts</h3>
