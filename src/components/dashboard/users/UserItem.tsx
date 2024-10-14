@@ -6,14 +6,14 @@ import React from 'react'
 
 import { IoCheckboxSharp } from "react-icons/io5";
 
-const UserItem = ({ item, page, action, status }: {item: ProfileInfo, page: string, action: string, status: boolean}) => {
+const UserItem = ({ item, status }: {item: ProfileInfo, status: boolean}) => {
 
 if (!item) {
         return <PostSkeleton/>
     }
 
 return (
-    <Link href={`/admin/${page}/${action}/${item._id}`} className='flex flex-col sml:flex-row justify-between gap-10 mdl:items-center text-md font-medium p-2 hover:bg-accentBg/25'>
+    <Link href={`/admin/users/profile/${item._id}`} className='flex flex-col sml:flex-row justify-between gap-10 mdl:items-center text-md font-medium p-2 hover:bg-accentBg/25'>
         <div className='flex flex-col gap-1 mdl:gap-0 flex-1'>
             {item.displayName ? (
                 <span className='text-accentBg font-bold text-base leading-5 mdl:leading-0 mdl:text-xl'>

@@ -1,9 +1,9 @@
 "use client"
 import { useState } from 'react';
-import Item from './Item';
+import UserItem from './UserItem';
 import { ProfileInfo } from '@/models/ProfileInfo';
 
-const ItemsContainer = ({ items, slug, page, action }: any) => {
+const UsersContainer = ({ items, slug }: any) => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
 
@@ -127,13 +127,13 @@ const ItemsContainer = ({ items, slug, page, action }: any) => {
   return (
     <div className='border border-2 border-accentBg w-full my-8 pb-2'>
       <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
-      <div className='min-h-[400px]'>
+      <div>
         {!items?.length && (
           <div className='w-full h-[400px] flex items-center justify-center'>
             <div className='text-lg font-medium'>No {slug}s found</div>
           </div>
         )}
-        {items && currentItems.reverse().map((item: ProfileInfo, index: number) => <Item key={index} page={"users"} action={"profile"} status={item.admin} item={item} />)}
+        {items && currentItems.reverse().map((item: ProfileInfo, index: number) => <UserItem key={index} page={"users"} action={"profile"} status={item.admin} item={item} />)}
       </div>
       {/* PAGINATION */}
       {totalPages > 1 && (
@@ -145,4 +145,4 @@ const ItemsContainer = ({ items, slug, page, action }: any) => {
   );
 };
 
-export default ItemsContainer;
+export default UsersContainer;
