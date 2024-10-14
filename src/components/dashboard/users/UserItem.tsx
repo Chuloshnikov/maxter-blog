@@ -15,7 +15,11 @@ if (!item) {
 return (
     <Link href={`/admin/${page}/${action}/${item._id}`} className='flex flex-col sml:flex-row justify-between gap-10 mdl:items-center text-md font-medium p-2 hover:bg-accentBg/25'>
         <div className='flex flex-col gap-1 mdl:gap-0 flex-1'>
-            <span className='text-accentBg font-bold text-base leading-5 mdl:leading-0 mdl:text-xl'>{item.displayName}</span>
+            {item.displayName ? (
+                <span className='text-accentBg font-bold text-base leading-5 mdl:leading-0 mdl:text-xl'>
+                    {item.displayName}
+                </span>
+                ) : (<span className='text-gray-500 font-bold text-base leading-5 mdl:leading-0 mdl:text-xl'>No info...</span>)}
             <div className='lg:hidden flex gap-2 text-gray-600 font-semibold flex-grow -mt-2'>
                 {item.username}
             </div>
