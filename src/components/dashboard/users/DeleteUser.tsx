@@ -6,7 +6,7 @@ const DeleteUser = ({ id }: {id: string}) => {
     const [redirectToUsers, setRedirectToUsers] = useState<boolean>(false);
 
     async function handleDeleteClick() {
-            const res = await fetch('/api/users/profile/?_id=' + id, {
+            const res = await fetch('/api/profile/?_id=' + id, {
                 method: 'DELETE',
             });
             setRedirectToUsers(true);
@@ -20,7 +20,9 @@ const DeleteUser = ({ id }: {id: string}) => {
 
   return (
     <div>
-        <button className='px-4 py-2 text-white font-semibold text-semibold bg-red-500 border-2 border-red-500 hover:bg-white hover:text-red-500 duration-200'>
+        <button 
+        onClick={handleDeleteClick}
+        className='px-4 py-2 text-white font-semibold text-semibold bg-red-500 border-2 border-red-500 hover:bg-white hover:text-red-500 duration-200'>
             Delete user
         </button>
     </div>
