@@ -1,5 +1,4 @@
-import AdminPagesTitle from '@/components/dashboard/AdminPagesTitle'
-import ItemsContainer from '@/components/dashboard/ItemsContainer';
+import UsersContainer from '@/components/dashboard/users/UsersContainer';
 import { ProfileInfoModel } from '@/models/ProfileInfo';
 import mongoose from 'mongoose';
 
@@ -11,7 +10,7 @@ export default async function Users() {
   return (
     <div className='flex flex-col gap-4 justify-between'>
       <div>
-        <ItemsContainer items={allProfiles} slug={"all users"}/>
+        <UsersContainer items={allProfiles} slug={"all users"}/>
       </div>
     </div>
   )
