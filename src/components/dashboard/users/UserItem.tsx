@@ -19,7 +19,7 @@ return (
                 <span className='text-accentBg font-bold text-base leading-5 mdl:leading-0 mdl:text-xl'>
                     {item.displayName}
                 </span>
-                ) : (<span className='text-gray-500 font-bold text-base leading-5 mdl:leading-0 mdl:text-xl'>No info...</span>)}
+                ) : (<span className='text-gray-500 font-bold text-base leading-5 mdl:leading-0 mdl:text-xl'>No displayname...</span>)}
             <div className='lg:hidden flex gap-2 text-gray-600 font-semibold flex-grow -mt-2'>
                 {item.username}
             </div>
