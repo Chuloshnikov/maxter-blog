@@ -43,16 +43,17 @@ export async function PUT(request: Request) {
   }
 }
 
-export async function DELETE(req) {
+export async function DELETE(request: Request) {
     await mongoose.connect(process.env.MONGODB_URI as string);
     const session = await JSON.parse(JSON.stringify(await getServerSession(authOptions)));;
 
     const email = session.user.email;
     const profile = await ProfileInfoModel.findOne({ email });
-    const url = new URL(req.url);
+    const url = new URL(request.url);
     const _id = url.searchParams.get('_id');
     if (profile && profile.admin) {
-      await ProfileInfoModel.deleteOne({_id});
+      await ProfileInfoModel.deleteOne({ _id });
+      return NextResponse.json({ message: 'Profile deleted successfully' }, { status: 200 });
     } else {
         return NextResponse.json({ message: 'Forbidden: You do not have rights for this action' }, { status: 403 });
     }
