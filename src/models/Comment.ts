@@ -2,6 +2,7 @@ import { Schema, model, models } from 'mongoose';
 
 
 export interface CommentTypes {
+    _id?: FormDataEntryValue;
     authorName: string;
     authorAvatarUrl: string;
     authorEmail: string;
