@@ -6,7 +6,7 @@ import PostSkeleton from '../ui/PostSkeleton';
 const Item = ({page, action, status, id, author, email, createdAt}: any) => {
 return (
     <Link href={`/admin/${page}/${action}/${id}`} className='flex flex-col mt-2 sml:flex-row justify-between sml:gap-10 mdl:items-center text-md font-medium p-2 hover:bg-accentBg/25'>
-        <div className='flex flex-col gap-1 mdl:gap-0 flex'>
+        <div className='flex flex-col gap-1 mdl:gap-0'>
             <div className='lg:hidden flex gap-2 text-gray-600 font-semibold flex-grow -mt-2'>
                 {author}
             </div>

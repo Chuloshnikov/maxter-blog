@@ -46,7 +46,7 @@ export default async function User({ params: { _id } }: { params: { _id: string 
         </div>
       </div>
       <div>
-        <label className="input-label" htmlFor="displayNameInput">user name</label>
+        <label className="input-label" htmlFor="usernameInput">user name</label>
         <input
           defaultValue={user?.username}
           disabled
@@ -57,7 +57,7 @@ export default async function User({ params: { _id } }: { params: { _id: string 
         />
       </div>
       <div>
-        <label className="input-label" htmlFor="displayNameInput">dysplay name</label>
+        <label className="input-label" htmlFor="displayNameInput">display name</label>
         <input
           defaultValue={user?.displayName}
           disabled
@@ -68,14 +68,14 @@ export default async function User({ params: { _id } }: { params: { _id: string 
         />
       </div>
       <div>
-        <label className="input-label" htmlFor="displayNameInput">dysplay name</label>
+        <label className="input-label" htmlFor="emailInput">email</label>
         <input
           defaultValue={user?.email}
           disabled
-          name="displayName"
-          id="displaynameInput"
+          name="email"
+          id="emailInput"
           type="text"
-          placeholder="display name..."
+          placeholder="email..."
         />
       </div>
       <div>
@@ -90,7 +90,7 @@ export default async function User({ params: { _id } }: { params: { _id: string 
         />
         <div className='flex justify-between mt-4'>
           <AdminSwitcher userId={user?._id} admin={user?.admin}/>
-          <DeleteUser id={user?._id}/>
+          <DeleteUser item={"user"} dir={"profile"} id={user?._id}/>
         </div>
         
       </div>
