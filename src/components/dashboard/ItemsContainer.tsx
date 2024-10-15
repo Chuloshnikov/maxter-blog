@@ -1,7 +1,8 @@
 "use client"
 import { useState } from 'react';
 import Item from './Item';
-import { ProfileInfo } from '@/models/ProfileInfo';
+import { PostInfo } from '@/models/Post';
+import { CommentTypes } from '@/models/Comment';
 
 const ItemsContainer = ({ items, slug, page, action }: any) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -133,7 +134,17 @@ const ItemsContainer = ({ items, slug, page, action }: any) => {
             <div className='text-lg font-medium'>No {slug}s found</div>
           </div>
         )}
-        {items && currentItems.reverse().map((item: ProfileInfo, index: number) => <Item key={index} page={"users"} action={"profile"} status={item.admin} item={item} />)}
+        {items && currentItems.reverse().map((item: PostInfo | CommentTypes, index: number) => (
+          <Item 
+          key={index} 
+          page={"posts"} 
+          action={"check"} 
+          status={item.approved} 
+          author={ 'displayName' in item ? item.displayName : item.authorName} 
+          email ={ 'userEmail' in item ? item.userEmail : item.authorEmail}
+          id={item._id} 
+          />
+          ))}
       </div>
       {/* PAGINATION */}
       {totalPages > 1 && (
