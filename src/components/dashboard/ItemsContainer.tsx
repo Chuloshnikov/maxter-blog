@@ -137,12 +137,14 @@ const ItemsContainer = ({ items, slug, page, action }: any) => {
         {items && currentItems.reverse().map((item: PostInfo | CommentTypes, index: number) => (
           <Item 
           key={index} 
-          page={"posts"} 
-          action={"check"} 
+          page={page}
+          action={action} 
           status={item.approved} 
           author={ 'displayName' in item ? item.displayName : item.authorName} 
           email ={ 'userEmail' in item ? item.userEmail : item.authorEmail}
           id={item._id} 
+          createdAt={item.createdAt}
+          
           />
           ))}
       </div>

@@ -7,7 +7,12 @@ export default async function Posts() {
   const allPosts = JSON.parse(JSON.stringify( await PostInfoModel.find()));
   return (
     <div className='flex flex-col gap-4 justify-between'>
-      <ItemsContainer items={allPosts} slug={"all posts"}/>
+      <ItemsContainer 
+       page={"posts"} 
+       action={"check"} 
+      items={allPosts} 
+      slug={"all posts"}
+      />
     </div>
   )
 }
