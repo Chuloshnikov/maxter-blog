@@ -18,6 +18,7 @@ export type PostInfo = {
   approved: boolean,
   usersLiked: string[],
   usersDisliked: string[],
+  createdAt?: Date;
 };
 
 const postInfoSchema = new Schema<PostInfo>({

@@ -3,7 +3,7 @@ import DateConverter from '../ui/DateConverter';
 import Link from 'next/link';
 import PostSkeleton from '../ui/PostSkeleton';
 
-const Item = ({page, action, status, id, author, email}: any) => {
+const Item = ({page, action, status, id, author, email, createdAt}: any) => {
 return (
     <Link href={`/admin/${page}/${action}/${id}`} className='flex flex-col mt-2 sml:flex-row justify-between sml:gap-10 mdl:items-center text-md font-medium p-2 hover:bg-accentBg/25'>
         <div className='flex flex-col gap-1 mdl:gap-0 flex'>
@@ -27,7 +27,7 @@ return (
             {status ? (<span className='text-green-500'>approved</span>) : <span className='text-red-400'>not approved</span>}
         </div>
         <span className='font-medium text-sm whitespace-nowrap flex-shrink-0 lg:flex-1'>
-            {DateConverter({ mongoDate: item.createdAt })}
+            {DateConverter({ mongoDate: createdAt })}
         </span>
     </Link>
     )
