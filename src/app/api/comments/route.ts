@@ -62,7 +62,7 @@ export async function PUT(request: Request) {
       const profile = await ProfileInfoModel.findOne({ email });
       
       if (profile && profile.admin) {
-        const approvalSwitch  = await CommentsModel.findByIdAndUpdate(id, { admin: isApproved }, { new: true });
+        const approvalSwitch  = await CommentsModel.findByIdAndUpdate(id, { approved: isApproved }, { new: true });
         
         if (!approvalSwitch) {
           return NextResponse.json({ message: 'User not found' }, { status: 404 });
