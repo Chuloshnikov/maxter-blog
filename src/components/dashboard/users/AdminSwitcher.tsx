@@ -1,6 +1,5 @@
 "use client";
 import { useState } from 'react';
-import { redirect } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 const AdminSwitcher = ({ userId, admin }: { userId: FormDataEntryValue, admin: boolean }) => {
