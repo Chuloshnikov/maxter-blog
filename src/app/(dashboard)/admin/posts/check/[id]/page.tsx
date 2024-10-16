@@ -1,3 +1,4 @@
+import PostManager from '@/components/blog/PostManager';
 import Author from '@/components/dashboard/Author';
 import TextCheckPage from '@/components/dashboard/TextCheckPage';
 import { PostInfoModel } from '@/models/Post';
@@ -12,7 +13,7 @@ export default async function CheckPost({ params: { id } }: { params: { id: stri
   return (
     <div className='ml-10'>
         {user ? (<Author user={user}/>) : <span className='py-4 text-gray-500 font-semibold'>Author unknown...</span>}
-        <TextCheckPage title={post.title} text={post.desc} img={post.img}/>
+        <TextCheckPage item={post} title={post.title} text={post.desc} img={post.img} action={"posts"}/>
     </div>
   )
 }

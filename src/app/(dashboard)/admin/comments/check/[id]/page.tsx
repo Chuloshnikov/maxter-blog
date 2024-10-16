@@ -12,7 +12,7 @@ export default async function CheckComment({ params: { id } }: { params: { id: s
   return (
     <div className='ml-10'>
          {user ? (<Author user={user}/>) : <div className='py-4 text-gray-500 font-semibold'>Author unknown...</div>}
-        <TextCheckPage text={comment.desc}/>
+        <TextCheckPage item={comment} text={comment.desc} action={"comments"}/>
     </div>
   )
 }

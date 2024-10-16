@@ -2,7 +2,7 @@
 import { useState } from "react";
 import toast from 'react-hot-toast';
 
-const ApprovalButton = ({ id, approved, item, }: { id: FormDataEntryValue, approved: boolean, item: string }) => {
+const ApprovalButton = ({ id, approved, action, }: { id: FormDataEntryValue, approved: boolean, action: string }) => {
     const [isApproved, setIsApproved] = useState<boolean>(approved || false);
     const [reloadPage, setReloadPage] = useState<boolean>(false);
 
@@ -10,14 +10,14 @@ const ApprovalButton = ({ id, approved, item, }: { id: FormDataEntryValue, appro
         const data = { id, isApproved: newIsApproved };
         
         try {
-          const response = await fetch(`/api/${item}`, {
+          const response = await fetch(`/api/${action}`, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
           });
     
           if (response.ok) {
-            toast.success(`${item} status changed`, {
+            toast.success(`${action} status changed`, {
               style: {
                 borderRadius: '0px',
                 border: '1px solid #3DB4FF',
@@ -74,8 +74,8 @@ const ApprovalButton = ({ id, approved, item, }: { id: FormDataEntryValue, appro
     }
 
     return (
-        <div className="flex border-2 border-accentBg max-w-max p-2">
-          <div className="text-accent-bg text-lg font-bold max-w-[170px] min-h-[50px]">
+        <div className="flex border-2 border-gray-500 max-w-max p-2">
+          <div className="text-accent-bg text-lg font-bold min-w-[120px]">
             {!isApproved ? (
               <span className="text-yellow-500">
                 not approved
@@ -86,7 +86,7 @@ const ApprovalButton = ({ id, approved, item, }: { id: FormDataEntryValue, appro
               </span>
             )}
           </div>
-          <div className="mt-6">
+          <div>
             <div
               onClick={toggleSwitch}
               className={`w-16 h-8 flex items-center p-1 cursor-pointer transition-colors ${

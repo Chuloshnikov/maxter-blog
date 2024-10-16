@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import React from 'react'
+import ApprovalButton from './ApprovalButton';
 
-const TextCheckPage = ({text, title, img }: {text: string, title?: string, img?: string }) => {
+const TextCheckPage = ({item, text, title, img, action}: {item: any, text: string, title?: string, img?: string, action: string }) => {
   return (
     <div className='flex flex-col gap-4'>
       {img && (
@@ -23,7 +24,7 @@ const TextCheckPage = ({text, title, img }: {text: string, title?: string, img?:
         </div>
       </div>
       <div className='flex justify-between items-center'>
-        ApprovalButton      
+       <ApprovalButton id={item._id} approved={item.approved} action={action}/>     
         DeleteButton
       </div>
     </div>
