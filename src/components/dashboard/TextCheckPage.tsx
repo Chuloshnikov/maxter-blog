@@ -1,8 +1,16 @@
 import Image from 'next/image';
 import React from 'react'
 import ApprovalButton from './ApprovalButton';
+import DeleteButton from './DeleteButton';
 
 const TextCheckPage = ({item, text, title, img, action}: {item: any, text: string, title?: string, img?: string, action: string }) => {
+
+  const sliceLastSymbolOfString = (inputString: string) => {
+    const resultString = inputString.slice(0, -1);
+    return resultString;
+  };
+
+
   return (
     <div className='flex flex-col gap-4'>
       {img && (
@@ -19,13 +27,13 @@ const TextCheckPage = ({item, text, title, img, action}: {item: any, text: strin
         )}
       <div>
         <span className='block mt-4 text-xs uppercase font-bold text-gray-400'>Text</span>
-        <div className='bg-gray-200 p-4'>
+        <div className='bg-gray-200 p-4 break-words overflow-hidden'>
           {text}
         </div>
       </div>
       <div className='flex justify-between items-center'>
        <ApprovalButton id={item._id} approved={item.approved} action={action}/>     
-        DeleteButton
+       <DeleteButton item={sliceLastSymbolOfString(action)} dir={action} id={item?._id}/>
       </div>
     </div>
   )

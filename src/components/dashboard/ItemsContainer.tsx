@@ -128,7 +128,7 @@ const ItemsContainer = ({ items, slug, page, action }: any) => {
   return (
     <div className='border border-2 border-accentBg w-full my-8 pb-2'>
       <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
-      <div className='min-h-[400px]'>
+      <div className='min-h-[450px]'>
         {!items?.length && (
           <div className='w-full h-[400px] flex items-center justify-center'>
             <div className='text-lg font-medium'>No {slug}s found</div>

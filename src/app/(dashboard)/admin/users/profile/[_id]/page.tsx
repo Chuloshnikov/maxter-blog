@@ -1,7 +1,7 @@
 import CommentsContainer from '@/components/blog/CommentsContainer';
 import PostsContainer from '@/components/blog/PostsContainer';
+import DeleteButton from '@/components/dashboard/DeleteButton';
 import AdminSwitcher from '@/components/dashboard/users/AdminSwitcher';
-import DeleteUser from '@/components/dashboard/users/DeleteUser';
 import { CommentsModel } from '@/models/Comment';
 import { PostInfoModel } from '@/models/Post';
 import { ProfileInfoModel } from '@/models/ProfileInfo';
@@ -90,7 +90,7 @@ export default async function User({ params: { _id } }: { params: { _id: string 
         />
         <div className='flex justify-between mt-4'>
           <AdminSwitcher userId={user?._id} admin={user?.admin}/>
-          <DeleteUser item={"user"} dir={"profile"} id={user?._id}/>
+          <DeleteButton item={"user"} dir={"profile"} id={user?._id}/>
         </div>
         
       </div>
