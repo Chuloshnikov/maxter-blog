@@ -37,3 +37,9 @@ export function replaceUrlDelimiters(str: string) {
 
   return mostCommonSlug;
   }
+
+
+export const sliceLastSymbolOfString = (inputString: string) => {
+    const resultString = inputString.slice(0, -1);
+    return resultString;
+};
