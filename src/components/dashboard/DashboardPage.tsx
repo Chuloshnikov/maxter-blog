@@ -1,17 +1,16 @@
 "use client"
 import { useEffect } from "react";
 import Link from "next/link";
-import PopularCategory from "./PopularCategory";
 import TableColumn from "./TableColumn";
 import { FaArrowRight } from "react-icons/fa";
 import BlogGraph from "./BlogGraph";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "@/redux/postsSlice";
-import { fetchUsers } from "@/redux/usersSlice";
 import { fetchComments } from "@/redux/commentsSlice";
 
 import { AppDispatch, RootState } from '../../redux/store';
 import Preloader from "../ui/Preloader";
+import CategoriesSection from "./CategoriesSection";
 
 
 
@@ -72,7 +71,7 @@ const DashboardPage = () => {
             <BlogGraph posts={posts} comments={comments}/>
         </div>
         <div className="">
-            <PopularCategory posts={[...posts]}/>
+            <CategoriesSection posts={[...posts]}/>
         </div>
         <div>
             <Link 

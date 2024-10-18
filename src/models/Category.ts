@@ -1,9 +1,11 @@
 import { Schema, model, models } from 'mongoose';
 
 export type CategoryInfo = {
+    _id?: FormDataEntryValue;
     slug: string;
     title: string;
-    img: string
+    img: string,
+    createdAt?: Date;
   };
 
 const categorySchema = new Schema({
