@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import PostItem from '@/components/blog/PostItem';
 import { useSession } from "next-auth/react";
 import {createProfile} from "@/actions/profileInfoActions";
 import PostManager from '@/components/blog/PostManager';
 import PostsContainer from '@/components/blog/PostsContainer';
+import { PostInfo } from '@/models/Post';
 
 export default function PostsPage() {
   const { slug } = useParams();
-  const [posts, setPosts] = useState<string[]>([]);
+  const [posts, setPosts] = useState<PostInfo[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   const session = useSession();
@@ -21,11 +21,17 @@ export default function PostsPage() {
     if (slug) {
       setLoading(true);
       fetch(`/api/posts/${slug}`)
-      .then((res) => res.json())
-      .then((data) => setPosts(data));
-      setLoading(false);
+        .then((res) => res.json())
+        .then((data) => {
+          const approvedPosts = data.filter((post: PostInfo) => post.approved); // filter approved posts
+          setPosts(approvedPosts);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error('Error fetching posts:', error);
+          setLoading(false);
+        });
     }
-    
   }, [slug]);
 
   useEffect(() => {
