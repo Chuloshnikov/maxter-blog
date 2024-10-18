@@ -24,11 +24,11 @@ const DeleteButton = ({ id, item, dir }: {id: string, item: string, dir: string}
                   <div className='flex gap-1'>
                     <button 
                         onClick={handleDeleteClick}
-                        className='text-white bg-red-500 font-semibold px-4 py-1.5'>
+                        className='text-white bg-red-500 border-2 border-red-500 font-semibold px-4 py-1.5 hover:bg-white hover:text-red-500 duration-200'>
                             delete
                     </button>
                     <button 
-                        className='border-2 border-accentBg px-2 py-1' 
+                        className='border-2 border-accentBg px-2 py-1 hover:bg-accentBg hover:text-white duration-200' 
                         onClick={() => toast.dismiss(t.id)}>
                             close
                     </button>
@@ -49,7 +49,7 @@ const DeleteButton = ({ id, item, dir }: {id: string, item: string, dir: string}
     }, [deleteModal, handleDeleteClick, item]);
 
     if (redirectToUsers) {
-        return redirect(`/admin/${dir}`);
+        return redirect(`/admin/delete-success/${dir}`);
     }
 
     return (

@@ -2,14 +2,9 @@ import Image from 'next/image';
 import React from 'react'
 import ApprovalButton from './ApprovalButton';
 import DeleteButton from './DeleteButton';
+import { sliceLastSymbolOfString } from '@/lib/utils';
 
 const TextCheckPage = ({item, text, title, img, action}: {item: any, text: string, title?: string, img?: string, action: string }) => {
-
-  const sliceLastSymbolOfString = (inputString: string) => {
-    const resultString = inputString.slice(0, -1);
-    return resultString;
-  };
-
 
   return (
     <div className='flex flex-col gap-4'>
