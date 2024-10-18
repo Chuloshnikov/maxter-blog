@@ -11,7 +11,7 @@ export async function getAllComments() {
         return parseStringify(commentsDoc);
       } catch (error) {
         console.error(
-          "An error occurred while retrieving the patient details:",
+          "An error occurred while retrieving the comments:",
           error
         );
       }
@@ -24,7 +24,7 @@ export async function getUserComments({userId}: {userId: FormDataEntryValue}) {
     return parseStringify(commentsDoc);
   } catch (error) {
     console.error(
-      "An error occurred while retrieving the patient details:",
+      "An error occurred while retrieving the comments:",
       error
     );
   }

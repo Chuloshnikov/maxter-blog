@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import CommentItem from "./CommentItem";
 import { CommentTypes } from "@/models/Comment";
 import CommentSkeleton from "../ui/CommentSkeleton";
-import { getUserComments } from "@/actions/commentsActions";
 
 const CommentsContainer = ({ id, userComments, slug }: any) => {
   const [comments, setComments] = useState<CommentTypes[]>([]);
@@ -15,7 +14,8 @@ const CommentsContainer = ({ id, userComments, slug }: any) => {
   useEffect(() => {
     setLoading(true);
     if (userComments) {
-      setComments(userComments);
+      const approvedUserComments = userComments.filter((comment: CommentTypes) => comment.approved);
+      setComments(approvedUserComments);
       setLoading(false);
     } 
     
@@ -24,7 +24,8 @@ const CommentsContainer = ({ id, userComments, slug }: any) => {
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
-          setComments(data);
+          const approvedComments = data.filter((comment: CommentTypes) => comment.approved);
+          setComments(approvedComments);
           setLoading(false);
         } else {
           setComments([]);

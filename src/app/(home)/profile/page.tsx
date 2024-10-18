@@ -25,7 +25,8 @@ export default async function Profile() {
   return (
     <section className="max-w-2xl min-h-[calc(100vh-21.1rem)] mx-auto px-4 mt-4">
         <ProfileInfoForm profileInfo={profileInfoDoc}/>
-        <div>
+        <div className="mt-8">
+          <h3 className="text-2xl font-bold text-accentBg">Your posts:</h3>
           <PostsContainer posts={profilePosts} slug={profileInfoDoc?.displayName} />
         </div>
     </section>
