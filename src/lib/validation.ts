@@ -96,3 +96,23 @@ export const validateAdvertisementForm = (data: any) => {
         return ["Unknown validation error"];
     }
 };
+
+
+//GET IN TOUCH VALIDATION
+
+
+export const GetInTouchFormSchema = z.object({
+    email: z.string().email('Email is not correct'),
+});
+
+export const validateGetInTouchForm = (data: any) => {
+    try {
+        GetInTouchFormSchema.parse(data);
+        return [];
+    } catch (ev) {
+        if (ev instanceof z.ZodError) {
+            return ev.errors.map(error => `${error.message}`);
+        }
+        return ["Unknown validation error"];
+    }
+};
