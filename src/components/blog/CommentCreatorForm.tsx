@@ -72,6 +72,7 @@ const CommentCreatorForm = ({id}: any) => {
                     },
                 });
             }
+            setLoading(false);
         }
 
     function clearComment() {

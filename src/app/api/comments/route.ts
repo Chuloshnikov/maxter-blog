@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
         return NextResponse.json(createComment);
     } catch (error) {
-        NextResponse.json(error);
+        return NextResponse.json({ error: 'Failed to create comment', details: error }, { status: 500 });
     }
 
 }
