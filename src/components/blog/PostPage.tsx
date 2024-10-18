@@ -28,7 +28,7 @@ const PostPage = ({post}: any) => {
             <span className='font-medium text-sm'>{DateConverter({ mongoDate: post.createdAt })}</span>
           </div>
          
-          <p className='text-lg'>
+          <p className='text-lg break-words overflow-hidden'>
               {post.desc}
           </p>
         </div>
