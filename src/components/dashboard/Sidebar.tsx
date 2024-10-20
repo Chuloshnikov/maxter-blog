@@ -17,7 +17,7 @@ const Sidebar = () => {
   const path = usePathname();
 
   return (
-    <div className={`flex flex-col justify-between fixed top-0 left-0 h-full bg-accentBg text-white transition-width duration-300 ${isCollapsed ? 'w-14' : 'w-44'}`}>
+    <div className={`z-50 flex flex-col justify-between fixed top-0 left-0 h-full bg-accentBg text-white transition-width duration-300 ${isCollapsed ? 'w-14' : 'w-44'}`}>
             
       <nav className="mt-4 font-semibold text-sm">
       {!isCollapsed ? (
