@@ -10,6 +10,7 @@ import { createAdvertisement, updateAdvertisement } from '@/actions/advertisemen
 import { FaArrowLeft } from 'react-icons/fa';
 
 import { redirect } from 'next/navigation'
+import ButtonLoading from '@/components/ui/ButtonLoading';
 
 
 type AdvertProps = {
@@ -39,7 +40,7 @@ const AdvertisementManagerForm = ({ advertisement, action }: {advertisement?: Ad
             formData.forEach((value, key) => {
                 dataObject[key] = value;
               });
-    
+              
             const validationErrors = validateAdvertisementForm(dataObject);
         
                 if (validationErrors.length > 0) {
@@ -136,14 +137,14 @@ const AdvertisementManagerForm = ({ advertisement, action }: {advertisement?: Ad
                 {action === "update" && (
                 <div className='hidden'>
                      <input 
-                    defaultValue={advertisement?._id} 
+                    defaultValue={typeof advertisement?._id === 'string' ? advertisement?._id : ''} 
                     name="_id" 
                     id="_id" 
                     type="text" 
                     />
                 </div>
                 )}
-                <button className='submitButton capitalize'>{action}</button>
+                <button className='submitButton capitalize'>{loading ? <ButtonLoading margin={'px-[10px]'} loading={loading}/> : action}</button>
             </div>
                 <div className="relative border w-56 h-56 mb-4 border-2 border-accentBg mx-auto">
                 {coverUrl && (

@@ -116,3 +116,22 @@ export const validateGetInTouchForm = (data: any) => {
         return ["Unknown validation error"];
     }
 };
+
+//CATEGORY VALIDATION 
+
+export const CategoryFormSchema = z.object({
+    title: z.string().min(2, {message: 'Title must be at least 2 characters long'}).max(50, "Title must be at most 50 characters"),
+});
+
+export const validateCategoryForm = (data: any) => {
+    try {
+        CategoryFormSchema.parse(data);
+        return [];
+    } catch (ev) {
+        if (ev instanceof z.ZodError) {
+            return ev.errors.map(error => `${error.message}`);
+        }
+        return ["Unknown validation error"];
+    }
+};
+
