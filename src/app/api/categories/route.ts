@@ -9,5 +9,6 @@ return NextResponse.json(categories);
 }
 
 export async function POST() {
+await mongoose.connect(process.env.MONGODB_URI as string);
 
 }

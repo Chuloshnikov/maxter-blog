@@ -14,7 +14,7 @@ const DeleteButton = ({ id, item, dir }: {id: string, item: string, dir: string}
         if (res.ok) {
             setRedirectToUsers(true);
         }
-    }, [id]);
+    }, [id, dir]);
 
     useEffect(() => {
         if (deleteModal) {
