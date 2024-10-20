@@ -5,8 +5,10 @@ import { ChangeEvent, useState } from 'react'
 import toast from 'react-hot-toast';
 import UploadButton from '../ui/UploadButton';
 import Image from 'next/image';
+import ButtonLoading from '../ui/ButtonLoading';
+import DeleteButton from './DeleteButton';
 
-const CreateCategoryForm = ({category, action,}: {category?: CategoryInfo, action: string}) => {
+const CreateCategoryForm = ({category, action }: { category?: CategoryInfo, action: string }) => {
     const [imgUrl, setImgUrl] = useState<string>(category?.img || '');
     const [title, setTitle] = useState<string>(category?.title || '');
     const [loading, setLoading] = useState<boolean>(false);
@@ -125,7 +127,17 @@ const CreateCategoryForm = ({category, action,}: {category?: CategoryInfo, actio
             placeholder="title..."
             />
         </div>
-        <button type='submit' className='submitButton capitalize'>{loading ? <ButtonLoading margin={'px-[10px]'} loading={loading}/> : action}</button>
+        <div className='flex gap-2'>
+          <button 
+          type='submit' 
+          className='submitButton capitalize flex-grow'
+          >
+            {loading ? <ButtonLoading margin={'px-[10px]'} loading={loading}/> : action}
+          </button>
+          <div className='border-2 border-red-500'>
+            <DeleteButton item={"Category"} dir={"categories"} id={category?._id}/>
+          </div>
+        </div>
     </div>
         <div className="relative border w-56 h-56 mb-4 border-2 border-accentBg mx-auto">
         {imgUrl && (

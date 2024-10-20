@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import toast from 'react-hot-toast';
 import { redirect } from 'next/navigation';
 
-const DeleteButton = ({ id, item, dir }: {id: string, item: string, dir: string}) => {
+const DeleteButton = ({ id, item, dir }: {id: FormDataEntryValue | string | undefined | null, item?: string, dir: string}) => {
     const [redirectToUsers, setRedirectToUsers] = useState<boolean>(false);
     const [deleteModal, setDeleteModal] = useState<boolean>(false);
 
@@ -23,11 +23,13 @@ const DeleteButton = ({ id, item, dir }: {id: string, item: string, dir: string}
                   are you sure you want to delete this {item}? 
                   <div className='flex gap-1'>
                     <button 
+                    type='button'
                         onClick={handleDeleteClick}
                         className='text-white bg-red-500 border-2 border-red-500 font-semibold px-4 py-1.5 hover:bg-white hover:text-red-500 duration-200'>
                             delete
                     </button>
                     <button 
+                    type='button'
                         className='border-2 border-accentBg px-2 py-1 hover:bg-accentBg hover:text-white duration-200' 
                         onClick={() => toast.dismiss(t.id)}>
                             close
@@ -55,6 +57,7 @@ const DeleteButton = ({ id, item, dir }: {id: string, item: string, dir: string}
     return (
         <div>
             <button 
+            type='button'
                 onClick={() => setDeleteModal(true)}
                 className='px-4 py-2 text-white font-semibold bg-red-500 border-2 border-red-500 hover:bg-white hover:text-red-500 duration-200'>
                 Delete{" "}{item}
