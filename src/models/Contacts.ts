@@ -1,11 +1,13 @@
 import {model, models, Schema} from 'mongoose';
 
 export type ContactsTypes = {
+  _id?: FormDataEntryValue;
   name: string;
   email: string;
   phone: string;
   message: string;
   read: boolean;
+  createdAt?: Date;
 };
 
 const contactsSchema = new Schema<ContactsTypes>({
