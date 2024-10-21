@@ -15,6 +15,7 @@ interface ProposalTypes {
 }
 
 const ProposalPage = ({ item }: ProposalTypes) => {
+    
     useEffect(() => {
         const markAsRead = async () => {
           if (!item.read && item._id) { // Check if the proposal has been read
@@ -24,7 +25,7 @@ const ProposalPage = ({ item }: ProposalTypes) => {
                 headers: {
                   'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ read: true }),
+                body: JSON.stringify({ id: item._id }),
               });
     
               if (response.ok) {
@@ -40,6 +41,8 @@ const ProposalPage = ({ item }: ProposalTypes) => {
     
         markAsRead(); // Call the function when component mounted
       }, [item.read, item._id]);
+
+    
   return (
     <div className='flex flex-col items-center justify-center'>
         <div className='border-2 border-gray-500 p-8 flex flex-col gap-4'>
