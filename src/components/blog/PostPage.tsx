@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Statistics from './Statistics';
 
 const PostPage = ({post}: any) => {
-  console.log(post);
+  
   return (
     <div className=' flex flex-col xl:flex-row justify-evenly mx-2'>
       <div className='flex flex-col gap-4 mx-auto w-full xl:max-w-5xl mb-4 xl:mb-0'>
