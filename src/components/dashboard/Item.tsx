@@ -1,7 +1,6 @@
 import React from 'react'
 import DateConverter from '../ui/DateConverter';
 import Link from 'next/link';
-import PostSkeleton from '../ui/PostSkeleton';
 
 const Item = ({page, action, status, id, author, email, createdAt}: any) => {
 return (
