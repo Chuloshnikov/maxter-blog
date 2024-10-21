@@ -2,8 +2,9 @@
 import { useState } from 'react'
 import ProposalItem from './ProposalItem';
 import { ContactsTypes } from '@/models/Contacts';
+import PostSkeleton from '@/components/ui/PostSkeleton';
 
-const ProposalsContainer = ({ items, slug, page, action }: any) => {
+const ProposalsContainer = ({ items, slug, loading }: any) => {
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage = 10;
   
@@ -127,11 +128,18 @@ const ProposalsContainer = ({ items, slug, page, action }: any) => {
     <div className='border border-2 border-accentBg w-full my-8 pb-2'>
     <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
     <div className='min-h-[450px]'>
-      {!items?.length && (
+      {loading && (
+          <>
+            {Array.from({ length: 5 }).map((_, index) => (
+              <PostSkeleton key={index} />
+            ))}
+          </>
+        )}
+      {!items?.length && !loading ? (
         <div className='w-full h-[400px] flex items-center justify-center'>
           <div className='text-lg font-medium'>No {slug}s found</div>
         </div>
-      )}
+      ) : ''}
       {items && currentItems.reverse().map((item: ContactsTypes, index: number) => (
         <ProposalItem
         key={index} 
