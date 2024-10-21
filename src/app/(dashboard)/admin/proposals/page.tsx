@@ -1,4 +1,3 @@
-import ItemsContainer from '@/components/dashboard/ItemsContainer';
 import ProposalsContainer from '@/components/dashboard/proposals/ProposalsContainer';
 import { ContactsModel } from '@/models/Contacts';
 import mongoose from 'mongoose';
