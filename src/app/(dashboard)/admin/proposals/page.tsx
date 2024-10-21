@@ -1,16 +1,33 @@
-import ProposalsContainer from '@/components/dashboard/proposals/ProposalsContainer';
-import { ContactsModel } from '@/models/Contacts';
-import mongoose from 'mongoose';
+"use client"
 
-export default async function Proposals() {
-  await mongoose.connect(process.env.MONGODB_URI as string);
-  const allContacts = JSON.parse(JSON.stringify( await ContactsModel.find()));
+import ProposalsContainer from '@/components/dashboard/proposals/ProposalsContainer';
+import { ContactsTypes } from '@/models/Contacts';
+import mongoose from 'mongoose';
+import { useEffect, useState } from 'react';
+
+export default function Proposals() {
+  const [allContacts, setAllContacts] = useState<ContactsTypes[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetchProposals();
+  }, []);
+
+  function fetchProposals() {
+    setLoading(true);
+    fetch('/api/proposals').then(res => {
+        res.json().then(proposals => {
+          setAllContacts(proposals);
+          setLoading(false);
+        });
+    });
+}
   
   return (
     <div className='flex flex-col gap-4 justify-between'>
       <ProposalsContainer
-        action={"check"} 
         items={allContacts} 
+        loading={loading}
         slug={"all proposals"}
       />
     </div>
