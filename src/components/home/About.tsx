@@ -8,7 +8,7 @@ const About = () => {
           <AnimationCube/>
         </div>
       <div className='p-6 flex flex-col gap-4 max-w-[500px] flex-1'>
-          <p className='text-lg md:text-xl text-accentBg font-bold'>
+          <p className='text-lg md:text-xl text-accentBg font-bold italic'>
             This is a <span className='text-2xl md:text-4xl font-extrabold text-black'>MCH</span> blog, 
             where everyone can share their thoughts or opinions about anything, 
             without censorship. Everything that is published in the blog is the personal 
@@ -16,7 +16,7 @@ const About = () => {
             in the address of someone and something is borne directly by the author who 
             published the post. 
           </p>
-          <p className='text-lg md:text-xl text-accentBg font-bold'>
+          <p className='text-lg md:text-xl text-accentBg font-bold italic'>
             Posts can be on any topic, both IT and other topics that 
             you would like to discuss or raise on the agenda.
           </p>

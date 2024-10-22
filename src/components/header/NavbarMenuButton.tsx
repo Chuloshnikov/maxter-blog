@@ -78,12 +78,12 @@ const NavbarMenuButton = ({status}: {status: any}) => {
                             </motion.a>
                         ))}
                         {!status ? (
-                            <button 
-                            onClick={() => signIn("google")}
+                            <Link 
+                            href={`/login`}
                             className='text-xl max-w-max font-semibold bg-accentBg py-2 px-4 text-white border-2 border-accentBg hover:bg-white hover:text-accentBg duration-200'
                             >
                                 Get started
-                            </button>
+                            </Link>
                         ) : (
                             <Link
                             href={'/profile'}
