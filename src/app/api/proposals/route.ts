@@ -30,5 +30,4 @@ export async function GET() {
         console.error('Error updating user admin status:', error);
         return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
       }
-
   }
