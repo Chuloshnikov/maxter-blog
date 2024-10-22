@@ -4,12 +4,25 @@ import { serverOnTheWood } from "@/assets/images/images";
 import { LuArrowRightSquare } from "react-icons/lu";
 import Link from "next/link";
 
+import { motion } from "framer-motion";
+
 
 const Hero = () => {
   return (
     <section className="relative max-h-[800px]">
-        <Image src={serverOnTheWood} className="w-screen h-[400px] md:h-[800px]" width={1900} height={800} alt="hero"/>
-        <div className="absolute top-[10%] left-[7%] md:left-[10%]">
+        <Image 
+        src={serverOnTheWood} 
+        className="w-screen h-[400px] md:h-[800px]" 
+        width={1900} 
+        height={800} 
+        alt="hero"
+        />
+        <motion.div 
+        className="absolute top-[10%] left-[7%] md:left-[10%]"
+        initial={{ opacity: 0, y: -50 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 1 }}
+        >
           <h2 className="text-accentBg text-4xl md:text-8xl font-bold drop-shadow-lg">
               <span className="text-2xl md:text-6xl">
                 Inspire your imagination <br/>with
@@ -42,7 +55,7 @@ const Hero = () => {
                   <span className="block w-4 h-4 bg-accentBg"></span>
               </div>
             </div>
-        </div>
+        </motion.div>
     </section>
   )
 }
