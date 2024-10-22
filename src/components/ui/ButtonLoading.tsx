@@ -12,7 +12,7 @@ const override: CSSProperties = {
     borderColor: "red",
   };
 
-const ButtonLoading = ({margin, loading }: {margin: string, loading: boolean}) => {
+const ButtonLoading = ({margin, loading }: {margin?: string, loading?: boolean}) => {
   return (
     <div className={`flex gap-1 ${margin} items-center justify-center`}>
         <SquareLoader
