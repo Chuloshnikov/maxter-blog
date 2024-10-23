@@ -134,7 +134,7 @@ const ItemsContainer = ({ items, slug, page, action }: any) => {
             <div className='text-lg font-medium'>No {slug}s found</div>
           </div>
         )}
-        {items && currentItems.reverse().map((item: PostInfo | CommentTypes, index: number) => (
+        {items && currentItems.map((item: PostInfo | CommentTypes, index: number) => (
           <Item 
           key={index} 
           page={page}

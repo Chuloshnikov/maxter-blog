@@ -10,7 +10,7 @@ export default async function Comments() {
       <ItemsContainer 
        page={"comments"} 
        action={"check"} 
-      items={allComments} 
+      items={allComments.reverse()} 
       slug={"all comments"}
       />
     </div>
