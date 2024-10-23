@@ -127,7 +127,7 @@ const PostsContainer = ({ posts, slug, loading = false }: any) => {
   };
 
   return (
-    <div className='border border-2 border-accentBg w-full my-8 pb-2'>
+    <div className='border-2 border-accentBg w-full my-8 pb-2'>
       <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
       <div>
         {loading && (
