@@ -17,7 +17,7 @@ export default function Proposals() {
     setLoading(true);
     fetch('/api/proposals').then(res => {
         res.json().then(proposals => {
-          setAllContacts(proposals);
+          setAllContacts(proposals.reverse());
           setLoading(false);
         });
     });

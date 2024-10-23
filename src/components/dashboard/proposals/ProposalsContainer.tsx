@@ -140,7 +140,7 @@ const ProposalsContainer = ({ items, slug, loading }: any) => {
           <div className='text-lg font-medium'>No {slug}s found</div>
         </div>
       ) : ''}
-      {items && currentItems.reverse().map((item: ContactsTypes, index: number) => (
+      {items && currentItems.map((item: ContactsTypes, index: number) => (
         <ProposalItem
         key={index} 
         status={item.read} 
