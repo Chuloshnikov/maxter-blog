@@ -137,11 +137,12 @@ const PostsContainer = ({ posts, slug, loading = false }: any) => {
             ))}
           </>
         )}
-        {!posts?.length && (
+        {!posts?.length && !loading ? (
           <div className='w-full h-[400px] flex items-center justify-center'>
             <div className='text-lg font-medium'>No posts found</div>
           </div>
-        )}
+        ) : ('')
+        }
         {posts && currentPosts.reverse().map((post: PostInfo, index: number) => <PostItem key={index} post={post} />)}
       </div>
       {/* PAGINATION */}
