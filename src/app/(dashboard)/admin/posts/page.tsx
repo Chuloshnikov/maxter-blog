@@ -10,7 +10,7 @@ export default async function Posts() {
       <ItemsContainer 
        page={"posts"} 
        action={"check"} 
-      items={allPosts} 
+      items={allPosts.reverse()} 
       slug={"all posts"}
       />
     </div>
