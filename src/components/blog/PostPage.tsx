@@ -40,7 +40,7 @@ const PostPage = ({post}: any) => {
           <CommentsContainer id={post._id}/>
         </div>
       </div>
-      <div className='mx-auto px-auto'>
+      <div className='mx-auto'>
           <AsideAdvertisement/>
       </div>
     </div>
