@@ -31,7 +31,7 @@ const NavbarMenuButton = ({status}: {status: any}) => {
       };
     
       const links = [
-        { name: "Home", href: "/home" },
+        { name: "Home", href: "/" },
         { name: "About", href: "/#about" },
         { name: "Blog", href: "/blog" },
         { name: "Contacts", href: "/contacts" },
@@ -41,7 +41,7 @@ const NavbarMenuButton = ({status}: {status: any}) => {
     if (!isOpen) {
         return (
             <div className='lg:hidden'>
-                <CgMenuGridR onClick={() => setIsOpen(!isOpen)} className='l w-14 h-14 text-accentBg'/>
+                <CgMenuGridR onClick={() => setIsOpen(!isOpen)} className='w-14 h-14 text-accentBg'/>
             </div>
         )
     }
@@ -51,7 +51,7 @@ const NavbarMenuButton = ({status}: {status: any}) => {
         return (   
             <div> 
                 <div className='lg:hidden'>
-                    <CgMenuGridR onClick={() => setIsOpen(!isOpen)} className='l w-14 h-14 text-accentBg'/>
+                    <CgMenuGridR onClick={() => setIsOpen(!isOpen)} className='w-14 h-14 text-accentBg'/>
                 </div>
                 <motion.div
                     initial="closed"
