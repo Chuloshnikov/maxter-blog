@@ -57,7 +57,7 @@ export async function getProfile() {
     return parseStringify(profileInfoDoc);
   } catch (error) {
     console.error(
-      "An error occurred while retrieving the patient details:",
+      "An error occurred while retrieving the profile details:",
       error
     );
   }
@@ -71,7 +71,7 @@ export async function getAllProfiles() {
     return parseStringify(allProfilesInfoDoc);
   } catch (error) {
     console.error(
-      "An error occurred while retrieving the patient details:",
+      "An error occurred while retrieving the multiple profiles details:",
       error
     );
   }
