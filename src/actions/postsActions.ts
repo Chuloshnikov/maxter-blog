@@ -1,81 +1,50 @@
 'use server';
-import {authOptions} from "@/lib/authOptions";
+import { getUserSession } from "@/lib/getUserSession";
 import { parseStringify } from "@/lib/utils";
 import { PostInfoModel } from "@/models/Post";
 import { ProfileInfoModel } from "@/models/ProfileInfo";
-import mongoose from "mongoose";
-import { getServerSession } from "next-auth";
-
-{/*
-  export async function savePost(formData: FormData) {
-  await mongoose.connect(process.env.MONGODB_URI as string);
-
-  const session = await getServerSession(authOptions);
-  if (!session) throw 'you need to be logged in';
-  const email = session.user?.email;
-
-  const {
-    username, displayName, bio, coverUrl, avatarUrl,
-  } = Object.fromEntries(formData);
-
-  const profileInfoDocc = await ProfileInfoModel.findOne({email});
-  if (profileInfoDoc) {
-    postDoc.set({username, displayName, bio, coverUrl, avatarUrl});
-    await postDoc.save();
-  } else {
-    await ProfileInfoModel.create({username, displayName, bio, email, coverUrl, avatarUrl});
-  }
-
-  return true;
-}
-  */}
-
+import { dbConnect } from "@/lib/dbConnect";
 
 
 export async function createPost(formData: FormData) {
-  await mongoose.connect(process.env.MONGODB_URI as string);
-  const session = await getServerSession(authOptions);
-  if (!session) throw 'you need to be logged in';
-  const email = session.user?.email;
+  await dbConnect();
+  const { email } = await getUserSession();
 
   const {
     title, desc, postImg, slug
   } = Object.fromEntries(formData);
 
-  const profileInfoDoc = await ProfileInfoModel.findOne({email});
-  const {username, displayName, avatarUrl, _id} = profileInfoDoc;
+  const profileInfoDoc = await ProfileInfoModel.findOne({ email });
+  if (!profileInfoDoc) throw new Error('Profile not found');
+  const { username, displayName, avatarUrl, _id } = profileInfoDoc;
 
-  let author = '';
+  const author = displayName || username;
 
-  if (displayName) {
-    author = displayName;
-  } else {
-    author = username
-  }
-
-  if (profileInfoDoc) {
-    await PostInfoModel.create({title, desc, slug, catSlug: slug, username, displayName: author, userEmail: email, authorId: _id, img:postImg, avatarUrl });
-  } else {
-    throw new Error('Some error occurred');
-  }
+  await PostInfoModel.create({
+    title,
+    desc,
+    slug,
+    catSlug: slug,
+    username,
+    displayName: author,
+    userEmail: email,
+    authorId: _id,
+    img: postImg,
+    avatarUrl
+  });
 }
 
 export async function getPosts() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI as string);
-    const session = await getServerSession(authOptions);
-    if (!session) throw 'you need to be logged in';
-    const email = session.user?.email;
-  
-    const profileInfoDoc = await ProfileInfoModel.findOne({email});
-
-    if (profileInfoDoc) {
-      const postsDoc = await PostInfoModel.findOne({email});
-    }
+    await dbConnect();
+    const { email } = await getUserSession();
+    const profileInfoDoc = await ProfileInfoModel.findOne({ email });
+    if (!profileInfoDoc) throw new Error('Profile not found');
+    const postsDoc = await PostInfoModel.find({ userEmail: email });
     return parseStringify(postsDoc);
   } catch (error) {
     console.error(
-      "An error occurred while retrieving the patient details:",
+      "An error occurred while retrieving the posts:",
       error
     );
   }
@@ -83,7 +52,7 @@ export async function getPosts() {
 
 export async function getAllPosts() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI as string);
+    await dbConnect();
     const postsDoc = await PostInfoModel.find();
     return parseStringify(postsDoc);
   } catch (error) {

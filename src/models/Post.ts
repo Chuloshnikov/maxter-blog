@@ -23,8 +23,8 @@ export type PostInfo = {
 
 const postInfoSchema = new Schema<PostInfo>({
   slug: { type: String, required: true },
-  title: { type: String, required: true, unique: true },
-  desc: { type: String, required: true, unique: true },
+  title: { type: String, required: true},
+  desc: { type: String, required: true},
   img: { type: String },
   views: { type: Number, default: 0 },
   likes: { type: Number, default: 0 },
