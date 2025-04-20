@@ -44,7 +44,7 @@ export const validateCommentForm = (data: any) => {
 
 export const PostFormSchema = z.object({
     title: z.string().min(10, {message: 'Comment title must be at least 10 characters long'}).max(100, "Comment title must be at most 100 characters"),
-    desc: z.string().min(500, {message: 'Comment text must be at least 500 characters long'}).max(2000, "Comment text must be at most 2000 characters"),
+    desc: z.string().min(50, {message: 'Comment text must be at least 50 characters long'}).max(2000, "Comment text must be at most 2000 characters"),
 });
 
 export const validatePostForm = (data: any) => {

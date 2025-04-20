@@ -2,6 +2,8 @@ import { authOptions } from "@/lib/authOptions";
 import { PostInfoModel } from "@/models/Post";
 import { ProfileInfoModel } from "@/models/ProfileInfo";
 import mongoose from "mongoose";
+import { dbConnect } from "@/lib/dbConnect";
+import { getUserSession } from "@/lib/getUserSession";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
@@ -44,6 +46,35 @@ export async function PUT(request: Request) {
     }
   }
 
+
+export async function POST(request: Request) {
+  try {
+    await dbConnect();
+    const { email } = await getUserSession();
+    const body = await request.json();
+    const { title, desc, postImg, slug } = body;
+    const profileInfoDoc = await ProfileInfoModel.findOne({ email });
+    if (!profileInfoDoc) return NextResponse.json({ message: 'Profile not found' }, { status: 404 });
+    const { username, displayName, avatarUrl, _id } = profileInfoDoc;
+    const author = displayName || username;
+    const newPost = await PostInfoModel.create({
+      title,
+      desc,
+      slug,
+      catSlug: slug,
+      username,
+      displayName: author,
+      userEmail: email,
+      authorId: _id,
+      img: postImg,
+      avatarUrl
+    });
+    return NextResponse.json(newPost, { status: 201 });
+  } catch (error) {
+    console.error("Error creating post:", error);
+    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+  }
+}
 
   export async function DELETE(request: Request) {
     await mongoose.connect(process.env.MONGODB_URI as string);

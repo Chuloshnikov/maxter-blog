@@ -1,36 +1,50 @@
-"use client";
 import PostPage from "@/components/blog/PostPage";
-import { useEffect, useState } from "react";
 
-export default function Post({ params: { _id } }: SearchParamProps) {
-  const [post, setPost] = useState<any>(null);
+export default async function Post({ params: { _id } }: SearchParamProps) {
+  // URL for API request
+  const url = new URL(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/post/${_id}`
+  ).toString();
+  // Get posts
+  const post = await fetch(url).then((res) => res.json());
+  const viewedPosts: string[] = [];
 
-  useEffect(() => {
-    //Check viewed in localstorage
-    let viewedPosts = JSON.parse(localStorage.getItem('viewedPosts') || '[]');
+  // Check if post is already viewed
+  if (!viewedPosts.includes(_id)) {
+    // Increment views
+    await fetch(url, { method: "PUT" });
+    // Add to viewed posts
+    // localStorage.setItem("viewedPosts", JSON.stringify([...viewedPosts, _id]));
+  }
 
-    // Is views is array
-    if (!Array.isArray(viewedPosts)) {
-      viewedPosts = [];
-    }
+  // console.log(post);
 
-    //If its first time to viewed
-    if (!viewedPosts.includes(_id)) {
-      // Отправляем запрос для увеличения просмотров
-      fetch(`/api/post/${_id}`, { method: 'PUT' })
-        .then((res) => res.json())
-        .then(() => {
-          // add to viewed
-          localStorage.setItem('viewedPosts', JSON.stringify([...viewedPosts, _id]));
-        })
-        .catch((err) => console.error('Failed to increment view count', err));
-    }
+  // useEffect(() => {
+  //   //Check viewed in localstorage
+  //   let viewedPosts = JSON.parse(localStorage.getItem('viewedPosts') || '[]');
 
-    fetch(`/api/post/${_id}`)
-      .then((res) => res.json())
-      .then((data) => setPost(data))
-      .catch((err) => console.error('Failed to fetch post data', err));
-  }, [_id]);
+  //   // Is views is array
+  //   if (!Array.isArray(viewedPosts)) {
+  //     viewedPosts = [];
+  //   }
+
+  //   //If its first time to viewed
+  //   if (!viewedPosts.includes(_id)) {
+  //     // Отправляем запрос для увеличения просмотров
+  //     fetch(`/api/post/${_id}`, { method: 'PUT' })
+  //       .then((res) => res.json())
+  //       .then(() => {
+  //         // add to viewed
+  //         localStorage.setItem('viewedPosts', JSON.stringify([...viewedPosts, _id]));
+  //       })
+  //       .catch((err) => console.error('Failed to increment view count', err));
+  //   }
+
+  //   fetch(`/api/post/${_id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setPost(data))
+  //     .catch((err) => console.error('Failed to fetch post data', err));
+  // }, [_id]);
 
   return (
     <section className="min-w-screen min-h-[calc(100vh-21.1rem)] mx-auto flex flex-col mb-8">

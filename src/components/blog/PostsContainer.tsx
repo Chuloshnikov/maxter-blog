@@ -1,13 +1,13 @@
-"use client"
-import { useState } from 'react';
-import PostSkeleton from '../ui/PostSkeleton';
-import PostItem from './PostItem';
-import { PostInfo } from '@/models/Post';
+"use client";
+import { useState } from "react";
+import PostSkeleton from "../ui/PostSkeleton";
+import PostItem from "./PostItem";
+import { PostInfo } from "@/models/Post";
 
 const PostsContainer = ({ posts, slug, loading = false }: any) => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 10;
-  console.log(posts);
+  // console.log(posts);
 
   const totalPages = Math.ceil(posts.length / postsPerPage);
 
@@ -23,7 +23,7 @@ const PostsContainer = ({ posts, slug, loading = false }: any) => {
     }
   };
 
-  // PAGINATION VISIBILITY 
+  // PAGINATION VISIBILITY
   const renderPagination = () => {
     const pagination = [];
 
@@ -46,7 +46,9 @@ const PostsContainer = ({ posts, slug, loading = false }: any) => {
         <button
           key={1}
           onClick={() => changePage(1)}
-          className={`w-8 h-8 ${currentPage === 1 ? 'bg-black' : 'bg-[#3DB4FF]'} text-white`}
+          className={`w-8 h-8 ${
+            currentPage === 1 ? "bg-black" : "bg-[#3DB4FF]"
+          } text-white`}
         >
           1
         </button>
@@ -77,7 +79,9 @@ const PostsContainer = ({ posts, slug, loading = false }: any) => {
         <button
           key={totalPages}
           onClick={() => changePage(totalPages)}
-          className={`w-8 h-8 ${currentPage === totalPages ? 'bg-blue-500' : 'bg-[#3DB4FF]'} text-white`}
+          className={`w-8 h-8 ${
+            currentPage === totalPages ? "bg-blue-500" : "bg-[#3DB4FF]"
+          } text-white`}
         >
           {totalPages}
         </button>
@@ -89,7 +93,9 @@ const PostsContainer = ({ posts, slug, loading = false }: any) => {
           <button
             key={i}
             onClick={() => changePage(i)}
-            className={`w-8 h-8 ${currentPage === i ? 'bg-blue-500' : 'bg-[#3DB4FF]'} text-white`}
+            className={`w-8 h-8 ${
+              currentPage === i ? "bg-blue-500" : "bg-[#3DB4FF]"
+            } text-white`}
           >
             {i}
           </button>
@@ -127,8 +133,10 @@ const PostsContainer = ({ posts, slug, loading = false }: any) => {
   };
 
   return (
-    <div className='border-2 border-accentBg w-full my-8 pb-2'>
-      <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">{slug}</h2>
+    <div className="border-2 border-accentBg w-full my-8 pb-2">
+      <h2 className="capitalize font-semibold text-xl text-white bg-accentBg p-2">
+        {slug}
+      </h2>
       <div>
         {loading && (
           <>
@@ -138,12 +146,18 @@ const PostsContainer = ({ posts, slug, loading = false }: any) => {
           </>
         )}
         {!posts?.length && !loading ? (
-          <div className='w-full h-[400px] flex items-center justify-center'>
-            <div className='text-lg font-medium'>No posts found</div>
+          <div className="w-full h-[400px] flex items-center justify-center">
+            <div className="text-lg font-medium">No posts found</div>
           </div>
-        ) : ('')
-        }
-        {posts && currentPosts.reverse().map((post: PostInfo, index: number) => <PostItem key={index} post={post} />)}
+        ) : (
+          ""
+        )}
+        {posts &&
+          currentPosts
+            .reverse()
+            .map((post: PostInfo, index: number) => (
+              <PostItem key={index} post={post} />
+            ))}
       </div>
       {/* PAGINATION */}
       {totalPages > 1 && (
