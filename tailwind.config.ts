@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       maxWidth: {
         container: "1280px",
-        contentContainer: "1400px",
+        contentContainer: "1800px",
       },
       screens: {
         xs: "320px",
