@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { serverOnTheWood } from "@/assets/images/images";
+import { serverOnTheGrass } from "@/assets/images/images";
 import { LuArrowRightSquare } from "react-icons/lu";
 import Link from "next/link";
 
@@ -11,8 +11,8 @@ const Hero = () => {
   return (
     <section className="relative max-h-[800px]">
         <Image 
-        src={serverOnTheWood} 
-        className="w-screen h-[400px] md:h-[800px]" 
+        src={serverOnTheGrass} 
+        className="w-screen h-[400px] md:h-[800px] opacity-90 object-cover" 
         width={1900} 
         height={800} 
         alt="hero"

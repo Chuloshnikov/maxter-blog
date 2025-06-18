@@ -80,9 +80,18 @@ label.input-label{
         height: 140px;
     }
 
+    
+
     .container {
         gap: 4px;
     }
+}
+
+@media (min-width: 920px) {
+  .cube-container {
+    width: 420px;
+    height: 420px;
+  }
 }
 
 @keyframes moveAndRotate1 {
