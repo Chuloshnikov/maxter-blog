@@ -1,7 +1,6 @@
 "use client"
 import {useState, useEffect } from "react";
 import PostPage from "./PostPage";
-import { StringDecoder } from "string_decoder";
 
 const PostPageContainer = ({ postId }: any) => {
     const [post, setPost] = useState<any>(null);
