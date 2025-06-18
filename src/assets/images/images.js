@@ -1,10 +1,10 @@
 import logo from "./Title.png";
-import heroImage from "./heroImage.png";
 import serverOnTheWood from "../images/serverOnTheWood.png";
+import serverOnTheGrass from "../images/serverOnTheGrass.png";
 
 
 export {
     logo,
-    heroImage,
-    serverOnTheWood
+    serverOnTheWood,
+    serverOnTheGrass
 }
