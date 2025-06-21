@@ -7,6 +7,8 @@ import CommentCreatorForm from './CommentCreatorForm';
 import Link from 'next/link';
 import Statistics from './Statistics';
 
+import { FaUser } from "react-icons/fa6";
+
 const PostPage = ({post}: any) => {
   
   return (
@@ -22,7 +24,13 @@ const PostPage = ({post}: any) => {
             href={`/profileinfo/${post.authorId}`}
             className='flex gap-1 items-end'
             >
-              <Image src={post.avatarUrl} width={100} height={100} className='w-[30px] h-[30px]' alt='avatar'/>
+              {post.avatarUrl ? (
+                <Image src={post.avatarUrl} width={100} height={100} className='w-7 h-7' alt='avatar'/>
+              ) : (
+                <div className='w-7 h-7 flex flex-col items-center justify-center bg-accentBg text-white'>
+                  <FaUser />
+                </div>
+              )}
               <h3 className='text-lg font-semibold text-gray-600'>{post.displayName}</h3>
             </Link>
             <span className='font-medium text-sm'>{DateConverter({ mongoDate: post.createdAt })}</span>
