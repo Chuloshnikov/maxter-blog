@@ -43,8 +43,8 @@ export const validateCommentForm = (data: any) => {
 //POST VALIDATION
 
 export const PostFormSchema = z.object({
-    title: z.string().min(10, {message: 'Comment title must be at least 10 characters long'}).max(100, "Comment title must be at most 100 characters"),
-    desc: z.string().min(500, {message: 'Comment text must be at least 500 characters long'}).max(2000, "Comment text must be at most 2000 characters"),
+    title: z.string().min(10, {message: 'Title must be at least 10 characters long'}).max(100, "Title must be at most 100 characters"),
+    desc: z.string().min(500, {message: 'Description text must be at least 500 characters long'}).max(2000, "Description text must be at most 2000 characters"),
 });
 
 export const validatePostForm = (data: any) => {
@@ -63,8 +63,8 @@ export const validatePostForm = (data: any) => {
 
 export const ProfileFormSchema = z.object({
     username: z.string().min(3, {message: 'Username must be at least 3 characters long'}).max(20, "Username must be at most 20 characters"),
-    displayName: z.string().min(3, {message: 'Displayname must be at least 500 characters long'}).max(20, "Comment must be at most 2000 characters"),
-    bio: z.string().min(10, {message: 'Bio must be at least 500 characters long'}).max(1000, "Comment must be at most 2000 characters"),
+    displayName: z.string().min(3, {message: 'Displayname must be at least 500 characters long'}).max(20, "Displayname must be at most 2000 characters"),
+    bio: z.string().min(10, {message: 'Bio must be at least 500 characters long'}).max(1000, "Bio must be at most 2000 characters"),
 });
 
 export const validateProfileForm = (data: any) => {
