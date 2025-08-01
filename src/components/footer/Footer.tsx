@@ -19,7 +19,7 @@ const Footer = () => {
                             Blog
                         </p>
                     </div>
-                    <p className='text-sm'> &copy; Maxter blog. All Rights Reserved 2024 </p>
+                    <p className='text-sm'> &copy; Maxter blog. All Rights Reserved {new Date().getFullYear()} </p>
                 </div>
                 <div className='flex mx-16 items-center justify-center'>
                     <ul className='flex gap-4 lg:flex-col lg:gap-2'>
